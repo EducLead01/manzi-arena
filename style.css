@@ -541,6 +541,42 @@ body {
   box-shadow: 0 2px 12px rgba(192, 57, 43, 0.08);
 }
 
+.item-winner {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.winner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.73rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+}
+
+.winner-tag--self {
+  background: rgba(52, 183, 90, 0.1);
+  color: #27a04f;
+}
+
+.winner-tag--other {
+  background: rgba(255, 111, 0, 0.1);
+  color: #FF6F00;
+}
+
+.winner-tag--tie {
+  background: rgba(0, 0, 0, 0.05);
+  color: #888888;
+}
+
+.winner-tag--exclusive {
+  background: rgba(52, 152, 219, 0.1);
+  color: #2980b9;
+}
+
 .price-consult-inline {
   font-size: 0.82rem;
   font-weight: 700;

@@ -640,6 +640,72 @@
         });
       }
     });
+
+    // ── Fornecedor vencedor por produto ──
+    var winnerData = {
+      'ma-alimentos': {
+        'Frango c/ Bacon':                    { name: 'M.A Alimentos',  type: 'self'      },
+        'Frango s/ Bacon':                    { name: 'Empate',          type: 'tie'       },
+        'Frango c/ Bacon Enroladinho':        { name: 'M.A Alimentos',  type: 'exclusive' },
+        'Meio da Asa':                        { name: 'Renato Espetos', type: 'other'     },
+        'Coração de Frango':                  { name: 'M.A Alimentos',  type: 'self'      },
+        'Kafta de Frango Recheada c/ Queijo': { name: 'Renato Espetos', type: 'other'     },
+        'Linguiça de Frango c/ Pimenta':      { name: 'M.A Alimentos',  type: 'self'      },
+        'Linguiça de Frango s/ Pimenta':      { name: 'M.A Alimentos',  type: 'self'      },
+        'Lombo c/ Bacon':                     { name: 'M.A Alimentos',  type: 'exclusive' },
+        'Costelinha':                         { name: 'M.A Alimentos',  type: 'exclusive' },
+        'Linguiça c/ Pimenta':                { name: 'M.A Alimentos',  type: 'self'      },
+        'Linguiça s/ Pimenta':                { name: 'M.A Alimentos',  type: 'self'      },
+        'Contra Filé Montado':                { name: 'Renato Espetos', type: 'other'     },
+        'Contra Filé Fitness':                { name: 'Renato Espetos', type: 'other'     },
+        'Carne de Sol c/ Bacon':              { name: 'M.A Alimentos',  type: 'self'      },
+        'Cupim':                              { name: 'M.A Alimentos',  type: 'self'      },
+        'Cupim Grill':                        { name: 'M.A Alimentos',  type: 'exclusive' },
+        'Kafta Bovina Recheada c/ Queijo':    { name: 'Renato Espetos', type: 'other'     },
+        'Coalho':                             { name: 'M.A Alimentos',  type: 'self'      },
+        'Provolone':                          { name: 'M.A Alimentos',  type: 'self'      }
+      },
+      'renato-espetos': {
+        'Frango':                { name: 'Empate',          type: 'tie'       },
+        'Frango com Bacon':      { name: 'M.A Alimentos',  type: 'other'     },
+        'Meio da Asa':           { name: 'Renato Espetos', type: 'self'      },
+        'Coração':               { name: 'M.A Alimentos',  type: 'other'     },
+        'Mini Medalhão':         { name: 'Renato Espetos', type: 'exclusive' },
+        'Contra-filé':           { name: 'Renato Espetos', type: 'self'      },
+        'Contra-filé com Bacon': { name: 'Renato Espetos', type: 'exclusive' },
+        'Fraldinha':             { name: 'Renato Espetos', type: 'exclusive' },
+        'Filé Mignon':           { name: 'Renato Espetos', type: 'exclusive' },
+        'Picanha Montada':       { name: 'Renato Espetos', type: 'exclusive' },
+        'Cupim':                 { name: 'M.A Alimentos',  type: 'other'     },
+        'Carne de Sol':          { name: 'M.A Alimentos',  type: 'other'     },
+        'Kafta de Frango':       { name: 'Renato Espetos', type: 'self'      },
+        'Kafta de Carne':        { name: 'Renato Espetos', type: 'self'      },
+        'Linguiça':              { name: 'M.A Alimentos',  type: 'other'     },
+        'Linguiça Apimentada':   { name: 'M.A Alimentos',  type: 'other'     },
+        'Queijo Coalho':         { name: 'M.A Alimentos',  type: 'other'     },
+        'Queijo Provolone':      { name: 'M.A Alimentos',  type: 'other'     }
+      }
+    };
+
+    var icons = { self: '✓', other: '→', tie: '=', exclusive: '★' };
+    var labels = { self: 'Mais barato: ', other: 'Mais barato: ', tie: '', exclusive: 'Exclusivo: ' };
+
+    document.querySelectorAll('.supplier-card').forEach(function(card) {
+      var data = winnerData[card.id];
+      if (!data) return;
+      card.querySelectorAll('.catalog-item').forEach(function(item) {
+        var nameEl = item.querySelector('.catalog-item__name');
+        if (!nameEl) return;
+        var winner = data[nameEl.textContent.trim()];
+        if (!winner) return;
+        var div = document.createElement('div');
+        div.className = 'item-winner';
+        div.innerHTML = '<span class="winner-tag winner-tag--' + winner.type + '">'
+          + icons[winner.type] + ' ' + labels[winner.type] + winner.name
+          + '</span>';
+        item.appendChild(div);
+      });
+    });
   </script>
 
 </body>
