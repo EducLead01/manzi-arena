@@ -547,6 +547,36 @@ body {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.compare-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.compare-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #bbbbbb;
+  padding: 0.15rem 0;
+}
+
+.compare-row--winner {
+  color: #27a04f;
+  font-weight: 700;
+}
+
+.compare-row__name {
+  font-size: 0.72rem;
+}
+
+.compare-row__price {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
 .winner-tag {
   display: inline-flex;
   align-items: center;

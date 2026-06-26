@@ -641,54 +641,59 @@
       }
     });
 
-    // ── Fornecedor vencedor por produto ──
+    // ── Comparação de preços entre fornecedores ──
+    // ma: preço M.A Alimentos/un | re: preço Renato Espetos/un | type: self/other/tie/exclusive
     var winnerData = {
       'ma-alimentos': {
-        'Frango c/ Bacon':                    { name: 'M.A Alimentos',  type: 'self'      },
-        'Frango s/ Bacon':                    { name: 'Empate',          type: 'tie'       },
-        'Frango c/ Bacon Enroladinho':        { name: 'M.A Alimentos',  type: 'exclusive' },
-        'Meio da Asa':                        { name: 'Renato Espetos', type: 'other'     },
-        'Coração de Frango':                  { name: 'M.A Alimentos',  type: 'self'      },
-        'Kafta de Frango Recheada c/ Queijo': { name: 'Renato Espetos', type: 'other'     },
-        'Linguiça de Frango c/ Pimenta':      { name: 'M.A Alimentos',  type: 'self'      },
-        'Linguiça de Frango s/ Pimenta':      { name: 'M.A Alimentos',  type: 'self'      },
-        'Lombo c/ Bacon':                     { name: 'M.A Alimentos',  type: 'exclusive' },
-        'Costelinha':                         { name: 'M.A Alimentos',  type: 'exclusive' },
-        'Linguiça c/ Pimenta':                { name: 'M.A Alimentos',  type: 'self'      },
-        'Linguiça s/ Pimenta':                { name: 'M.A Alimentos',  type: 'self'      },
-        'Contra Filé Montado':                { name: 'Renato Espetos', type: 'other'     },
-        'Contra Filé Fitness':                { name: 'Renato Espetos', type: 'other'     },
-        'Carne de Sol c/ Bacon':              { name: 'M.A Alimentos',  type: 'self'      },
-        'Cupim':                              { name: 'M.A Alimentos',  type: 'self'      },
-        'Cupim Grill':                        { name: 'M.A Alimentos',  type: 'exclusive' },
-        'Kafta Bovina Recheada c/ Queijo':    { name: 'Renato Espetos', type: 'other'     },
-        'Coalho':                             { name: 'M.A Alimentos',  type: 'self'      },
-        'Provolone':                          { name: 'M.A Alimentos',  type: 'self'      }
+        'Frango c/ Bacon':                    { type: 'self',      ma: 'R$ 5,50/un', re: 'R$ 6,00/un' },
+        'Frango s/ Bacon':                    { type: 'tie',       ma: 'R$ 5,00/un', re: 'R$ 5,00/un' },
+        'Frango c/ Bacon Enroladinho':        { type: 'exclusive', ma: 'R$ 6,50/un', re: null          },
+        'Meio da Asa':                        { type: 'other',     ma: 'R$ 6,00/un', re: 'R$ 5,80/un' },
+        'Coração de Frango':                  { type: 'self',      ma: 'R$ 6,50/un', re: 'R$ 6,60/un' },
+        'Kafta de Frango Recheada c/ Queijo': { type: 'other',     ma: 'R$ 8,00/un', re: 'R$ 6,60/un' },
+        'Linguiça de Frango c/ Pimenta':      { type: 'self',      ma: 'R$ 5,85/un', re: 'R$ 6,20/un' },
+        'Linguiça de Frango s/ Pimenta':      { type: 'self',      ma: 'R$ 5,85/un', re: 'R$ 6,20/un' },
+        'Lombo c/ Bacon':                     { type: 'exclusive', ma: 'R$ 5,30/un', re: null          },
+        'Costelinha':                         { type: 'exclusive', ma: 'R$ 6,00/un', re: null          },
+        'Linguiça c/ Pimenta':                { type: 'self',      ma: 'R$ 5,85/un', re: 'R$ 6,20/un' },
+        'Linguiça s/ Pimenta':                { type: 'self',      ma: 'R$ 5,85/un', re: 'R$ 6,20/un' },
+        'Contra Filé Montado':                { type: 'other',     ma: 'R$ 7,00/un', re: 'R$ 6,80/un' },
+        'Contra Filé Fitness':                { type: 'other',     ma: 'R$ 7,00/un', re: 'R$ 6,80/un' },
+        'Carne de Sol c/ Bacon':              { type: 'self',      ma: 'R$ 7,00/un', re: 'R$ 8,00/un' },
+        'Cupim':                              { type: 'self',      ma: 'R$ 6,80/un', re: 'R$ 7,20/un' },
+        'Cupim Grill':                        { type: 'exclusive', ma: 'R$ 7,50/un', re: null          },
+        'Kafta Bovina Recheada c/ Queijo':    { type: 'other',     ma: 'R$ 8,00/un', re: 'R$ 7,00/un' },
+        'Coalho':                             { type: 'self',      ma: 'R$ 5,00/un', re: 'R$ 5,40/un' },
+        'Provolone':                          { type: 'self',      ma: 'R$ 6,00/un', re: 'R$ 7,20/un' }
       },
       'renato-espetos': {
-        'Frango':                { name: 'Empate',          type: 'tie'       },
-        'Frango com Bacon':      { name: 'M.A Alimentos',  type: 'other'     },
-        'Meio da Asa':           { name: 'Renato Espetos', type: 'self'      },
-        'Coração':               { name: 'M.A Alimentos',  type: 'other'     },
-        'Mini Medalhão':         { name: 'Renato Espetos', type: 'exclusive' },
-        'Contra-filé':           { name: 'Renato Espetos', type: 'self'      },
-        'Contra-filé com Bacon': { name: 'Renato Espetos', type: 'exclusive' },
-        'Fraldinha':             { name: 'Renato Espetos', type: 'exclusive' },
-        'Filé Mignon':           { name: 'Renato Espetos', type: 'exclusive' },
-        'Picanha Montada':       { name: 'Renato Espetos', type: 'exclusive' },
-        'Cupim':                 { name: 'M.A Alimentos',  type: 'other'     },
-        'Carne de Sol':          { name: 'M.A Alimentos',  type: 'other'     },
-        'Kafta de Frango':       { name: 'Renato Espetos', type: 'self'      },
-        'Kafta de Carne':        { name: 'Renato Espetos', type: 'self'      },
-        'Linguiça':              { name: 'M.A Alimentos',  type: 'other'     },
-        'Linguiça Apimentada':   { name: 'M.A Alimentos',  type: 'other'     },
-        'Queijo Coalho':         { name: 'M.A Alimentos',  type: 'other'     },
-        'Queijo Provolone':      { name: 'M.A Alimentos',  type: 'other'     }
+        'Frango':                { type: 'tie',       ma: 'R$ 5,00/un', re: 'R$ 5,00/un' },
+        'Frango com Bacon':      { type: 'other',     ma: 'R$ 5,50/un', re: 'R$ 6,00/un' },
+        'Meio da Asa':           { type: 'self',      ma: 'R$ 6,00/un', re: 'R$ 5,80/un' },
+        'Coração':               { type: 'other',     ma: 'R$ 6,50/un', re: 'R$ 6,60/un' },
+        'Mini Medalhão':         { type: 'exclusive', ma: null,          re: 'R$ 6,50/un' },
+        'Contra-filé':           { type: 'self',      ma: 'R$ 7,00/un', re: 'R$ 6,80/un' },
+        'Contra-filé com Bacon': { type: 'exclusive', ma: null,          re: 'R$ 7,60/un' },
+        'Fraldinha':             { type: 'exclusive', ma: null,          re: 'R$ 8,40/un' },
+        'Filé Mignon':           { type: 'exclusive', ma: null,          re: 'R$ 12,00/un'},
+        'Picanha Montada':       { type: 'exclusive', ma: null,          re: 'R$ 7,40/un' },
+        'Cupim':                 { type: 'other',     ma: 'R$ 6,80/un', re: 'R$ 7,20/un' },
+        'Carne de Sol':          { type: 'other',     ma: 'R$ 7,00/un', re: 'R$ 8,00/un' },
+        'Kafta de Frango':       { type: 'self',      ma: 'R$ 8,00/un', re: 'R$ 6,60/un' },
+        'Kafta de Carne':        { type: 'self',      ma: 'R$ 8,00/un', re: 'R$ 7,00/un' },
+        'Linguiça':              { type: 'other',     ma: 'R$ 5,85/un', re: 'R$ 6,20/un' },
+        'Linguiça Apimentada':   { type: 'other',     ma: 'R$ 5,85/un', re: 'R$ 6,20/un' },
+        'Queijo Coalho':         { type: 'other',     ma: 'R$ 5,00/un', re: 'R$ 5,40/un' },
+        'Queijo Provolone':      { type: 'other',     ma: 'R$ 6,00/un', re: 'R$ 7,20/un' }
       }
     };
 
-    var icons = { self: '✓', other: '→', tie: '=', exclusive: '★' };
-    var labels = { self: 'Mais barato: ', other: 'Mais barato: ', tie: '', exclusive: 'Exclusivo: ' };
+    var winnerLabels = {
+      self:      { icon: '✓', text: 'Mais barato aqui'       },
+      other:     { icon: '→', text: 'Mais barato no outro'   },
+      tie:       { icon: '=', text: 'Mesmo preço nos dois'   },
+      exclusive: { icon: '★', text: 'Exclusivo deste fornecedor' }
+    };
 
     document.querySelectorAll('.supplier-card').forEach(function(card) {
       var data = winnerData[card.id];
@@ -696,13 +701,32 @@
       card.querySelectorAll('.catalog-item').forEach(function(item) {
         var nameEl = item.querySelector('.catalog-item__name');
         if (!nameEl) return;
-        var winner = data[nameEl.textContent.trim()];
-        if (!winner) return;
+        var d = data[nameEl.textContent.trim()];
+        if (!d) return;
+
+        var maWins = d.type === 'self' && card.id === 'ma-alimentos'
+                  || d.type === 'other' && card.id === 'renato-espetos';
+        var reWins = d.type === 'self' && card.id === 'renato-espetos'
+                  || d.type === 'other' && card.id === 'ma-alimentos';
+
+        var maRow = d.ma
+          ? '<div class="compare-row' + (maWins || d.type === 'tie' ? ' compare-row--winner' : '') + '">'
+            + '<span class="compare-row__name">M.A Alimentos</span>'
+            + '<span class="compare-row__price">' + d.ma + '</span></div>'
+          : '';
+        var reRow = d.re
+          ? '<div class="compare-row' + (reWins || d.type === 'tie' ? ' compare-row--winner' : '') + '">'
+            + '<span class="compare-row__name">Renato Espetos</span>'
+            + '<span class="compare-row__price">' + d.re + '</span></div>'
+          : '';
+
+        var lbl = winnerLabels[d.type];
+        var badge = '<span class="winner-tag winner-tag--' + d.type + '">'
+          + lbl.icon + ' ' + lbl.text + '</span>';
+
         var div = document.createElement('div');
         div.className = 'item-winner';
-        div.innerHTML = '<span class="winner-tag winner-tag--' + winner.type + '">'
-          + icons[winner.type] + ' ' + labels[winner.type] + winner.name
-          + '</span>';
+        div.innerHTML = '<div class="compare-prices">' + maRow + reRow + '</div>' + badge;
         item.appendChild(div);
       });
     });
