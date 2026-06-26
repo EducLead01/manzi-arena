@@ -475,6 +475,25 @@ body {
   border-radius: 20px;
 }
 
+.margin-badge--low {
+  background: rgba(230, 126, 34, 0.12);
+  color: #e67e22;
+}
+
+.margin-badge--zero {
+  background: rgba(192, 57, 43, 0.1);
+  color: #c0392b;
+}
+
+.catalog-item--alert {
+  border-color: rgba(192, 57, 43, 0.2);
+}
+
+.catalog-item--alert:hover {
+  border-color: rgba(192, 57, 43, 0.4);
+  box-shadow: 0 2px 12px rgba(192, 57, 43, 0.08);
+}
+
 .price-consult-inline {
   font-size: 0.82rem;
   font-weight: 700;
