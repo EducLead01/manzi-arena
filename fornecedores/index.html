@@ -22,8 +22,21 @@
 
     <h1 class="catalog-title">Fornecedores</h1>
 
+    <!-- Abas de categoria -->
+    <nav class="category-tabs">
+      <button class="tab-btn" data-tab="bebidas" onclick="switchTab('bebidas')">Bebidas</button>
+      <button class="tab-btn active" data-tab="petiscos" onclick="switchTab('petiscos')">Petiscos</button>
+      <button class="tab-btn" data-tab="gulosemas" onclick="switchTab('gulosemas')">Gulosemas</button>
+      <button class="tab-btn" data-tab="limpeza" onclick="switchTab('limpeza')">Limpeza e Manutenção</button>
+    </nav>
+
+    <!-- Empty states -->
+    <div class="category-empty" data-category="bebidas">Nenhum fornecedor cadastrado em <strong>Bebidas</strong> ainda.</div>
+    <div class="category-empty" data-category="gulosemas">Nenhum fornecedor cadastrado em <strong>Gulosemas</strong> ainda.</div>
+    <div class="category-empty" data-category="limpeza">Nenhum fornecedor cadastrado em <strong>Limpeza e Manutenção</strong> ainda.</div>
+
     <!-- ── M.A Alimentos ── -->
-    <section class="supplier-card" id="ma-alimentos">
+    <section class="supplier-card" data-category="petiscos" id="ma-alimentos">
 
       <div class="supplier-card__header">
         <div class="supplier-card__info">
@@ -337,7 +350,7 @@
 
     </section>
     <!-- ── Renato Espetos ── -->
-    <section class="supplier-card" id="renato-espetos">
+    <section class="supplier-card" data-category="petiscos" id="renato-espetos">
 
       <div class="supplier-card__header">
         <div class="supplier-card__info">
@@ -608,6 +621,17 @@
       nav.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     }
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
+      document.querySelectorAll('.supplier-card').forEach(function(card) {
+        card.style.display = card.dataset.category === tab ? '' : 'none';
+      });
+      document.querySelectorAll('.category-empty').forEach(function(el) {
+        el.style.display = el.dataset.category === tab ? '' : 'none';
+      });
+    }
+
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.catalog-nav-wrapper')) {
         document.querySelectorAll('.catalog-nav.is-open').forEach(function(nav) {
