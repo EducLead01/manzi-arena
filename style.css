@@ -558,6 +558,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
   font-size: 0.75rem;
   color: #bbbbbb;
   padding: 0.15rem 0;
@@ -570,11 +571,14 @@ body {
 
 .compare-row__name {
   font-size: 0.72rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .compare-row__price {
   font-size: 0.78rem;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .winner-tag {
