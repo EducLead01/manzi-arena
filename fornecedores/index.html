@@ -704,18 +704,23 @@
         var d = data[nameEl.textContent.trim()];
         if (!d) return;
 
-        var maWins = d.type === 'self' && card.id === 'ma-alimentos'
-                  || d.type === 'other' && card.id === 'renato-espetos';
-        var reWins = d.type === 'self' && card.id === 'renato-espetos'
-                  || d.type === 'other' && card.id === 'ma-alimentos';
+        var maWins = (d.type === 'self' && card.id === 'ma-alimentos')
+                  || (d.type === 'other' && card.id === 'renato-espetos');
+        var reWins = (d.type === 'self' && card.id === 'renato-espetos')
+                  || (d.type === 'other' && card.id === 'ma-alimentos');
+        var isTie = d.type === 'tie';
+        var isExclusive = d.type === 'exclusive';
+
+        var maClass = isTie ? ' compare-row--winner' : (maWins ? ' compare-row--winner' : (!isExclusive && d.re ? ' compare-row--loser' : ''));
+        var reClass = isTie ? ' compare-row--winner' : (reWins ? ' compare-row--winner' : (!isExclusive && d.ma ? ' compare-row--loser' : ''));
 
         var maRow = d.ma
-          ? '<div class="compare-row' + (maWins || d.type === 'tie' ? ' compare-row--winner' : '') + '">'
+          ? '<div class="compare-row' + maClass + '">'
             + '<span class="compare-row__name">M.A Alimentos</span>'
             + '<span class="compare-row__price">' + d.ma + '</span></div>'
           : '';
         var reRow = d.re
-          ? '<div class="compare-row' + (reWins || d.type === 'tie' ? ' compare-row--winner' : '') + '">'
+          ? '<div class="compare-row' + reClass + '">'
             + '<span class="compare-row__name">Renato Espetos</span>'
             + '<span class="compare-row__price">' + d.re + '</span></div>'
           : '';

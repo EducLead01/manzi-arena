@@ -569,6 +569,11 @@ body {
   font-weight: 700;
 }
 
+.compare-row--loser {
+  color: #c0392b;
+  font-weight: 600;
+}
+
 .compare-row__name {
   font-size: 0.72rem;
   flex: 1;
