@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Copa Sesc — Proposta de Investimento | Manzi Arena</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero__eyebrow">Manzi Arena · Proposta de Investimento</p>
+    <h1 class="hero__title">Copa Sesc <span class="accent">de Futevôlei</span></h1>
+    <p class="hero__sub">Cronograma modular do campeonato — marque os dias desejados e veja o investimento total ser recalculado em tempo real.</p>
+  </section>
+
+  <!-- Cronograma -->
+  <section class="schedule container">
+    <h2 class="schedule__title">Cronograma</h2>
+    <p class="schedule__hint">Dois fins de semana de competição (sábado e domingo).</p>
+
+    <div class="weekend-group">
+      <p class="weekend-group__label">Fim de semana 1</p>
+      <div class="days-grid">
+
+        <label class="day-card">
+          <input type="checkbox" class="day-toggle" data-total="1600" checked />
+          <div class="day-card__header">
+            <span class="day-badge">01</span>
+            <span class="day-card__date">Sábado</span>
+            <span class="day-check"></span>
+          </div>
+          <ul class="day-items">
+            <li><span>Arbitragem (árbitros + coordenador)</span><span>R$ 1.600,00</span></li>
+          </ul>
+          <div class="day-card__total"><span>Total do dia</span><span class="day-card__total-value">R$ 1.600,00</span></div>
+        </label>
+
+        <label class="day-card">
+          <input type="checkbox" class="day-toggle" data-total="1600" checked />
+          <div class="day-card__header">
+            <span class="day-badge">02</span>
+            <span class="day-card__date">Domingo</span>
+            <span class="day-check"></span>
+          </div>
+          <ul class="day-items">
+            <li><span>Arbitragem (árbitros + coordenador)</span><span>R$ 1.600,00</span></li>
+          </ul>
+          <div class="day-card__total"><span>Total do dia</span><span class="day-card__total-value">R$ 1.600,00</span></div>
+        </label>
+
+      </div>
+    </div>
+
+    <div class="weekend-group">
+      <p class="weekend-group__label">Fim de semana 2</p>
+      <div class="days-grid">
+
+        <label class="day-card">
+          <input type="checkbox" class="day-toggle" data-total="1600" checked />
+          <div class="day-card__header">
+            <span class="day-badge">03</span>
+            <span class="day-card__date">Sábado</span>
+            <span class="day-check"></span>
+          </div>
+          <ul class="day-items">
+            <li><span>Arbitragem (árbitros + coordenador)</span><span>R$ 1.600,00</span></li>
+          </ul>
+          <div class="day-card__total"><span>Total do dia</span><span class="day-card__total-value">R$ 1.600,00</span></div>
+        </label>
+
+        <label class="day-card">
+          <input type="checkbox" class="day-toggle" data-total="1600" checked />
+          <div class="day-card__header">
+            <span class="day-badge">04</span>
+            <span class="day-card__date">Domingo</span>
+            <span class="day-check"></span>
+          </div>
+          <ul class="day-items">
+            <li><span>Arbitragem (árbitros + coordenador)</span><span>R$ 1.600,00</span></li>
+          </ul>
+          <div class="day-card__total"><span>Total do dia</span><span class="day-card__total-value">R$ 1.600,00</span></div>
+        </label>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">Copa Sesc · Manzi Arena © 2026</footer>
+
+  <!-- Barra de total -->
+  <div class="total-bar">
+    <span class="total-bar__label">Investimento total</span>
+    <span class="total-bar__value" id="totalValue">R$ 0,00</span>
+  </div>
+
+  <script>
+    const fmt = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    function recalc() {
+      const toggles = document.querySelectorAll('.day-toggle');
+      let total = 0;
+      toggles.forEach((t) => { if (t.checked) total += Number(t.dataset.total); });
+      document.getElementById('totalValue').textContent = fmt(total);
+    }
+
+    document.querySelectorAll('.day-toggle').forEach((t) => t.addEventListener('change', recalc));
+    recalc();
+  </script>
+
+</body>
+</html>
