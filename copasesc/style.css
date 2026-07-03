@@ -149,6 +149,11 @@ body {
 
 @media (min-width: 640px) {
   .grid-cards--2 { grid-template-columns: 1fr 1fr; }
+  .grid-cards--4 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 900px) {
+  .grid-cards--4 { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ===== Unit card (dia) ===== */
@@ -292,6 +297,28 @@ body {
 .day-card__total-value {
   color: #FF6F00;
   font-size: 1.125rem;
+}
+
+/* ===== Observação ===== */
+.note {
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 111, 0, 0.06);
+  border: 1px solid rgba(255, 111, 0, 0.2);
+  border-left: 3px solid #FF6F00;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.note strong {
+  color: #FF6F00;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.35rem;
 }
 
 /* ===== Barra de total fixa ===== */
