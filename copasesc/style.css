@@ -150,10 +150,12 @@ body {
 @media (min-width: 640px) {
   .grid-cards--2 { grid-template-columns: 1fr 1fr; }
   .grid-cards--4 { grid-template-columns: 1fr 1fr; }
+  .grid-cards--6 { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 900px) {
   .grid-cards--4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-cards--6 { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ===== Unit card (dia) ===== */
