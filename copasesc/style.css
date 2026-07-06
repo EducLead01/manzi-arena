@@ -7,7 +7,6 @@ body {
   color: #ffffff;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 92px; /* espaço pra barra de total fixa */
 }
 
 ::-webkit-scrollbar { width: 4px; }
@@ -189,12 +188,6 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-.day-card input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .day-card__header {
   display: flex;
   align-items: center;
@@ -232,45 +225,6 @@ body {
   letter-spacing: -0.025em;
   font-size: 1.125rem;
   line-height: 1.25;
-}
-
-.day-check {
-  margin-left: auto;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  flex-shrink: 0;
-  position: relative;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.day-check::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0A0A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 14px;
-  transition: opacity 0.15s;
-}
-
-.day-card input:checked ~ .day-card__header .day-check {
-  background: #FF6F00;
-  border-color: #FF6F00;
-}
-
-.day-card input:checked ~ .day-card__header .day-check::after { opacity: 1; }
-
-.day-card input:not(:checked) ~ * { opacity: 0.4; }
-.day-card input:checked ~ * { opacity: 1; }
-
-.day-card input:not(:checked) ~ .day-card__header .number-badge {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.3);
 }
 
 .day-items {
@@ -516,36 +470,55 @@ body {
 
 .cta-btn:active { transform: scale(0.98); }
 
-/* ===== Barra de total fixa ===== */
-.total-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #111111;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1rem 1.5rem;
+/* ===== Card estático (sem seleção) ===== */
+.day-card--static {
+  cursor: default;
+}
+
+.day-card--static:hover {
+  border-color: rgba(255, 255, 255, 0.06);
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== Seletor de duração (CTA final) ===== */
+.day-picker {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.day-picker input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.day-picker__option {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 860px;
-  margin: 0 auto;
-  z-index: 10;
-}
-
-.total-bar__label {
-  font-size: 0.75rem;
+  justify-content: center;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 900;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.total-bar__value {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: #FF6F00;
+.day-picker input:checked + .day-picker__option {
+  background: #FF6F00;
+  border-color: #FF6F00;
+  color: #0A0A0A;
 }
+
+.day-picker__option:hover { border-color: rgba(255, 111, 0, 0.5); }
 
 .footer {
   text-align: center;
