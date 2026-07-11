@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Relatório de Refrigerantes — Manzi Arena</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="comanda-body">
+
+  <header class="header">
+    <div class="container header__inner">
+      <span class="logo">Manzi Arena</span>
+      <span class="comanda-badge">Relatório de Vendas</span>
+    </div>
+  </header>
+
+  <main class="container comanda-main">
+
+    <div class="comanda-client">
+      <h1>Refrigerantes</h1>
+      <p class="comanda-date" id="reportDate"></p>
+    </div>
+
+    <div class="comanda-card">
+      <table class="comanda-table">
+        <thead>
+          <tr>
+            <th>Unidade</th>
+            <th>Produto de Venda</th>
+            <th class="text-right">Venda Frente de Loja</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Buteco do Luiz</td><td>Coca-Cola Litro</td><td class="text-right">21</td></tr>
+          <tr><td>Buteco do Luiz</td><td>Coca-Cola Litro Zero</td><td class="text-right">12</td></tr>
+          <tr><td>Buteco do Luiz</td><td>Coca-Cola KS</td><td class="text-right">3</td></tr>
+          <tr><td>Buteco do Luiz</td><td>Coca-Cola KS Zero</td><td class="text-right">3</td></tr>
+        </tbody>
+      </table>
+
+      <div class="comanda-total">
+        <span>Total</span>
+        <span class="comanda-total__value">39</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Manzi Arena — Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('reportDate').textContent = new Date().toLocaleDateString('pt-BR', {
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+  </script>
+
+</body>
+</html>
