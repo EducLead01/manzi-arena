@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Checklist Reinauguração — Manzi Arena</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <span class="logo">Manzi Arena</span>
+      <span class="badge">Reinauguração</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="hero">
+      <h1>Checklist de Reinauguração</h1>
+      <p>Marque os itens conforme forem concluídos.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-bar__fill" id="progressFill"></div></div>
+      <p class="progress-label" id="progressLabel">0 de 3 concluídos</p>
+    </div>
+
+    <div class="category">
+      <p class="category__title">Restaurante</p>
+
+      <div class="group">
+        <p class="group__title">Contratações</p>
+
+        <label class="check-item">
+          <input type="checkbox" class="check-toggle" data-id="cozinheira" />
+          <span class="check-item__box"></span>
+          <span class="check-item__text">Cozinheira</span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" class="check-toggle" data-id="auxiliar-cozinha" />
+          <span class="check-item__box"></span>
+          <span class="check-item__text">Auxiliar de Cozinha</span>
+        </label>
+      </div>
+
+      <div class="group">
+        <p class="group__title">Cardápio</p>
+
+        <label class="check-item">
+          <input type="checkbox" class="check-toggle" data-id="cardapio-digital" />
+          <span class="check-item__box"></span>
+          <span class="check-item__text">Novo cardápio digital</span>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Manzi Arena</p>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'manzi_reinauguracao_checklist';
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+    const toggles = document.querySelectorAll('.check-toggle');
+
+    function updateProgress() {
+      const total = toggles.length;
+      const done = document.querySelectorAll('.check-toggle:checked').length;
+      document.getElementById('progressFill').style.width = (total ? (done / total) * 100 : 0) + '%';
+      document.getElementById('progressLabel').textContent = `${done} de ${total} concluídos`;
+    }
+
+    toggles.forEach((t) => {
+      if (saved[t.dataset.id]) t.checked = true;
+      t.addEventListener('change', () => {
+        saved[t.dataset.id] = t.checked;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        updateProgress();
+      });
+    });
+
+    updateProgress();
+  </script>
+
+</body>
+</html>

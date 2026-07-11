@@ -1,0 +1,189 @@
+/* ===== Checklist Reinauguração ===== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Archivo', sans-serif; }
+
+body {
+  background: #FFF9EC;
+  color: #121212;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== Header ===== */
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 1.5rem 0;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.9rem;
+  background: rgba(255, 111, 0, 0.1);
+  color: #FF6F00;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 2.5rem 0 1.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  color: #666666;
+  font-size: 0.95rem;
+}
+
+/* ===== Progresso ===== */
+.progress-wrap {
+  padding: 0 0 2rem;
+}
+
+.progress-bar {
+  height: 10px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  width: 0%;
+  background: #34B75A;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  font-size: 0.85rem;
+  color: #666666;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ===== Categoria ===== */
+.category {
+  margin-bottom: 2rem;
+}
+
+.category__title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FF6F00;
+  margin-bottom: 0.75rem;
+}
+
+.group {
+  margin-bottom: 1.25rem;
+}
+
+.group__title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555555;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Item ===== */
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.check-item:hover {
+  border-color: rgba(255, 111, 0, 0.35);
+}
+
+.check-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.check-item__box {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 2px solid rgba(0, 0, 0, 0.18);
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.check-item__box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+  transition: opacity 0.15s;
+}
+
+.check-item input:checked ~ .check-item__box {
+  background: #34B75A;
+  border-color: #34B75A;
+}
+
+.check-item input:checked ~ .check-item__box::after { opacity: 1; }
+
+.check-item__text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.check-item input:checked ~ .check-item__text {
+  color: #999999;
+  text-decoration: line-through;
+}
+
+.footer {
+  text-align: center;
+  color: #999999;
+  font-size: 0.75rem;
+  padding: 2rem 0;
+}
