@@ -193,6 +193,16 @@ body {
   color: #444444;
 }
 
+.check-item__note a {
+  color: #FF6F00;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.check-item__note a:hover {
+  text-decoration: underline;
+}
+
 .footer {
   text-align: center;
   color: #999999;
