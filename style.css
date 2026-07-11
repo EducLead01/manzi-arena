@@ -241,6 +241,109 @@ body {
   font-size: 0.85rem;
 }
 
+/* ===== Comparativo (/divulgacao) ===== */
+.compare {
+  background: #FFF9EC;
+  padding: 5rem 0;
+}
+
+.compare__note {
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  color: #666666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.compare__note strong {
+  color: #FF6F00;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 780px;
+  margin: 0 auto 1.5rem;
+}
+
+.compare-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+}
+
+.compare-card--highlight {
+  border-color: #FF6F00;
+  box-shadow: 0 8px 28px rgba(255, 111, 0, 0.14);
+}
+
+.compare-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #999999;
+  margin-bottom: 0.5rem;
+}
+
+.compare-card--highlight .compare-card__label {
+  color: #FF6F00;
+}
+
+.compare-card__title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.compare-card__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #555555;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.compare-card__row:last-of-type {
+  border-bottom: none;
+}
+
+.compare-card__total {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.compare-card__total-label {
+  font-size: 0.8rem;
+  color: #999999;
+  font-weight: 600;
+}
+
+.compare-card__total-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #121212;
+}
+
+.compare-card--highlight .compare-card__total-value {
+  color: #FF6F00;
+}
+
+.compare-card__foot {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #999999;
+}
+
+@media (max-width: 640px) {
+  .compare-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== Catalog (/fornecedores) ===== */
 .catalog-body {
   background: #f7f7f5;
