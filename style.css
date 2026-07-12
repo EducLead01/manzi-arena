@@ -134,6 +134,31 @@ body {
   flex-wrap: wrap;
 }
 
+/* ===== Showcase (/divulgacao) ===== */
+.showcase {
+  padding: 3rem 0;
+}
+
+.showcase__frame {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.showcase__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.showcase__caption {
+  text-align: center;
+  color: #666666;
+  font-size: 0.85rem;
+  margin-top: 0.85rem;
+}
+
 /* ===== Section headers ===== */
 .section__title {
   font-size: 2rem;
@@ -372,6 +397,87 @@ body {
 
 @media (max-width: 640px) {
   .compare-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Parceiros (/divulgacao) ===== */
+.partners {
+  background: #121212;
+  padding: 4.5rem 0;
+}
+
+.partners__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1.1rem;
+  background: #FF6F00;
+  color: #121212;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2.5rem;
+}
+
+.partners__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.partners__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.partners__logo:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.partners__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .partners__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .partners__logo { font-size: 1.2rem; }
+}
+
+/* ===== Animações de entrada ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* ===== Catalog (/fornecedores) ===== */

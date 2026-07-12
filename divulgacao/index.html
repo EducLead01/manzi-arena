@@ -24,12 +24,22 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container hero__inner">
-      <h1 class="hero__title">Sua marca em<br>frente ao público certo</h1>
-      <p class="hero__sub">Anuncie na Manzi Sports e coloque sua empresa diante de quem pratica esporte, socializa e volta sempre.</p>
-      <div class="hero__actions">
+      <h1 class="hero__title reveal">Sua marca em<br>frente ao público certo</h1>
+      <p class="hero__sub reveal reveal-delay-1">Anuncie na Manzi Sports e coloque sua empresa diante de quem pratica esporte, socializa e volta sempre.</p>
+      <div class="hero__actions reveal reveal-delay-2">
         <a class="btn btn--primary" href="#planos">Ver planos de divulgação</a>
         <a class="btn btn--outline" href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20anunciar%20na%20Manzi%20Sports." target="_blank" rel="noopener">Falar com a gente</a>
       </div>
+    </div>
+  </section>
+
+  <!-- Foto do espaço -->
+  <section class="showcase">
+    <div class="container">
+      <div class="showcase__frame reveal">
+        <img src="fachada-publicidade-site.webp" alt="Painéis de publicidade Outdoor Superior na fachada da Manzi Arena" loading="lazy" />
+      </div>
+      <p class="showcase__caption">Outdoor Superior — espaço real na fachada da Manzi Arena</p>
     </div>
   </section>
 
@@ -41,7 +51,7 @@
 
       <div class="courts__grid courts__grid--3">
 
-        <div class="court-card">
+        <div class="court-card reveal">
           <div class="court-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="16" height="9" rx="1"/><line x1="12" y1="12" x2="12" y2="19"/><line x1="8" y1="19" x2="16" y2="19"/></svg>
           </div>
@@ -57,7 +67,7 @@
           </a>
         </div>
 
-        <div class="court-card">
+        <div class="court-card reveal reveal-delay-1">
           <div class="court-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="9" width="20" height="6" rx="1"/><line x1="5" y1="15" x2="5" y2="19"/><line x1="19" y1="15" x2="19" y2="19"/></svg>
           </div>
@@ -73,7 +83,7 @@
           </a>
         </div>
 
-        <div class="court-card court-card--featured">
+        <div class="court-card court-card--featured reveal reveal-delay-2">
           <span class="court-card__tag">Exclusivo</span>
           <div class="court-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0V4z"/><path d="M5 4H3v2a4 4 0 004 4"/><path d="M19 4h2v2a4 4 0 01-4 4"/></svg>
@@ -102,7 +112,7 @@
 
       <div class="compare-grid">
 
-        <div class="compare-card">
+        <div class="compare-card reveal">
           <p class="compare-card__label">Tráfego Pago</p>
           <h3 class="compare-card__title">Meta Ads</h3>
           <div class="compare-card__row"><span>Investimento mensal</span><span>R$ 1.000,00</span></div>
@@ -115,7 +125,7 @@
           </div>
         </div>
 
-        <div class="compare-card compare-card--highlight">
+        <div class="compare-card compare-card--highlight reveal reveal-delay-1">
           <p class="compare-card__label">Manzi Sports</p>
           <h3 class="compare-card__title">2 Outdoors</h3>
           <div class="compare-card__row"><span>Outdoor Superior</span><span>R$ 3.800,00</span></div>
@@ -131,6 +141,19 @@
       </div>
 
       <p class="compare__note">Com os dois outdoors da Manzi Sports você paga <strong>quase metade</strong> do custo anual de um investimento modesto em Meta Ads — e sua marca fica exposta o ano todo pra quem frequenta a arena.</p>
+    </div>
+  </section>
+
+  <!-- Parceiros -->
+  <section class="partners">
+    <div class="container">
+      <span class="partners__tag reveal">Parceiros</span>
+      <div class="partners__grid">
+        <div class="partners__logo reveal">HEINEKEN</div>
+        <div class="partners__logo reveal reveal-delay-1">AMBEV</div>
+        <div class="partners__placeholder reveal reveal-delay-2">Sua marca aqui</div>
+        <div class="partners__placeholder reveal reveal-delay-3">Sua marca aqui</div>
+      </div>
     </div>
   </section>
 
@@ -154,6 +177,19 @@
       <p>© 2026 Manzi Arena — Todos os direitos reservados</p>
     </div>
   </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  </script>
 
 </body>
 </html>
