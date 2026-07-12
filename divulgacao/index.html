@@ -12,8 +12,7 @@
                     colors: {
                         'manzi-black': '#0A0A0A',
                         'manzi-gray':  '#111111',
-                        'manzi-red':   '#C22026',
-                        'manzi-red-dark': '#8D1216',
+                        'manzi-gold':  '#E79E14',
                         'manzi-white': '#FFFFFF',
                     },
                     fontFamily: {
@@ -28,15 +27,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { scroll-behavior: smooth; }
-        ::selection { background: #C22026; color: #fff; }
+        ::selection { background: #E79E14; color: #0A0A0A; }
         body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: #fff; }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #C22026; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #E79E14; border-radius: 10px; }
 
         .gradient-text {
-            background: linear-gradient(to right, #C22026, #E19093);
+            background: linear-gradient(to right, #E79E14, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -46,19 +45,19 @@
             border: 1px solid rgba(255,255,255,0.06);
         }
         .card:hover {
-            border-color: rgba(194,32,38,0.4);
+            border-color: rgba(231,158,20,0.4);
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(194,32,38,0.12);
+            box-shadow: 0 20px 40px rgba(231,158,20,0.1);
         }
         .card-featured {
-            border: 2px solid #C22026;
-            box-shadow: 0 0 40px rgba(194,32,38,0.18);
+            border: 2px solid #E79E14;
+            box-shadow: 0 0 40px rgba(231,158,20,0.15);
         }
         .nav-link {
             color: rgba(255,255,255,0.7);
             transition: color 0.2s;
         }
-        .nav-link:hover { color: #C22026; }
+        .nav-link:hover { color: #E79E14; }
 
         .reveal {
             opacity: 0;
@@ -81,7 +80,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center md:justify-between h-20 relative">
                 <a href="#" class="flex items-center gap-3">
-                    <span class="font-black text-xl uppercase tracking-tight">Manzi <span class="text-manzi-red">Sports</span></span>
+                    <span class="font-black text-xl uppercase tracking-tight">Manzi <span class="text-manzi-gold">Sports</span></span>
                 </a>
                 <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
                     <a href="#planos" class="nav-link">Planos</a>
@@ -89,7 +88,7 @@
                     <a href="#parceiros" class="nav-link">Parceiros</a>
                 </nav>
                 <a href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20anunciar%20na%20Manzi%20Sports." target="_blank" rel="noopener"
-                   class="hidden md:flex items-center gap-2 bg-manzi-red text-white font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg hover:bg-manzi-red-dark transition-all duration-300">
+                   class="hidden md:flex items-center gap-2 bg-manzi-gold text-manzi-black font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg hover:bg-yellow-400 transition-all duration-300">
                     <i class="fab fa-whatsapp"></i> Falar com a gente
                 </a>
                 <button class="md:hidden text-white absolute right-0" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -102,7 +101,7 @@
             <a href="#comparativo" class="block nav-link py-2 text-sm font-semibold text-center">Comparativo</a>
             <a href="#parceiros" class="block nav-link py-2 text-sm font-semibold text-center">Parceiros</a>
             <a href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20anunciar%20na%20Manzi%20Sports." target="_blank" rel="noopener"
-               class="block w-full bg-manzi-red text-white font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg text-center mt-2">Falar com a gente</a>
+               class="block w-full bg-manzi-gold text-manzi-black font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg text-center mt-2">Falar com a gente</a>
         </div>
     </header>
 
@@ -131,48 +130,48 @@
         <section id="planos" class="py-20 bg-manzi-black">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-14">
-                    <h2 class="font-black text-4xl md:text-5xl uppercase tracking-tight">Onde sua marca <span class="text-manzi-red">aparece</span></h2>
+                    <h2 class="font-black text-4xl md:text-5xl uppercase tracking-tight">Onde sua marca <span class="text-manzi-gold">aparece</span></h2>
                     <p class="text-white/50 mt-4">Três formatos de exposição dentro da arena.</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
 
                     <div class="reveal card rounded-2xl p-8 flex flex-col gap-4" style="background:#111111;">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:rgba(194,32,38,0.12);">
-                            <i class="fas fa-image text-manzi-red text-xl"></i>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:rgba(231,158,20,0.12);">
+                            <i class="fas fa-image text-manzi-gold text-xl"></i>
                         </div>
                         <div>
                             <h3 class="font-black text-lg uppercase mb-2">Outdoor Superior</h3>
                             <p class="text-white/50 text-sm leading-relaxed">Painel fixado na parte superior da arena, com alta visibilidade para todo o público durante os jogos.</p>
                             <p class="text-white/30 text-xs font-semibold mt-3">3,35 m × 2,10 m</p>
                         </div>
-                        <p class="text-2xl font-black text-manzi-red mt-2">R$ 3.800<span class="text-sm font-semibold text-white/40">/ano</span></p>
+                        <p class="text-2xl font-black text-manzi-gold mt-2">R$ 3.800<span class="text-sm font-semibold text-white/40">/ano</span></p>
                         <a href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20anunciar%20no%20Outdoor%20Superior%20da%20Manzi%20Sports." target="_blank" rel="noopener"
-                           class="mt-auto bg-manzi-red text-white font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl text-center hover:bg-manzi-red-dark transition-all">
+                           class="mt-auto bg-manzi-gold text-manzi-black font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl text-center hover:bg-yellow-400 transition-all">
                             Quero esse espaço
                         </a>
                     </div>
 
                     <div class="reveal reveal-delay-1 card rounded-2xl p-8 flex flex-col gap-4" style="background:#111111;">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:rgba(194,32,38,0.12);">
-                            <i class="fas fa-table-columns text-manzi-red text-xl"></i>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:rgba(231,158,20,0.12);">
+                            <i class="fas fa-table-columns text-manzi-gold text-xl"></i>
                         </div>
                         <div>
                             <h3 class="font-black text-lg uppercase mb-2">Outdoor Lateral</h3>
                             <p class="text-white/50 text-sm leading-relaxed">Painel nas laterais da quadra, no campo de visão direto de atletas e espectadores durante toda a partida.</p>
                             <p class="text-white/30 text-xs font-semibold mt-3">3,35 m × 2,10 m</p>
                         </div>
-                        <p class="text-2xl font-black text-manzi-red mt-2">R$ 3.800<span class="text-sm font-semibold text-white/40">/ano</span></p>
+                        <p class="text-2xl font-black text-manzi-gold mt-2">R$ 3.800<span class="text-sm font-semibold text-white/40">/ano</span></p>
                         <a href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20anunciar%20no%20Outdoor%20Lateral%20da%20Manzi%20Sports." target="_blank" rel="noopener"
-                           class="mt-auto bg-manzi-red text-white font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl text-center hover:bg-manzi-red-dark transition-all">
+                           class="mt-auto bg-manzi-gold text-manzi-black font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl text-center hover:bg-yellow-400 transition-all">
                             Quero esse espaço
                         </a>
                     </div>
 
                     <div class="reveal reveal-delay-2 card card-featured relative rounded-2xl p-8 flex flex-col gap-4" style="background:#111111;">
-                        <span class="absolute -top-3 left-8 bg-manzi-red text-white text-xs font-black uppercase tracking-wider px-3 py-1 rounded-md">Exclusivo</span>
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:rgba(194,32,38,0.12);">
-                            <i class="fas fa-trophy text-manzi-red text-xl"></i>
+                        <span class="absolute -top-3 left-8 bg-manzi-gold text-manzi-black text-xs font-black uppercase tracking-wider px-3 py-1 rounded-md">Exclusivo</span>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:rgba(231,158,20,0.12);">
+                            <i class="fas fa-trophy text-manzi-gold text-xl"></i>
                         </div>
                         <div>
                             <h3 class="font-black text-lg uppercase mb-2">Naming Rights da Quadra</h3>
@@ -180,7 +179,7 @@
                         </div>
                         <p class="text-lg font-bold text-white/60 mt-2">Consulte valores</p>
                         <a href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Naming%20Rights%20da%20quadra%20na%20Manzi%20Sports." target="_blank" rel="noopener"
-                           class="mt-auto bg-manzi-red text-white font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl text-center hover:bg-manzi-red-dark transition-all">
+                           class="mt-auto bg-manzi-gold text-manzi-black font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl text-center hover:bg-yellow-400 transition-all">
                             Consultar no WhatsApp
                         </a>
                     </div>
@@ -193,10 +192,10 @@
         <section id="comparativo" class="py-20 bg-manzi-black">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-4">
-                    <h2 class="font-black text-4xl md:text-5xl uppercase tracking-tight">Onde seu dinheiro <span class="text-manzi-red">vale mais</span></h2>
+                    <h2 class="font-black text-4xl md:text-5xl uppercase tracking-tight">Onde seu dinheiro <span class="text-manzi-gold">vale mais</span></h2>
                 </div>
-                <p class="text-white/50 text-center max-w-2xl mx-auto mt-4 leading-relaxed">Se sua empresa investe em tráfego pago, a partir de 2026 o Meta passou a repassar <strong class="text-manzi-red">12,15% de imposto</strong> (PIS/Cofins + ISS) direto na fatura de quem anuncia no Facebook e Instagram. Isso muda a conta do tráfego pago.</p>
-                <p class="reveal text-center font-black uppercase tracking-widest text-manzi-red text-lg mt-8 mb-12">Veja o comparativo</p>
+                <p class="text-white/50 text-center max-w-2xl mx-auto mt-4 leading-relaxed">Se sua empresa investe em tráfego pago, a partir de 2026 o Meta passou a repassar <strong class="text-manzi-gold">12,15% de imposto</strong> (PIS/Cofins + ISS) direto na fatura de quem anuncia no Facebook e Instagram. Isso muda a conta do tráfego pago.</p>
+                <p class="reveal text-center font-black uppercase tracking-widest text-manzi-gold text-lg mt-8 mb-12">Veja o comparativo</p>
 
                 <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
@@ -226,28 +225,28 @@
                     </div>
 
                     <div class="reveal reveal-delay-2 card card-featured rounded-2xl p-7" style="background:#111111;">
-                        <p class="text-manzi-red text-xs font-bold uppercase tracking-widest mb-1">Manzi Sports</p>
+                        <p class="text-manzi-gold text-xs font-bold uppercase tracking-widest mb-1">Manzi Sports</p>
                         <h3 class="font-black text-xl uppercase mb-5">2 Placas</h3>
                         <div class="flex justify-between text-sm text-white/60 py-2 border-b border-white/[0.06]"><span>Outdoor Superior</span><span>R$ 3.800,00</span></div>
                         <div class="flex justify-between text-sm text-white/60 py-2 border-b border-white/[0.06]"><span>Outdoor Lateral</span><span>R$ 3.800,00</span></div>
                         <div class="flex justify-between text-sm text-white/60 py-2">Imposto adicional<span>R$ 0,00</span></div>
                         <div class="mt-4 pt-4 border-t-2 border-white/10">
                             <p class="text-xs text-white/40 font-bold uppercase">Divulgação por 12 meses</p>
-                            <p class="text-3xl font-black text-manzi-red mt-1">R$ 7.600,00</p>
+                            <p class="text-3xl font-black text-manzi-gold mt-1">R$ 7.600,00</p>
                             <p class="text-xs text-white/30 mt-2">Presença fixa o ano inteiro, sem repasse de imposto</p>
                         </div>
                     </div>
 
                 </div>
 
-                <p class="text-white/50 text-center max-w-2xl mx-auto mt-10 leading-relaxed">Com as duas placas da Manzi Sports você paga <strong class="text-manzi-red">quase metade</strong> do custo anual de um investimento modesto em Meta Ads — e sua marca fica exposta o ano todo pra quem frequenta a arena.</p>
+                <p class="text-white/50 text-center max-w-2xl mx-auto mt-10 leading-relaxed">Com as duas placas da Manzi Sports você paga <strong class="text-manzi-gold">quase metade</strong> do custo anual de um investimento modesto em Meta Ads — e sua marca fica exposta o ano todo pra quem frequenta a arena.</p>
             </div>
         </section>
 
         <!-- PARCEIROS -->
         <section id="parceiros" class="py-20 bg-manzi-black">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="reveal inline-flex items-center px-4 py-1.5 rounded-full bg-manzi-red text-white text-xs font-black uppercase tracking-widest mb-12">Parceiros</span>
+                <span class="reveal inline-flex items-center px-4 py-1.5 rounded-full bg-manzi-gold text-manzi-black text-xs font-black uppercase tracking-widest mb-12">Parceiros</span>
                 <div class="grid grid-cols-2 max-w-md mx-auto gap-8">
                     <div class="reveal card flex items-center justify-center rounded-2xl py-8" style="background:#111111;">
                         <span class="font-black text-xl uppercase tracking-tight">Heineken</span>
@@ -260,14 +259,14 @@
         </section>
 
         <!-- CTA FINAL -->
-        <section class="py-16 bg-manzi-red">
+        <section class="py-16 bg-manzi-gold">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
                 <div>
-                    <h2 class="font-black text-2xl md:text-3xl uppercase">Vamos colocar sua marca em jogo?</h2>
-                    <p class="text-white/80 mt-2">Fale com a nossa equipe e monte o plano ideal pra sua empresa.</p>
+                    <h2 class="font-black text-2xl md:text-3xl uppercase text-manzi-black">Vamos colocar sua marca em jogo?</h2>
+                    <p class="text-manzi-black/70 mt-2">Fale com a nossa equipe e monte o plano ideal pra sua empresa.</p>
                 </div>
                 <a href="https://wa.me/5562993431310?text=Ol%C3%A1!%20Quero%20anunciar%20na%20Manzi%20Sports." target="_blank" rel="noopener"
-                   class="flex items-center gap-2 bg-white text-manzi-red font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl hover:bg-white/90 transition-all whitespace-nowrap">
+                   class="flex items-center gap-2 bg-manzi-black text-manzi-gold font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl hover:bg-[#1a1a1a] transition-all whitespace-nowrap">
                     <i class="fab fa-whatsapp text-lg"></i> Chamar no WhatsApp
                 </a>
             </div>
@@ -278,7 +277,7 @@
     <!-- FOOTER -->
     <footer class="py-12 bg-[#050505] border-t border-white/[0.04]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6">
-            <span class="font-black text-xl uppercase tracking-tight">Manzi <span class="text-manzi-red">Sports</span></span>
+            <span class="font-black text-xl uppercase tracking-tight">Manzi <span class="text-manzi-gold">Sports</span></span>
             <div class="border-t border-white/[0.04] pt-6 w-full">
                 <p class="text-white/20 text-xs text-center">© 2026 Manzi Arena. Todos os direitos reservados.</p>
             </div>
