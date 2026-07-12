@@ -255,6 +255,16 @@ body {
 
 .compare__note strong { color: var(--accent); }
 
+.compare__highlight {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
 .compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
