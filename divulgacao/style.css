@@ -238,6 +238,7 @@ body {
 }
 
 .court-card__body p { color: #666666; font-size: 0.95rem; }
+.court-card__dim { color: #999999; font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem; }
 .court-card__cta { margin-top: auto; align-self: flex-start; }
 
 /* ===== Comparativo ===== */
@@ -260,6 +261,15 @@ body {
   gap: 1.5rem;
   max-width: 780px;
   margin: 0 auto 1.5rem;
+}
+
+.compare-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+}
+
+@media (max-width: 860px) {
+  .compare-grid--3 { grid-template-columns: 1fr; max-width: 420px; }
 }
 
 @media (max-width: 640px) {
