@@ -160,6 +160,14 @@ body {
   gap: 1.5rem;
 }
 
+.courts__grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 860px) {
+  .courts__grid--3 { grid-template-columns: 1fr; }
+}
+
 .court-card {
   background: #FFF9EC;
   border: 1.5px solid rgba(255, 111, 0, 0.15);
@@ -174,6 +182,28 @@ body {
 .court-card:hover {
   border-color: rgba(255, 111, 0, 0.4);
   box-shadow: 0 4px 24px rgba(255, 111, 0, 0.1);
+}
+
+.court-card--featured {
+  background: #ffffff;
+  border-color: #FF6F00;
+  border-width: 2px;
+  box-shadow: 0 8px 28px rgba(255, 111, 0, 0.14);
+  position: relative;
+}
+
+.court-card__tag {
+  position: absolute;
+  top: -0.7rem;
+  left: 2rem;
+  background: #FF6F00;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
 }
 
 .court-card__icon {
