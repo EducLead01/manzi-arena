@@ -50,67 +50,108 @@
         <!-- CONFERÊNCIA DE CAIXA -->
         <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-6" style="background:#111111;">
             <p class="font-black text-sm uppercase tracking-wide mb-1">Conferência de Caixa</p>
-            <p class="text-xs text-white/30 mb-5">Lance a abertura e os valores do fechamento do sistema pra conferir o caixa do dia.</p>
+            <p class="text-xs text-white/30 mb-5">Compare o que o sistema registrou com o que foi contado, forma por forma de pagamento.</p>
 
-            <div class="grid grid-cols-2 gap-3 mb-3">
-                <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Abertura do caixa (troco)</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="aberturaCaixa" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                    </div>
-                </div>
-                <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Total de Vendas (sistema)</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="vendasSistema" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                    </div>
+            <div class="mb-5">
+                <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Abertura do caixa (troco)</p>
+                <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-full sm:w-56 focus-within:border-manzi-gold/50 transition-colors">
+                    <span class="text-white/40 text-sm">R$</span>
+                    <input id="aberturaCaixa" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="space-y-4">
+
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Débito</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="pagDebito" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-white/40 text-xs font-semibold">Débito</p>
+                        <span id="difDebito" class="text-xs font-bold text-white/30">—</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="sisDebito" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">sistema</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="conDebito" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">contado</span>
+                        </div>
                     </div>
                 </div>
+
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Crédito</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="pagCredito" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-white/40 text-xs font-semibold">Crédito</p>
+                        <span id="difCredito" class="text-xs font-bold text-white/30">—</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="sisCredito" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">sistema</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="conCredito" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">contado</span>
+                        </div>
                     </div>
                 </div>
+
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Dinheiro em mão</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="pagDinheiro" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-white/40 text-xs font-semibold">Dinheiro</p>
+                        <span id="difDinheiro" class="text-xs font-bold text-white/30">—</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="sisDinheiro" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">sistema</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="conDinheiro" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">em mão</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-white/30 mt-1">Líquido contado (em mão − abertura): <span id="outDinheiroLiquido" class="text-white/50 font-semibold">R$ 0,00</span></p>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <p class="text-white/40 text-xs font-semibold">PIX / Transferência</p>
+                        <span id="difPix" class="text-xs font-bold text-white/30">—</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="sisPix" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">sistema</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="conPix" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/30 text-xs whitespace-nowrap">contado</span>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">PIX / Transferência</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="pagPix" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                    </div>
-                </div>
+
             </div>
 
             <div class="mt-5 pt-4 border-t border-white/10 space-y-2 text-sm">
                 <div class="flex justify-between">
-                    <span class="text-white/50">Dinheiro líquido (em mão − abertura)</span>
-                    <span id="outDinheiroLiquido" class="font-semibold">R$ 0,00</span>
+                    <span class="text-white/50">Total sistema</span>
+                    <span id="outTotalSistema" class="font-semibold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-white/50">Total apurado no caixa</span>
-                    <span id="outTotalApurado" class="font-bold">R$ 0,00</span>
+                    <span class="text-white/50">Total contado</span>
+                    <span id="outTotalContado" class="font-bold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between items-center pt-2 border-t border-white/[0.06]">
-                    <span class="text-white/60 font-bold">Diferença vs sistema</span>
+                    <span class="text-white/60 font-bold">Diferença total</span>
                     <span id="outDiferencaCaixa" class="font-black text-lg text-white/40">R$ 0,00</span>
                 </div>
                 <p id="statusCaixa" class="text-xs text-white/30"></p>
@@ -463,40 +504,87 @@
             conferirCaixa();
         }
 
+        function difStr(v) {
+            if (Math.abs(v) < 0.01) return '✓ confere';
+            return (v > 0 ? '+ ' : '− ') + fmt(Math.abs(v));
+        }
+
         function conferirCaixa() {
             const abertura = num('aberturaCaixa');
-            const vendasSistema = num('vendasSistema');
-            const dinheiroLiquido = num('pagDinheiro') - abertura;
-            const totalApurado = num('pagDebito') + num('pagCredito') + num('pagPix') + dinheiroLiquido;
-            const diferenca = totalApurado - vendasSistema;
-
+            const dinheiroLiquido = num('conDinheiro') - abertura;
             document.getElementById('outDinheiroLiquido').textContent = fmt(dinheiroLiquido);
-            document.getElementById('outTotalApurado').textContent = fmt(totalApurado);
+
+            const metodos = [
+                { nome: 'Débito',   sis: num('sisDebito'),   con: num('conDebito'),  el: 'difDebito' },
+                { nome: 'Crédito',  sis: num('sisCredito'),  con: num('conCredito'), el: 'difCredito' },
+                { nome: 'Dinheiro', sis: num('sisDinheiro'), con: dinheiroLiquido,   el: 'difDinheiro' },
+                { nome: 'PIX',      sis: num('sisPix'),      con: num('conPix'),     el: 'difPix' },
+            ];
+
+            let totalSis = 0, totalCon = 0, somaAbs = 0;
+            let maiorSobra = null, maiorFalta = null;
+
+            metodos.forEach(m => {
+                const dif = m.con - m.sis;
+                totalSis += m.sis;
+                totalCon += m.con;
+
+                const el = document.getElementById(m.el);
+                el.classList.remove('text-white/30', 'text-green-400', 'text-red-400', 'text-manzi-gold');
+                if (m.sis === 0 && m.con === 0) {
+                    el.textContent = '—';
+                    el.classList.add('text-white/30');
+                    return;
+                }
+                somaAbs += Math.abs(dif);
+                el.textContent = difStr(dif);
+                if (Math.abs(dif) < 0.01) {
+                    el.classList.add('text-green-400');
+                } else if (dif > 0) {
+                    el.classList.add('text-manzi-gold');
+                    if (!maiorSobra || dif > maiorSobra.dif) maiorSobra = { nome: m.nome, dif };
+                } else {
+                    el.classList.add('text-red-400');
+                    if (!maiorFalta || dif < maiorFalta.dif) maiorFalta = { nome: m.nome, dif };
+                }
+            });
+
+            const diferenca = totalCon - totalSis;
+            document.getElementById('outTotalSistema').textContent = fmt(totalSis);
+            document.getElementById('outTotalContado').textContent = fmt(totalCon);
 
             const outDif = document.getElementById('outDiferencaCaixa');
             const status = document.getElementById('statusCaixa');
-            outDif.textContent = (diferenca > 0 ? '+ ' : diferenca < 0 ? '− ' : '') + fmt(Math.abs(diferenca));
+            outDif.textContent = (diferenca > 0.009 ? '+ ' : diferenca < -0.009 ? '− ' : '') + fmt(Math.abs(diferenca));
             outDif.classList.remove('text-white/40', 'text-green-400', 'text-red-400');
 
-            if (vendasSistema === 0 && totalApurado === 0) {
+            const trocaProvavel = maiorSobra && maiorFalta && Math.abs(diferenca) < somaAbs * 0.6
+                && Math.min(maiorSobra.dif, -maiorFalta.dif) >= 10;
+
+            if (totalSis === 0 && totalCon === 0) {
                 outDif.classList.add('text-white/40');
                 status.textContent = '';
+                status.className = 'text-xs text-white/30';
+            } else if (trocaProvavel) {
+                outDif.classList.add(diferenca < -0.009 ? 'text-red-400' : 'text-green-400');
+                status.textContent = `⚠ Possível troca de forma de pagamento: sobra de ${fmt(maiorSobra.dif)} em ${maiorSobra.nome} compensando falta de ${fmt(-maiorFalta.dif)} em ${maiorFalta.nome}. Confira os lançamentos dessas duas formas.`;
+                status.className = 'text-xs text-manzi-gold';
             } else if (Math.abs(diferenca) < 0.01) {
                 outDif.classList.add('text-green-400');
-                status.textContent = '✓ Caixa conferido — apurado bate com o sistema.';
+                status.textContent = '✓ Caixa conferido — contado bate com o sistema em todas as formas.';
                 status.className = 'text-xs text-green-400';
             } else if (diferenca > 0) {
                 outDif.classList.add('text-green-400');
-                status.textContent = 'Sobra no caixa: apurado maior que as vendas do sistema. Confira lançamentos.';
+                status.textContent = 'Sobra no caixa: contado maior que o sistema. Confira os lançamentos.';
                 status.className = 'text-xs text-white/40';
             } else {
                 outDif.classList.add('text-red-400');
-                status.textContent = '⚠ Falta no caixa: apurado menor que as vendas do sistema. Confira o caixa.';
+                status.textContent = '⚠ Falta no caixa: contado menor que o sistema. Confira o caixa.';
                 status.className = 'text-xs text-red-400';
             }
         }
 
-        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','pctBebidas','totalComida','pctComida','custoEquipe','pctEquipeJP','aberturaCaixa','vendasSistema','pagDebito','pagCredito','pagDinheiro','pagPix'].forEach(id => {
+        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','pctBebidas','totalComida','pctComida','custoEquipe','pctEquipeJP','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         document.getElementById('valorHora').addEventListener('input', recalcularTodasTurmas);
@@ -508,14 +596,16 @@
         function enviarRelatorio() {
             const data = document.getElementById('data').value || 'não informada';
             const aberturaCaixa = num('aberturaCaixa');
-            const vendasSistema = num('vendasSistema');
-            const pagDebito = num('pagDebito');
-            const pagCredito = num('pagCredito');
-            const pagDinheiro = num('pagDinheiro');
-            const pagPix = num('pagPix');
-            const dinheiroLiquido = pagDinheiro - aberturaCaixa;
-            const totalApurado = pagDebito + pagCredito + pagPix + dinheiroLiquido;
-            const diferencaCaixa = totalApurado - vendasSistema;
+            const dinheiroLiquido = num('conDinheiro') - aberturaCaixa;
+            const metodosMsg = [
+                { nome: 'Débito',   sis: num('sisDebito'),   con: num('conDebito') },
+                { nome: 'Crédito',  sis: num('sisCredito'),  con: num('conCredito') },
+                { nome: 'Dinheiro', sis: num('sisDinheiro'), con: dinheiroLiquido },
+                { nome: 'PIX',      sis: num('sisPix'),      con: num('conPix') },
+            ];
+            const totalSis = metodosMsg.reduce((s, m) => s + m.sis, 0);
+            const totalCon = metodosMsg.reduce((s, m) => s + m.con, 0);
+            const diferencaCaixa = totalCon - totalSis;
             const valorClubinho = num('valorClubinho');
             const qtdParticipantes = num('qtdParticipantes');
             const totalClubinho = valorClubinho * qtdParticipantes;
@@ -543,11 +633,11 @@
             let msg = `*Fechamento do Domingo — ${data}*\n\n`;
             msg += `*Conferência de Caixa*\n`;
             msg += `Abertura: ${fmt(aberturaCaixa)}\n`;
-            msg += `Vendas (sistema): ${fmt(vendasSistema)}\n`;
-            msg += `Débito: ${fmt(pagDebito)} · Crédito: ${fmt(pagCredito)}\n`;
-            msg += `Dinheiro em mão: ${fmt(pagDinheiro)} (líquido ${fmt(dinheiroLiquido)})\n`;
-            msg += `PIX: ${fmt(pagPix)}\n`;
-            msg += `Total apurado: ${fmt(totalApurado)} — Diferença: ${diferencaCaixa >= 0 ? '+' : '−'}${fmt(Math.abs(diferencaCaixa))}\n\n`;
+            metodosMsg.forEach(m => {
+                const dif = m.con - m.sis;
+                msg += `${m.nome}: sistema ${fmt(m.sis)} · contado ${fmt(m.con)} (${Math.abs(dif) < 0.01 ? 'confere' : (dif > 0 ? '+' : '−') + fmt(Math.abs(dif))})\n`;
+            });
+            msg += `Total: sistema ${fmt(totalSis)} · contado ${fmt(totalCon)} — Diferença: ${diferencaCaixa >= 0 ? '+' : '−'}${fmt(Math.abs(diferencaCaixa))}\n\n`;
             msg += `*Repasse*\n`;
             msg += `Total Clubinho: ${fmt(totalClubinho)} (${fmt(valorClubinho)} x ${qtdParticipantes} pessoas)\n`;
             msg += `Locação de Quadra: ${outTotalLocacao}\n${turmasTexto}\n`;
