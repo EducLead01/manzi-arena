@@ -91,103 +91,46 @@
                 </div>
 
                 <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label class="block text-xs text-white/40 font-semibold">Markup médio (Bebidas e Comida)</label>
+                        <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-lg px-2.5 py-1.5">
+                            <input id="markupMedio" type="number" step="1" min="0" value="80" class="bg-transparent w-12 text-xs text-white/90 focus:outline-none">
+                            <span class="text-white/30 text-xs whitespace-nowrap">% sobre o custo</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-white/30">Usado pra estimar o CMV a partir do valor vendido, sem precisar lançar produto por produto.</p>
+                </div>
+
+                <div>
                     <label class="block text-xs text-white/40 font-semibold mb-1.5">Bebidas</label>
-
-                    <div class="grid grid-cols-3 gap-2 mb-3">
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Custo/un</p>
-                            <div class="flex items-center gap-1 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-2.5 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-xs">R$</span>
-                                <input id="custoUnBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
+                    <div class="flex gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="totalBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                            <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
                         </div>
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Venda/un</p>
-                            <div class="flex items-center gap-1 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-2.5 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-xs">R$</span>
-                                <input id="vendaUnBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Qtd vendida</p>
-                            <div class="flex items-center gap-1 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-2.5 focus-within:border-manzi-gold/50 transition-colors">
-                                <input id="qtdBebidas" type="number" step="1" min="0" placeholder="0" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 focus-within:border-manzi-gold/50 transition-colors">
+                            <input id="pctBebidas" type="number" step="1" min="0" max="100" value="50" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/40 text-sm">% JP</span>
                         </div>
                     </div>
-                    <p class="text-xs text-white/30 -mt-1.5 mb-3">Markup: <span id="outMarkupBebidas" class="text-white/50 font-semibold">0%</span> sobre o custo — preenche Venda e CMV abaixo automaticamente</p>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Venda</p>
-                            <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-sm">R$</span>
-                                <input id="totalBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">CMV</p>
-                            <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-sm">R$</span>
-                                <input id="cmvBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 mt-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <input id="pctBebidas" type="number" step="1" min="0" max="100" value="50" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                        <span class="text-white/40 text-sm">% JP</span>
-                    </div>
-                    <p class="text-xs text-white/30 mt-1.5">Margem: <span id="outMargemBebidas" class="text-white/50 font-semibold">R$ 0,00</span> (venda − CMV) — repasse calculado sobre a margem, não sobre a venda bruta</p>
+                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvBebidas" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemBebidas" class="text-white/50 font-semibold">R$ 0,00</span> — repasse calculado sobre a margem</p>
                 </div>
 
                 <div>
                     <label class="block text-xs text-white/40 font-semibold mb-1.5">Comida</label>
-
-                    <div class="grid grid-cols-3 gap-2 mb-3">
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Custo/un</p>
-                            <div class="flex items-center gap-1 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-2.5 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-xs">R$</span>
-                                <input id="custoUnComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
+                    <div class="flex gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
+                            <span class="text-white/40 text-sm">R$</span>
+                            <input id="totalComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                            <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
                         </div>
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Venda/un</p>
-                            <div class="flex items-center gap-1 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-2.5 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-xs">R$</span>
-                                <input id="vendaUnComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Qtd vendida</p>
-                            <div class="flex items-center gap-1 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-2.5 focus-within:border-manzi-gold/50 transition-colors">
-                                <input id="qtdComida" type="number" step="1" min="0" placeholder="0" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 focus-within:border-manzi-gold/50 transition-colors">
+                            <input id="pctComida" type="number" step="1" min="0" max="100" value="50" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
+                            <span class="text-white/40 text-sm">% JP</span>
                         </div>
                     </div>
-                    <p class="text-xs text-white/30 -mt-1.5 mb-3">Markup: <span id="outMarkupComida" class="text-white/50 font-semibold">0%</span> sobre o custo — preenche Venda e CMV abaixo automaticamente</p>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Venda</p>
-                            <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-sm">R$</span>
-                                <input id="totalComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">CMV</p>
-                            <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                                <span class="text-white/40 text-sm">R$</span>
-                                <input id="cmvComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 mt-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <input id="pctComida" type="number" step="1" min="0" max="100" value="50" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                        <span class="text-white/40 text-sm">% JP</span>
-                    </div>
-                    <p class="text-xs text-white/30 mt-1.5">Margem: <span id="outMargemComida" class="text-white/50 font-semibold">R$ 0,00</span> (venda − CMV) — repasse calculado sobre a margem, não sobre a venda bruta</p>
+                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvComida" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemComida" class="text-white/50 font-semibold">R$ 0,00</span> — repasse calculado sobre a margem</p>
                 </div>
             </div>
         </div>
@@ -342,37 +285,20 @@
             return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
-        function calcularUnidade(prefixo) {
-            const custoUn = num(`custoUn${prefixo}`);
-            const vendaUn = num(`vendaUn${prefixo}`);
-            const qtd = num(`qtd${prefixo}`);
-
-            const markup = custoUn > 0 ? ((vendaUn - custoUn) / custoUn) * 100 : 0;
-            document.getElementById(`outMarkup${prefixo}`).textContent = markup.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%';
-
-            if (qtd > 0 && (custoUn > 0 || vendaUn > 0)) {
-                document.getElementById(`total${prefixo}`).value = (vendaUn * qtd).toFixed(2);
-                document.getElementById(`cmv${prefixo}`).value = (custoUn * qtd).toFixed(2);
-            }
-            calcular();
-        }
-
-        ['Bebidas','Comida'].forEach(prefixo => {
-            ['custoUn','vendaUn','qtd'].forEach(campo => {
-                document.getElementById(`${campo}${prefixo}`).addEventListener('input', () => calcularUnidade(prefixo));
-            });
-        });
-
         function calcular() {
             const valorClubinho = num('valorClubinho');
             const qtdParticipantes = num('qtdParticipantes');
             const totalClubinho = valorClubinho * qtdParticipantes;
             const totalBebidas = num('totalBebidas');
             const totalComida = num('totalComida');
-            const cmvBebidas = num('cmvBebidas');
-            const cmvComida = num('cmvComida');
+            const markupMedio = num('markupMedio');
+            const fatorMarkup = 1 + (markupMedio / 100);
+            const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
+            const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
             const margemBebidas = totalBebidas - cmvBebidas;
             const margemComida = totalComida - cmvComida;
+            document.getElementById('outCmvBebidas').textContent = fmt(cmvBebidas);
+            document.getElementById('outCmvComida').textContent = fmt(cmvComida);
             document.getElementById('outMargemBebidas').textContent = fmt(margemBebidas);
             document.getElementById('outMargemComida').textContent = fmt(margemComida);
             const pctBebidasRaw = document.getElementById('pctBebidas').value;
@@ -437,7 +363,7 @@
             document.getElementById('outTotalManzi').textContent = fmt(totalManzi);
         }
 
-        ['valorClubinho','qtdParticipantes','totalRecebido','totalBebidas','cmvBebidas','pctBebidas','totalComida','cmvComida','pctComida'].forEach(id => {
+        ['valorClubinho','qtdParticipantes','totalRecebido','markupMedio','totalBebidas','pctBebidas','totalComida','pctComida'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         document.getElementById('valorHora').addEventListener('input', recalcularTodasTurmas);
@@ -454,8 +380,10 @@
             const totalClubinho = valorClubinho * qtdParticipantes;
             const totalBebidas = num('totalBebidas');
             const totalComida = num('totalComida');
-            const cmvBebidas = num('cmvBebidas');
-            const cmvComida = num('cmvComida');
+            const markupMedio = num('markupMedio');
+            const fatorMarkup = 1 + (markupMedio / 100);
+            const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
+            const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
             const outTotalLocacao = document.getElementById('outTotalLocacao').textContent;
             const outTotalJP = document.getElementById('outTotalJP').textContent;
             const outTotalManzi = document.getElementById('outTotalManzi').textContent;
