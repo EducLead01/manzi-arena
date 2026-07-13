@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo Híbrido — Simulador</title>
+    <title>Parceria JP — 40% da Margem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,8 +28,6 @@
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; }
-        .preset-btn { transition: all 0.15s ease; }
-        .preset-btn.is-active { border-color: #E79E14; background: rgba(231,158,20,0.08); }
     </style>
 </head>
 <body class="min-h-screen">
@@ -38,65 +36,45 @@
 
         <!-- HERO -->
         <section class="text-center mb-10">
-            <p class="text-manzi-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Proposta em discussão</p>
-            <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight">Modelo <span class="text-manzi-gold">Híbrido</span></h1>
-            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Fixo garantido + bônus a cada R$ 500 de faturamento do domingo. Segurança pro parceiro e incentivo pra crescer o projeto.</p>
+            <p class="text-manzi-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Modelo acordado</p>
+            <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight">40% da <span class="text-manzi-gold">Margem</span></h1>
+            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Bar: 40% da margem pro JP (depois de repor o custo da mercadoria). Esporte: 50/50 direto.</p>
         </section>
 
-        <!-- REFERÊNCIA -->
-        <div class="rounded-2xl p-6 border border-white/10 mb-6" style="background:#111111;">
-            <p class="text-xs font-bold uppercase tracking-widest text-manzi-gold mb-3">Referência — último domingo (sistema)</p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm mb-4">
-                <div>
-                    <p class="text-white/40 text-xs">Cervejas</p>
-                    <p class="font-bold">R$ 1.033,00</p>
-                </div>
-                <div>
-                    <p class="text-white/40 text-xs">Arena (locação/clubinho)</p>
-                    <p class="font-bold">R$ 330,00</p>
-                </div>
-                <div>
-                    <p class="text-white/40 text-xs">Bebidas (não alcoólicas)</p>
-                    <p class="font-bold">R$ 309,00</p>
-                </div>
-                <div>
-                    <p class="text-white/40 text-xs">Gulosemas (bomboniere)</p>
-                    <p class="font-bold">R$ 40,00</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4 text-sm pt-3 border-t border-white/10">
-                <div>
-                    <p class="text-white/40 text-xs">Faturamento total do dia</p>
-                    <p class="font-bold text-manzi-gold text-lg">R$ 1.712,00</p>
-                </div>
-                <div>
-                    <p class="text-white/40 text-xs">JP a 40% do lucro (modelo antigo)</p>
-                    <p class="font-bold text-lg">R$ 377,69</p>
-                    <p class="text-white/30 text-xs">referência de equivalência</p>
-                </div>
+        <!-- COMO FUNCIONA -->
+        <div class="rounded-2xl p-6 sm:p-7 border border-white/10 mb-6" style="background:#111111;">
+            <p class="font-black text-sm uppercase tracking-wide mb-4">Como funciona</p>
+            <div class="space-y-4 text-sm text-white/60 leading-relaxed">
+                <p><strong class="text-white">1. Bar (bebidas, comida, bomboniere):</strong> de cada venda, primeiro sai o <strong class="text-manzi-gold">CMV</strong> — o custo da mercadoria, estimado pelo markup de 80%. Esse dinheiro não é lucro: volta pra Manzi só pra repor o estoque. O que sobra é a <strong class="text-manzi-gold">margem</strong> (o lucro real), dividida em <strong class="text-white">40% JP / 60% Manzi</strong>.</p>
+                <p><strong class="text-white">2. Esporte (locação e clubinho):</strong> não tem mercadoria, então não tem CMV — divide direto <strong class="text-white">50% JP / 50% Manzi</strong>.</p>
+                <p class="text-white/40 text-xs">Na prática, cada R$ 1,80 vendido no bar tem R$ 1,00 de custo e R$ 0,80 de margem: o JP leva R$ 0,32 e a Manzi R$ 0,48 + o R$ 1,00 de volta pro estoque. Equivale a ~17,8% da venda bruta do bar.</p>
             </div>
         </div>
 
-        <!-- PRESETS -->
-        <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-6" style="background:#111111;">
-            <p class="font-black text-sm uppercase tracking-wide mb-1">Sugestões prontas</p>
-            <p class="text-xs text-white/30 mb-5">Três calibragens possíveis — clique pra aplicar no simulador. Todas ficam perto dos R$ 377 que os 40% davam no último domingo.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <button type="button" onclick="aplicarPreset(150, 75, this)" class="preset-btn is-active text-left rounded-xl border border-white/10 p-4">
-                    <p class="text-manzi-gold text-xs font-bold uppercase tracking-widest mb-1">Equilibrado</p>
-                    <p class="font-black text-lg">R$ 150 + R$ 75<span class="text-white/40 text-xs font-semibold"> /faixa</span></p>
-                    <p class="text-white/30 text-xs mt-2">No domingo de referência: R$ 375 — praticamente igual aos 40%.</p>
-                </button>
-                <button type="button" onclick="aplicarPreset(200, 50, this)" class="preset-btn text-left rounded-xl border border-white/10 p-4">
-                    <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">Mais segurança</p>
-                    <p class="font-black text-lg">R$ 200 + R$ 50<span class="text-white/40 text-xs font-semibold"> /faixa</span></p>
-                    <p class="text-white/30 text-xs mt-2">Garantido maior pros dias fracos; referência: R$ 350.</p>
-                </button>
-                <button type="button" onclick="aplicarPreset(100, 100, this)" class="preset-btn text-left rounded-xl border border-white/10 p-4">
-                    <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">Mais incentivo</p>
-                    <p class="font-black text-lg">R$ 100 + R$ 100<span class="text-white/40 text-xs font-semibold"> /faixa</span></p>
-                    <p class="text-white/30 text-xs mt-2">Bônus forte pra quem quer lotar; referência: R$ 400.</p>
-                </button>
+        <!-- REFERÊNCIA -->
+        <div class="rounded-2xl p-6 border border-white/10 mb-6" style="background:#111111;">
+            <p class="text-xs font-bold uppercase tracking-widest text-manzi-gold mb-3">Referência — último domingo</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+                <div>
+                    <p class="text-white/40 text-xs">Bar (vendido)</p>
+                    <p class="font-bold">R$ 1.491,79</p>
+                    <p class="text-white/30 text-xs">margem R$ 663,02</p>
+                </div>
+                <div>
+                    <p class="text-white/40 text-xs">Esporte</p>
+                    <p class="font-bold">R$ 390,00</p>
+                    <p class="text-white/30 text-xs">sem CMV</p>
+                </div>
+                <div>
+                    <p class="text-white/40 text-xs">JP recebeu</p>
+                    <p class="font-bold text-manzi-gold text-lg">R$ 460,21</p>
+                    <p class="text-white/30 text-xs">265,21 + 195,00</p>
+                </div>
+                <div>
+                    <p class="text-white/40 text-xs">Manzi (lucro)</p>
+                    <p class="font-bold text-lg">R$ 592,81</p>
+                    <p class="text-white/30 text-xs">+ CMV R$ 828,77</p>
+                </div>
             </div>
         </div>
 
@@ -106,82 +84,85 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Faturamento do domingo</p>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Bar — vendido no dia</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="faturamento" type="number" step="1" min="0" value="1712" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="bar" type="number" step="0.01" min="0" value="1491.79" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Fixo garantido</p>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Esporte — locação + clubinho</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="garantido" type="number" step="1" min="0" value="150" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="esporte" type="number" step="0.01" min="0" value="390" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Bônus por faixa de R$ 500</p>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Markup médio do bar</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="bonusFaixa" type="number" step="1" min="0" value="75" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="markup" type="number" step="1" min="1" value="80" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <span class="text-white/40 text-xs whitespace-nowrap">% sobre o custo</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- RESULTADO -->
-        <div class="rounded-2xl p-6 sm:p-7 border-2 border-manzi-gold/40 mb-6" style="background:#111111;">
-            <p class="font-black text-sm uppercase tracking-wide mb-5">Resultado</p>
-            <div class="space-y-2 text-sm">
-                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                    <span class="text-white/50">Faixas completas de R$ 500</span>
-                    <span id="outFaixas" class="font-bold">0</span>
-                </div>
-                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                    <span class="text-white/50">Fixo garantido</span>
-                    <span id="outGarantido" class="font-bold">R$ 0,00</span>
-                </div>
-                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                    <span class="text-white/50">Bônus das faixas</span>
-                    <span id="outBonus" class="font-bold">R$ 0,00</span>
-                </div>
-            </div>
-            <div class="mt-5 pt-5 border-t-2 border-white/10 flex justify-between items-center">
-                <span class="font-black uppercase text-xs tracking-widest text-white/50">Total JP no domingo</span>
-                <span id="outTotalJP" class="font-black text-2xl text-manzi-gold">R$ 0,00</span>
-            </div>
-            <p id="outEquivalencia" class="text-xs text-white/30 mt-2"></p>
-        </div>
+        <div class="rounded-2xl p-6 sm:p-7 border-2 border-manzi-gold/40 mb-8" style="background:#111111;">
+            <p class="font-black text-sm uppercase tracking-wide mb-5">Resultado do repasse</p>
 
-        <!-- ESCADA DE FAIXAS -->
-        <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-8" style="background:#111111;">
-            <p class="font-black text-sm uppercase tracking-wide mb-1">Escada de faixas</p>
-            <p class="text-xs text-white/30 mb-5">Quanto o JP leva em cada nível de faturamento, com os valores configurados acima. A linha destacada é onde o último domingo se encaixa.</p>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="text-white/40 text-xs uppercase tracking-wider">
-                            <th class="text-left py-2 font-semibold">Faturamento do dia</th>
-                            <th class="text-right py-2 font-semibold">Faixas</th>
-                            <th class="text-right py-2 font-semibold">Bônus</th>
-                            <th class="text-right py-2 font-semibold text-white/70">Total JP</th>
-                        </tr>
-                    </thead>
-                    <tbody id="escada"></tbody>
-                </table>
+            <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Bar — 40% da margem</p>
+            <div class="space-y-2 text-sm mb-6">
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">Vendido</span>
+                    <span id="outBarVendido" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">(−) CMV estimado — repõe o estoque</span>
+                    <span id="outBarCmv" class="font-semibold text-white/60">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">(=) Margem</span>
+                    <span id="outBarMargem" class="font-bold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">JP — 40% da margem</span>
+                    <span id="outBarJP" class="font-bold text-manzi-gold">R$ 0,00</span>
+                </div>
+            </div>
+
+            <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Esporte — 50/50</p>
+            <div class="space-y-2 text-sm mb-6">
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">Locação + clubinho</span>
+                    <span id="outEsporte" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">JP — 50%</span>
+                    <span id="outEsporteJP" class="font-bold text-manzi-gold">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div class="pt-5 border-t-2 border-white/10 space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="font-black uppercase text-xs tracking-widest text-white/50">Total repasse JP</span>
+                    <span id="outTotalJP" class="font-black text-2xl text-manzi-gold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-black uppercase text-xs tracking-widest text-white/50">Manzi Sports (lucro)</span>
+                    <span id="outTotalManzi" class="font-black text-xl">R$ 0,00</span>
+                </div>
+                <p id="outNota" class="text-xs text-white/30"></p>
             </div>
         </div>
 
         <footer class="text-center">
-            <p class="text-white/20 text-xs">© 2026 Manzi Sports — material interno de discussão</p>
+            <p class="text-white/20 text-xs">© 2026 Manzi Sports — material interno</p>
         </footer>
 
     </div>
 
     <script>
-        const FAIXA = 500;
-        const REF_FATURAMENTO = 1712;
-
         function num(id) {
             const v = parseFloat(document.getElementById(id).value);
             return isNaN(v) ? 0 : v;
@@ -189,53 +170,39 @@
         function fmt(v) {
             return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
-        function fmtInt(v) {
-            return 'R$ ' + v.toLocaleString('pt-BR');
-        }
-
-        function aplicarPreset(garantido, bonus, btn) {
-            document.getElementById('garantido').value = garantido;
-            document.getElementById('bonusFaixa').value = bonus;
-            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-            calcular();
-        }
 
         function calcular() {
-            const faturamento = num('faturamento');
-            const garantido = num('garantido');
-            const bonusFaixa = num('bonusFaixa');
+            const bar = num('bar');
+            const esporte = num('esporte');
+            const markup = num('markup');
+            const fator = 1 + (markup / 100);
 
-            const faixas = Math.floor(faturamento / FAIXA);
-            const bonus = faixas * bonusFaixa;
-            const totalJP = garantido + bonus;
+            const cmv = fator > 0 ? bar / fator : 0;
+            const margem = bar - cmv;
+            const barJP = margem * 0.4;
+            const barManzi = margem * 0.6;
 
-            document.getElementById('outFaixas').textContent = faixas;
-            document.getElementById('outGarantido').textContent = fmt(garantido);
-            document.getElementById('outBonus').textContent = fmt(bonus) + ` (${faixas} × ${fmt(bonusFaixa)})`;
+            const esporteJP = esporte * 0.5;
+            const esporteManzi = esporte * 0.5;
+
+            const totalJP = barJP + esporteJP;
+            const totalManzi = barManzi + esporteManzi;
+
+            document.getElementById('outBarVendido').textContent = fmt(bar);
+            document.getElementById('outBarCmv').textContent = '− ' + fmt(cmv);
+            document.getElementById('outBarMargem').textContent = fmt(margem);
+            document.getElementById('outBarJP').textContent = fmt(barJP);
+            document.getElementById('outEsporte').textContent = fmt(esporte);
+            document.getElementById('outEsporteJP').textContent = fmt(esporteJP);
             document.getElementById('outTotalJP').textContent = fmt(totalJP);
+            document.getElementById('outTotalManzi').textContent = fmt(totalManzi);
 
-            const pctEfetivo = faturamento > 0 ? (totalJP / faturamento) * 100 : 0;
-            document.getElementById('outEquivalencia').textContent =
-                `Equivale a ${pctEfetivo.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% do faturamento do dia. Referência do modelo antigo (40% do lucro no último domingo): R$ 377,69.`;
-
-            const linhas = [];
-            for (let i = 0; i <= 7; i++) {
-                const inicio = i * FAIXA;
-                const fim = inicio + FAIXA - 1;
-                const jp = garantido + i * bonusFaixa;
-                const ehReferencia = REF_FATURAMENTO >= inicio && REF_FATURAMENTO <= fim;
-                linhas.push(`<tr class="border-t border-white/[0.06] ${ehReferencia ? 'bg-manzi-gold/10' : ''}">
-                    <td class="py-2 ${ehReferencia ? 'text-manzi-gold font-semibold' : 'text-white/60'}">${fmtInt(inicio)} — ${fmtInt(fim)}${ehReferencia ? ' · último domingo' : ''}</td>
-                    <td class="text-right py-2 text-white/40">${i}</td>
-                    <td class="text-right py-2 text-white/70">${fmt(i * bonusFaixa)}</td>
-                    <td class="text-right py-2 text-white font-black">${fmt(jp)}</td>
-                </tr>`);
-            }
-            document.getElementById('escada').innerHTML = linhas.join('');
+            const pctBruto = bar > 0 ? (barJP / bar) * 100 : 0;
+            document.getElementById('outNota').textContent =
+                `A Manzi ainda recupera ${fmt(cmv)} de CMV (reposição de estoque, fora do lucro). Os 40% da margem equivalem a ${pctBruto.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% da venda bruta do bar.`;
         }
 
-        ['faturamento','garantido','bonusFaixa'].forEach(id => {
+        ['bar','esporte','markup'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         calcular();
