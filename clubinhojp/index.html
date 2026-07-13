@@ -77,7 +77,14 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs text-white/40 font-semibold mb-1.5">Locação de Quadra</label>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label class="block text-xs text-white/40 font-semibold">Locação de Quadra</label>
+                        <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-lg px-2.5 py-1.5">
+                            <span class="text-white/40 text-xs">R$</span>
+                            <input id="valorHora" type="number" step="0.01" min="0" value="60.00" class="bg-transparent w-14 text-xs text-white/90 focus:outline-none">
+                            <span class="text-white/30 text-xs whitespace-nowrap">/ hora</span>
+                        </div>
+                    </div>
                     <div id="turmas-list" class="space-y-2"></div>
                     <button type="button" onclick="adicionarTurma()" class="text-manzi-gold text-xs font-bold mt-2 hover:underline">+ Adicionar turma</button>
                     <p class="text-xs text-white/30 mt-1.5">Total Locação: <span id="outTotalLocacao" class="text-white/50 font-semibold">R$ 0,00</span> — divisão fixa: 50% Manzi Sports / 50% JP</p>
@@ -224,13 +231,36 @@
                 </button>
             `;
             document.getElementById('turmas-list').appendChild(row);
-            [nomeId, horasId, valorId].forEach(fid => document.getElementById(fid).addEventListener('input', calcular));
+            document.getElementById(nomeId).addEventListener('input', calcular);
+            document.getElementById(valorId).addEventListener('input', calcular);
+            document.getElementById(horasId).addEventListener('input', () => {
+                const horasVal = parseFloat(document.getElementById(horasId).value);
+                const rate = parseFloat(document.getElementById('valorHora').value) || 0;
+                document.getElementById(valorId).value = isNaN(horasVal) ? '' : (horasVal * rate).toFixed(2);
+                calcular();
+            });
+
+            if (horas && !valor) {
+                const rate = parseFloat(document.getElementById('valorHora').value) || 0;
+                document.getElementById(valorId).value = (horas * rate).toFixed(2);
+            }
         }
 
         function removerTurma(id) {
             document.getElementById(`turmaRow${id}`)?.remove();
             const idx = turmas.findIndex(t => t.id === id);
             if (idx > -1) turmas.splice(idx, 1);
+            calcular();
+        }
+
+        function recalcularTodasTurmas() {
+            const rate = parseFloat(document.getElementById('valorHora').value) || 0;
+            turmas.forEach(t => {
+                const horasVal = parseFloat(document.getElementById(t.horasId).value);
+                if (!isNaN(horasVal)) {
+                    document.getElementById(t.valorId).value = (horasVal * rate).toFixed(2);
+                }
+            });
             calcular();
         }
 
@@ -313,6 +343,7 @@
         ['valorClubinho','qtdParticipantes','totalRecebido','totalBebidas','pctBebidas','totalComida','pctComida'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
+        document.getElementById('valorHora').addEventListener('input', recalcularTodasTurmas);
 
         adicionarTurma('Turma 44', 3, 180.00);
         adicionarTurma('Turma Dyan', 2, 120.00);
