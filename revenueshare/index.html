@@ -230,7 +230,7 @@
 
                 <div>
                     <div class="flex items-center justify-between mb-1.5">
-                        <label class="block text-xs text-white/40 font-semibold">Markup médio (Bebidas, Comida e Bomboniere)</label>
+                        <label class="block text-xs text-white/40 font-semibold">Markup médio (produtos)</label>
                         <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-lg px-2.5 py-1.5">
                             <input id="markupMedio" type="number" step="1" min="0" value="80" class="bg-transparent w-12 text-xs text-white/90 focus:outline-none">
                             <span class="text-white/30 text-xs whitespace-nowrap">% sobre o custo</span>
@@ -240,13 +240,23 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs text-white/40 font-semibold mb-1.5">Bebidas</label>
+                    <label class="block text-xs text-white/40 font-semibold mb-1.5">Bebidas Alcoólicas</label>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
                         <input id="totalBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
                         <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
                     </div>
                     <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvBebidas" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemBebidas" class="text-white/50 font-semibold">R$ 0,00</span> — só a margem entra no lucro do dia</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-white/40 font-semibold mb-1.5">Bebidas Não Alcoólicas</label>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="totalBebidasNA" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                        <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
+                    </div>
+                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvBebidasNA" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemBebidasNA" class="text-white/50 font-semibold">R$ 0,00</span> — só a margem entra no lucro do dia</p>
                 </div>
 
                 <div>
@@ -315,8 +325,12 @@
                     <span id="resumoLocacao" class="font-semibold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-1.5">
-                    <span class="text-white/50">Bebidas</span>
+                    <span class="text-white/50">Bebidas Alcoólicas</span>
                     <span id="resumoBebidas" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Bebidas Não Alcoólicas</span>
+                    <span id="resumoBebidasNA" class="font-semibold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-1.5">
                     <span class="text-white/50">Comida</span>
@@ -464,20 +478,25 @@
             const qtdParticipantes = num('qtdParticipantes');
             const totalClubinho = valorClubinho * qtdParticipantes;
             const totalBebidas = num('totalBebidas');
+            const totalBebidasNA = num('totalBebidasNA');
             const totalComida = num('totalComida');
             const totalBomboniere = num('totalBomboniere');
             const markupMedio = num('markupMedio');
             const fatorMarkup = 1 + (markupMedio / 100);
             const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
+            const cmvBebidasNA = fatorMarkup > 0 ? totalBebidasNA / fatorMarkup : 0;
             const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
             const cmvBomboniere = fatorMarkup > 0 ? totalBomboniere / fatorMarkup : 0;
             const margemBebidas = totalBebidas - cmvBebidas;
+            const margemBebidasNA = totalBebidasNA - cmvBebidasNA;
             const margemComida = totalComida - cmvComida;
             const margemBomboniere = totalBomboniere - cmvBomboniere;
             document.getElementById('outCmvBebidas').textContent = fmt(cmvBebidas);
+            document.getElementById('outCmvBebidasNA').textContent = fmt(cmvBebidasNA);
             document.getElementById('outCmvComida').textContent = fmt(cmvComida);
             document.getElementById('outCmvBomboniere').textContent = fmt(cmvBomboniere);
             document.getElementById('outMargemBebidas').textContent = fmt(margemBebidas);
+            document.getElementById('outMargemBebidasNA').textContent = fmt(margemBebidasNA);
             document.getElementById('outMargemComida').textContent = fmt(margemComida);
             document.getElementById('outMargemBomboniere').textContent = fmt(margemBomboniere);
 
@@ -492,11 +511,12 @@
             document.getElementById('resumoClubinho').textContent = fmt(totalClubinho);
             document.getElementById('resumoLocacao').textContent = fmt(totalLocacao);
             document.getElementById('resumoBebidas').textContent = fmt(totalBebidas);
+            document.getElementById('resumoBebidasNA').textContent = fmt(totalBebidasNA);
             document.getElementById('resumoComida').textContent = fmt(totalComida);
             document.getElementById('resumoBomboniere').textContent = fmt(totalBomboniere);
-            document.getElementById('resumoSoma').textContent = fmt(totalClubinho + totalLocacao + totalBebidas + totalComida + totalBomboniere);
+            document.getElementById('resumoSoma').textContent = fmt(totalClubinho + totalLocacao + totalBebidas + totalBebidasNA + totalComida + totalBomboniere);
 
-            const lucroDia = totalClubinho + totalLocacao + margemBebidas + margemComida + margemBomboniere;
+            const lucroDia = totalClubinho + totalLocacao + margemBebidas + margemBebidasNA + margemComida + margemBomboniere;
             document.getElementById('outLucroDia').textContent = fmt(lucroDia);
 
             const pctJP = num('pctJPGlobal');
@@ -634,7 +654,7 @@
             }
         }
 
-        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','totalComida','totalBomboniere','custoEquipe','pctJPGlobal','pctManziGlobal','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix','sinaisHoje','sinaisAntes'].forEach(id => {
+        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','totalBebidasNA','totalComida','totalBomboniere','custoEquipe','pctJPGlobal','pctManziGlobal','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix','sinaisHoje','sinaisAntes'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         document.getElementById('valorHora').addEventListener('input', recalcularTodasTurmas);
@@ -663,11 +683,13 @@
             const qtdParticipantes = num('qtdParticipantes');
             const totalClubinho = valorClubinho * qtdParticipantes;
             const totalBebidas = num('totalBebidas');
+            const totalBebidasNA = num('totalBebidasNA');
             const totalComida = num('totalComida');
             const totalBomboniere = num('totalBomboniere');
             const markupMedio = num('markupMedio');
             const fatorMarkup = 1 + (markupMedio / 100);
             const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
+            const cmvBebidasNA = fatorMarkup > 0 ? totalBebidasNA / fatorMarkup : 0;
             const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
             const cmvBomboniere = fatorMarkup > 0 ? totalBomboniere / fatorMarkup : 0;
             const custoEquipe = num('custoEquipe');
@@ -675,7 +697,7 @@
             const pctManzi = num('pctManziGlobal');
             const pctFundo = Math.max(0, 100 - pctJP - pctManzi);
             const totalLocacaoNum = turmas.reduce((sum, t) => sum + num(t.valorId), 0);
-            const lucroDia = totalClubinho + totalLocacaoNum + (totalBebidas - cmvBebidas) + (totalComida - cmvComida) + (totalBomboniere - cmvBomboniere);
+            const lucroDia = totalClubinho + totalLocacaoNum + (totalBebidas - cmvBebidas) + (totalBebidasNA - cmvBebidasNA) + (totalComida - cmvComida) + (totalBomboniere - cmvBomboniere);
             const parteFundo = lucroDia * (pctFundo / 100);
             const saldoFundo = parteFundo - custoEquipe;
             const outTotalLocacao = document.getElementById('outTotalLocacao').textContent;
@@ -702,7 +724,8 @@
             msg += `*Repasse*\n`;
             msg += `Total Clubinho: ${fmt(totalClubinho)} (${fmt(valorClubinho)} x ${qtdParticipantes} pessoas)\n`;
             msg += `Locação de Quadra: ${outTotalLocacao}\n${turmasTexto}\n`;
-            msg += `Bebidas: ${fmt(totalBebidas)} (CMV ${fmt(cmvBebidas)}, margem ${fmt(totalBebidas - cmvBebidas)})\n`;
+            msg += `Bebidas Alcoólicas: ${fmt(totalBebidas)} (CMV ${fmt(cmvBebidas)}, margem ${fmt(totalBebidas - cmvBebidas)})\n`;
+            msg += `Bebidas Não Alcoólicas: ${fmt(totalBebidasNA)} (CMV ${fmt(cmvBebidasNA)}, margem ${fmt(totalBebidasNA - cmvBebidasNA)})\n`;
             msg += `Comida: ${fmt(totalComida)} (CMV ${fmt(cmvComida)}, margem ${fmt(totalComida - cmvComida)})\n`;
             msg += `Bomboniere: ${fmt(totalBomboniere)} (CMV ${fmt(cmvBomboniere)}, margem ${fmt(totalBomboniere - cmvBomboniere)})\n`;
             msg += `Lucro do dia: ${fmt(lucroDia)}\n\n`;
