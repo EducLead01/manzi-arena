@@ -211,7 +211,7 @@
                             <span class="text-white/30 text-xs whitespace-nowrap">pessoas</span>
                         </div>
                     </div>
-                    <p class="text-xs text-white/30 mt-1.5">Total Clubinho: <span id="outTotalClubinho" class="text-white/50 font-semibold">R$ 0,00</span> — divisão fixa: 50% Manzi Sports / 50% JP</p>
+                    <p class="text-xs text-white/30 mt-1.5">Total Clubinho: <span id="outTotalClubinho" class="text-white/50 font-semibold">R$ 0,00</span> — entra no lucro do dia</p>
                 </div>
 
                 <div>
@@ -225,7 +225,7 @@
                     </div>
                     <div id="turmas-list" class="space-y-2"></div>
                     <button type="button" onclick="adicionarTurma()" class="text-manzi-gold text-xs font-bold mt-2 hover:underline">+ Adicionar turma</button>
-                    <p class="text-xs text-white/30 mt-1.5">Total Locação: <span id="outTotalLocacao" class="text-white/50 font-semibold">R$ 0,00</span> — divisão fixa: 50% Manzi Sports / 50% JP</p>
+                    <p class="text-xs text-white/30 mt-1.5">Total Locação: <span id="outTotalLocacao" class="text-white/50 font-semibold">R$ 0,00</span> — entra no lucro do dia</p>
                 </div>
 
                 <div>
@@ -241,50 +241,51 @@
 
                 <div>
                     <label class="block text-xs text-white/40 font-semibold mb-1.5">Bebidas</label>
-                    <div class="flex gap-3">
-                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
-                            <span class="text-white/40 text-sm">R$</span>
-                            <input id="totalBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
-                            <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 focus-within:border-manzi-gold/50 transition-colors">
-                            <input id="pctBebidas" type="number" step="1" min="0" max="100" value="50" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            <span class="text-white/40 text-sm">% JP</span>
-                        </div>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="totalBebidas" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                        <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
                     </div>
-                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvBebidas" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemBebidas" class="text-white/50 font-semibold">R$ 0,00</span> — repasse calculado sobre a margem</p>
+                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvBebidas" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemBebidas" class="text-white/50 font-semibold">R$ 0,00</span> — só a margem entra no lucro do dia</p>
                 </div>
 
                 <div>
                     <label class="block text-xs text-white/40 font-semibold mb-1.5">Comida</label>
-                    <div class="flex gap-3">
-                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
-                            <span class="text-white/40 text-sm">R$</span>
-                            <input id="totalComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
-                            <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 focus-within:border-manzi-gold/50 transition-colors">
-                            <input id="pctComida" type="number" step="1" min="0" max="100" value="50" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            <span class="text-white/40 text-sm">% JP</span>
-                        </div>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="totalComida" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                        <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
                     </div>
-                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvComida" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemComida" class="text-white/50 font-semibold">R$ 0,00</span> — repasse calculado sobre a margem</p>
+                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvComida" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemComida" class="text-white/50 font-semibold">R$ 0,00</span> — só a margem entra no lucro do dia</p>
                 </div>
 
                 <div>
                     <label class="block text-xs text-white/40 font-semibold mb-1.5">Equipe do Domingo</label>
-                    <div class="flex gap-3">
-                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
-                            <span class="text-white/40 text-sm">R$</span>
-                            <input id="custoEquipe" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
-                            <span class="text-white/30 text-xs whitespace-nowrap">custo</span>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="custoEquipe" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                        <span class="text-white/30 text-xs whitespace-nowrap">custo</span>
+                    </div>
+                    <p class="text-xs text-white/30 mt-1.5">Pago pelo Fundo do Projeto — não sai do repasse de nenhum dos sócios</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-white/40 font-semibold mb-1.5">Divisão do lucro</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <input id="pctJPGlobal" type="number" step="1" min="0" max="100" value="40" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                            <span class="text-white/40 text-xs whitespace-nowrap">% JP</span>
                         </div>
-                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 w-28 focus-within:border-manzi-gold/50 transition-colors">
-                            <input id="pctEquipeJP" type="number" step="1" min="0" max="100" value="25" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none w-full">
-                            <span class="text-white/40 text-sm">% JP</span>
+                        <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                            <input id="pctManziGlobal" type="number" step="1" min="0" max="100" value="40" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                            <span class="text-white/40 text-xs whitespace-nowrap">% Manzi</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-[#0C0C0C] border border-manzi-gold/30 rounded-xl px-4 py-3">
+                            <span id="outPctFundo" class="text-sm text-manzi-gold font-bold">20%</span>
+                            <span class="text-white/40 text-xs whitespace-nowrap">Fundo</span>
                         </div>
                     </div>
-                    <p class="text-xs text-white/30 mt-1.5">O restante (<span id="outPctEquipeManzi" class="text-white/50 font-semibold">75%</span>) fica com a Manzi Sports — custo descontado do repasse de cada um, antes do total final</p>
+                    <p class="text-xs text-white/30 mt-1.5">O Fundo do Projeto recebe o restante — paga a equipe do dia e o que sobra acumula pro crescimento (material, divulgação, torneios)</p>
                 </div>
             </div>
         </div>
@@ -313,44 +314,37 @@
                 </div>
                 <div class="flex justify-between py-1.5 pt-2 border-t border-white/10 mt-1">
                     <span class="text-white/60 font-bold">Soma das categorias</span>
-                    <span id="resumoSoma" class="font-bold text-manzi-gold">R$ 0,00</span>
+                    <span id="resumoSoma" class="font-bold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/60 font-bold">Lucro do dia (base da divisão)</span>
+                    <span id="outLucroDia" class="font-bold text-manzi-gold">R$ 0,00</span>
                 </div>
             </div>
 
-            <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Divisão do repasse</p>
+            <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Divisão do lucro</p>
             <div class="space-y-3 text-sm">
                 <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Clubinho — Manzi Sports (50%)</span>
-                    <span id="outClubinhoManzi" class="font-bold">R$ 0,00</span>
+                    <span class="text-white/50">JP (<span id="lblPctJP">40%</span>)</span>
+                    <span id="outParteJP" class="font-bold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Clubinho — JP (50%)</span>
-                    <span id="outClubinhoJP" class="font-bold">R$ 0,00</span>
+                    <span class="text-white/50">Manzi Sports (<span id="lblPctManzi">40%</span>)</span>
+                    <span id="outParteManzi" class="font-bold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Locação — Manzi Sports (50%)</span>
-                    <span id="outLocacaoManzi" class="font-bold">R$ 0,00</span>
+                    <span class="text-white/50">Fundo do Projeto (<span id="lblPctFundo">20%</span>)</span>
+                    <span id="outParteFundo" class="font-bold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Locação — JP (50%)</span>
-                    <span id="outLocacaoJP" class="font-bold">R$ 0,00</span>
+                    <span class="text-white/50">Equipe do Domingo — paga pelo fundo</span>
+                    <span id="outEquipeFundo" class="font-bold text-red-400">− R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Bebidas — JP</span>
-                    <span id="outBebidasJP" class="font-bold text-white/30">a definir</span>
+                    <span class="text-white/50">Saldo do fundo nesta semana</span>
+                    <span id="outSaldoFundo" class="font-bold">R$ 0,00</span>
                 </div>
-                <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Comida — JP</span>
-                    <span id="outComidaJP" class="font-bold text-white/30">a definir</span>
-                </div>
-                <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Equipe do Domingo — Manzi Sports</span>
-                    <span id="outEquipeManzi" class="font-bold text-red-400">− R$ 0,00</span>
-                </div>
-                <div class="flex justify-between py-2 border-b border-white/[0.06]">
-                    <span class="text-white/50">Equipe do Domingo — JP</span>
-                    <span id="outEquipeJP" class="font-bold text-red-400">− R$ 0,00</span>
-                </div>
+                <p id="avisoFundo" class="hidden text-xs text-red-400"></p>
             </div>
 
             <div class="mt-5 pt-5 border-t-2 border-white/10 space-y-2">
@@ -361,6 +355,10 @@
                 <div class="flex justify-between">
                     <span class="font-black uppercase text-xs tracking-widest text-white/50">Total Manzi Sports</span>
                     <span id="outTotalManzi" class="font-black text-xl">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-black uppercase text-xs tracking-widest text-white/50">Fundo do Projeto (saldo)</span>
+                    <span id="outTotalFundo" class="font-black text-xl text-white/70">R$ 0,00</span>
                 </div>
             </div>
         </div>
@@ -463,16 +461,8 @@
             document.getElementById('outCmvComida').textContent = fmt(cmvComida);
             document.getElementById('outMargemBebidas').textContent = fmt(margemBebidas);
             document.getElementById('outMargemComida').textContent = fmt(margemComida);
-            const pctBebidasRaw = document.getElementById('pctBebidas').value;
-            const pctComidaRaw = document.getElementById('pctComida').value;
 
             document.getElementById('outTotalClubinho').textContent = fmt(totalClubinho);
-
-            const clubinhoManzi = totalClubinho * 0.5;
-            const clubinhoJP = totalClubinho * 0.5;
-
-            document.getElementById('outClubinhoManzi').textContent = fmt(clubinhoManzi);
-            document.getElementById('outClubinhoJP').textContent = fmt(clubinhoJP);
 
             const totalLocacao = turmas.reduce((sum, t) => {
                 const valor = parseFloat(document.getElementById(t.valorId).value);
@@ -486,55 +476,46 @@
             document.getElementById('resumoComida').textContent = fmt(totalComida);
             document.getElementById('resumoSoma').textContent = fmt(totalClubinho + totalLocacao + totalBebidas + totalComida);
 
-            const locacaoManzi = totalLocacao * 0.5;
-            const locacaoJP = totalLocacao * 0.5;
+            const lucroDia = totalClubinho + totalLocacao + margemBebidas + margemComida;
+            document.getElementById('outLucroDia').textContent = fmt(lucroDia);
 
-            document.getElementById('outLocacaoManzi').textContent = fmt(locacaoManzi);
-            document.getElementById('outLocacaoJP').textContent = fmt(locacaoJP);
+            const pctJP = num('pctJPGlobal');
+            const pctManzi = num('pctManziGlobal');
+            const pctFundo = Math.max(0, 100 - pctJP - pctManzi);
 
-            let totalJP = clubinhoJP + locacaoJP;
-            let totalManzi = clubinhoManzi + locacaoManzi;
+            document.getElementById('outPctFundo').textContent = pctFundo + '%';
+            document.getElementById('lblPctJP').textContent = pctJP + '%';
+            document.getElementById('lblPctManzi').textContent = pctManzi + '%';
+            document.getElementById('lblPctFundo').textContent = pctFundo + '%';
 
-            const outBebidas = document.getElementById('outBebidasJP');
-            if (pctBebidasRaw !== '') {
-                const pctBebidas = parseFloat(pctBebidasRaw) / 100;
-                const bebidasJP = margemBebidas * pctBebidas;
-                outBebidas.textContent = fmt(bebidasJP);
-                outBebidas.classList.remove('text-white/30');
-                totalJP += bebidasJP;
-                totalManzi += totalBebidas - bebidasJP;
-            } else {
-                outBebidas.textContent = 'a definir';
-                outBebidas.classList.add('text-white/30');
-            }
-
-            const outComida = document.getElementById('outComidaJP');
-            if (pctComidaRaw !== '') {
-                const pctComida = parseFloat(pctComidaRaw) / 100;
-                const comidaJP = margemComida * pctComida;
-                outComida.textContent = fmt(comidaJP);
-                outComida.classList.remove('text-white/30');
-                totalJP += comidaJP;
-                totalManzi += totalComida - comidaJP;
-            } else {
-                outComida.textContent = 'a definir';
-                outComida.classList.add('text-white/30');
-            }
+            const totalJP = lucroDia * (pctJP / 100);
+            const totalManzi = lucroDia * (pctManzi / 100);
+            const parteFundo = lucroDia * (pctFundo / 100);
 
             const custoEquipe = num('custoEquipe');
-            const pctEquipeJP = num('pctEquipeJP');
-            const equipeJP = custoEquipe * (pctEquipeJP / 100);
-            const equipeManzi = custoEquipe - equipeJP;
+            const saldoFundo = parteFundo - custoEquipe;
 
-            document.getElementById('outPctEquipeManzi').textContent = (100 - pctEquipeJP) + '%';
-            document.getElementById('outEquipeJP').textContent = '− ' + fmt(equipeJP);
-            document.getElementById('outEquipeManzi').textContent = '− ' + fmt(equipeManzi);
+            document.getElementById('outParteJP').textContent = fmt(totalJP);
+            document.getElementById('outParteManzi').textContent = fmt(totalManzi);
+            document.getElementById('outParteFundo').textContent = fmt(parteFundo);
+            document.getElementById('outEquipeFundo').textContent = '− ' + fmt(custoEquipe);
 
-            totalJP -= equipeJP;
-            totalManzi -= equipeManzi;
+            const outSaldo = document.getElementById('outSaldoFundo');
+            const avisoFundo = document.getElementById('avisoFundo');
+            outSaldo.textContent = (saldoFundo < -0.009 ? '− ' : '') + fmt(Math.abs(saldoFundo));
+            outSaldo.classList.remove('text-green-400', 'text-red-400');
+            if (saldoFundo < -0.009) {
+                outSaldo.classList.add('text-red-400');
+                avisoFundo.textContent = '⚠ O fundo não cobriu a equipe nesta semana — o negativo compensa no saldo da próxima, sem descontar dos sócios.';
+                avisoFundo.classList.remove('hidden');
+            } else {
+                outSaldo.classList.add('text-green-400');
+                avisoFundo.classList.add('hidden');
+            }
 
             document.getElementById('outTotalJP').textContent = fmt(totalJP);
             document.getElementById('outTotalManzi').textContent = fmt(totalManzi);
+            document.getElementById('outTotalFundo').textContent = (saldoFundo < -0.009 ? '− ' : '') + fmt(Math.abs(saldoFundo));
 
             conferirCaixa();
         }
@@ -633,7 +614,7 @@
             }
         }
 
-        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','pctBebidas','totalComida','pctComida','custoEquipe','pctEquipeJP','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix','sinaisHoje','sinaisAntes'].forEach(id => {
+        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','totalComida','custoEquipe','pctJPGlobal','pctManziGlobal','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix','sinaisHoje','sinaisAntes'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         document.getElementById('valorHora').addEventListener('input', recalcularTodasTurmas);
@@ -668,9 +649,13 @@
             const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
             const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
             const custoEquipe = num('custoEquipe');
-            const pctEquipeJP = num('pctEquipeJP');
-            const equipeJP = custoEquipe * (pctEquipeJP / 100);
-            const equipeManzi = custoEquipe - equipeJP;
+            const pctJP = num('pctJPGlobal');
+            const pctManzi = num('pctManziGlobal');
+            const pctFundo = Math.max(0, 100 - pctJP - pctManzi);
+            const totalLocacaoNum = turmas.reduce((sum, t) => sum + num(t.valorId), 0);
+            const lucroDia = totalClubinho + totalLocacaoNum + (totalBebidas - cmvBebidas) + (totalComida - cmvComida);
+            const parteFundo = lucroDia * (pctFundo / 100);
+            const saldoFundo = parteFundo - custoEquipe;
             const outTotalLocacao = document.getElementById('outTotalLocacao').textContent;
             const outTotalJP = document.getElementById('outTotalJP').textContent;
             const outTotalManzi = document.getElementById('outTotalManzi').textContent;
@@ -697,9 +682,11 @@
             msg += `Locação de Quadra: ${outTotalLocacao}\n${turmasTexto}\n`;
             msg += `Bebidas: ${fmt(totalBebidas)} (CMV ${fmt(cmvBebidas)}, margem ${fmt(totalBebidas - cmvBebidas)})\n`;
             msg += `Comida: ${fmt(totalComida)} (CMV ${fmt(cmvComida)}, margem ${fmt(totalComida - cmvComida)})\n`;
-            msg += `Equipe do Domingo: ${fmt(custoEquipe)} (JP: −${fmt(equipeJP)}, Manzi Sports: −${fmt(equipeManzi)})\n\n`;
-            msg += `*Total JP:* ${outTotalJP}\n`;
-            msg += `*Total Manzi Sports:* ${outTotalManzi}`;
+            msg += `Lucro do dia: ${fmt(lucroDia)}\n\n`;
+            msg += `*Divisão ${pctJP}/${pctManzi}/${pctFundo}*\n`;
+            msg += `*Total JP (${pctJP}%):* ${outTotalJP}\n`;
+            msg += `*Total Manzi Sports (${pctManzi}%):* ${outTotalManzi}\n`;
+            msg += `Fundo do Projeto (${pctFundo}%): ${fmt(parteFundo)} − Equipe ${fmt(custoEquipe)} = *saldo ${saldoFundo < 0 ? '−' : ''}${fmt(Math.abs(saldoFundo))}*`;
 
             window.open('https://wa.me/5562993431310?text=' + encodeURIComponent(msg), '_blank');
         }
