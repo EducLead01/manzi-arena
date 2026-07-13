@@ -26,28 +26,11 @@
         * { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: #fff; }
         ::selection { background: #E79E14; color: #0A0A0A; }
-
-        .pill-btn {
-            transition: all 0.15s ease;
-        }
-        .pill-btn.is-selected {
-            background: #E79E14;
-            border-color: #E79E14;
-            color: #0A0A0A;
-        }
-        .check-box {
-            transition: all 0.15s ease;
-        }
-        .check-box.is-selected {
-            background: rgba(231,158,20,0.12);
-            border-color: #E79E14;
-            color: #E79E14;
-        }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex items-center justify-center">
 
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 py-14">
+    <div class="max-w-lg w-full mx-auto px-4 sm:px-6 py-14">
 
         <!-- HEADER -->
         <header class="text-center mb-10">
@@ -58,11 +41,10 @@
         <section class="text-center mb-10">
             <p class="text-manzi-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Trabalhe Conosco</p>
             <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight leading-tight">Vaga de <span class="text-manzi-gold">Cozinheira(o)</span><br>e Auxiliar de Cozinha</h1>
-            <p class="text-white/50 text-sm mt-4">Preencha a pré-qualificação abaixo. Leva menos de 2 minutos.</p>
         </section>
 
         <!-- ENDEREÇO -->
-        <section class="rounded-2xl p-6 mb-10 border border-white/10" style="background:#111111;">
+        <section class="rounded-2xl p-6 mb-8 border border-white/10" style="background:#111111;">
             <p class="text-xs font-bold uppercase tracking-widest text-manzi-gold mb-3">Local da vaga</p>
             <p class="text-white/80 text-sm leading-relaxed">
                 Avenida Bernardo Sayão, Nº 2159 — Setor Fama<br>
@@ -76,61 +58,11 @@
             </a>
         </section>
 
-        <!-- FORMULÁRIO -->
-        <div id="form-card" class="rounded-3xl p-7 sm:p-8 border border-white/[0.06] space-y-9" style="background:#111111;">
-
-            <!-- Vaga de interesse -->
-            <div>
-                <p class="font-black text-sm uppercase tracking-wide mb-4">Qual vaga te interessa?</p>
-                <div class="grid grid-cols-2 gap-3" id="vaga-buttons">
-                    <button type="button" class="pill-btn py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Cozinheira(o)">Cozinheira(o)</button>
-                    <button type="button" class="pill-btn py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Auxiliar de Cozinha">Auxiliar de Cozinha</button>
-                </div>
-            </div>
-
-            <!-- Dados pessoais -->
-            <div>
-                <p class="font-black text-sm uppercase tracking-wide mb-4">Seus dados</p>
-                <div class="grid sm:grid-cols-2 gap-3">
-                    <input id="nome" type="text" placeholder="Nome completo" class="bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors w-full sm:col-span-2">
-                    <input id="whatsapp" type="tel" placeholder="WhatsApp (DDD + número)" class="bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors w-full">
-                    <input id="idade" type="text" placeholder="Idade" class="bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors w-full">
-                </div>
-            </div>
-
-            <!-- Experiência -->
-            <div>
-                <p class="font-black text-sm uppercase tracking-wide mb-1">Já trabalhou como cozinheira(o) ou auxiliar de cozinha antes?</p>
-                <div class="grid grid-cols-2 gap-3 mt-4">
-                    <button type="button" class="pill-btn exp-btn py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Sim">Sim</button>
-                    <button type="button" class="pill-btn exp-btn py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Não">Não</button>
-                </div>
-                <textarea id="experiencia" rows="2" placeholder="Onde e por quanto tempo (opcional)" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 resize-none transition-colors mt-3"></textarea>
-            </div>
-
-            <!-- Disponibilidade -->
-            <div>
-                <p class="font-black text-sm uppercase tracking-wide mb-4">Disponibilidade de horário</p>
-                <div class="grid grid-cols-2 gap-3" id="disponibilidade-buttons">
-                    <button type="button" class="check-box py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Manhã">Manhã</button>
-                    <button type="button" class="check-box py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Tarde">Tarde</button>
-                    <button type="button" class="check-box py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Noite">Noite</button>
-                    <button type="button" class="check-box py-3 px-4 rounded-xl border border-white/10 text-white/60 text-sm font-bold" data-val="Fins de semana">Fins de semana</button>
-                </div>
-            </div>
-
-            <!-- Início -->
-            <div>
-                <p class="font-black text-sm uppercase tracking-wide mb-4">A partir de quando pode começar?</p>
-                <input id="inicio" type="text" placeholder="Ex: Imediatamente, próxima semana..." class="bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors w-full">
-            </div>
-
-            <!-- SUBMIT -->
-            <button type="button" onclick="enviarCandidatura()" class="w-full bg-manzi-gold text-manzi-black font-black text-base uppercase tracking-wider py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300">
-                Enviar Candidatura via WhatsApp
-            </button>
-            <p id="form-error" class="hidden text-center text-sm text-red-400 -mt-5">Preencha nome, WhatsApp e a vaga de interesse pra continuar.</p>
-        </div>
+        <!-- CTA -->
+        <button onclick="abrirPopup()" class="w-full flex items-center justify-center gap-2 bg-manzi-gold text-manzi-black font-black text-sm uppercase tracking-wider py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar Currículo via WhatsApp
+        </button>
 
         <footer class="text-center mt-10">
             <p class="text-white/20 text-xs">© 2026 Manzi Arena</p>
@@ -138,61 +70,50 @@
 
     </div>
 
+    <!-- POPUP -->
+    <div id="popup-overlay" onclick="fecharPopup()" class="hidden fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm"></div>
+
+    <div id="popup" class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <div class="w-full max-w-sm rounded-2xl p-7 border border-white/10 text-center" style="background:#111111;">
+
+            <div id="popup-question">
+                <p class="font-black text-lg uppercase tracking-tight mb-2">Antes de enviar seu currículo</p>
+                <p class="text-white/60 text-sm leading-relaxed mb-6">Você mora nessa região? A vaga é exclusivamente para pessoas que moram próximas ao local de trabalho.</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="responderMora(false)" class="py-3 px-4 rounded-xl border border-white/10 text-white/70 text-sm font-bold hover:border-white/30 transition-all">Não</button>
+                    <button onclick="responderMora(true)" class="py-3 px-4 rounded-xl bg-manzi-gold text-manzi-black text-sm font-black hover:bg-yellow-400 transition-all">Sim</button>
+                </div>
+            </div>
+
+            <div id="popup-nao" class="hidden">
+                <p class="font-black text-lg uppercase tracking-tight mb-2">Vaga exclusiva pra região</p>
+                <p class="text-white/60 text-sm leading-relaxed mb-6">Infelizmente essa vaga é exclusiva para quem mora próximo ao local de trabalho. Obrigado pelo interesse!</p>
+                <button onclick="fecharPopup()" class="w-full py-3 px-4 rounded-xl border border-white/10 text-white/70 text-sm font-bold hover:border-white/30 transition-all">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+
     <script>
-        let selectedVaga = null;
-        document.querySelectorAll('#vaga-buttons .pill-btn').forEach(btn => {
-            btn.onclick = () => {
-                document.querySelectorAll('#vaga-buttons .pill-btn').forEach(b => b.classList.remove('is-selected'));
-                btn.classList.add('is-selected');
-                selectedVaga = btn.dataset.val;
-            };
-        });
-
-        let selectedExperiencia = null;
-        document.querySelectorAll('.exp-btn').forEach(btn => {
-            btn.onclick = () => {
-                document.querySelectorAll('.exp-btn').forEach(b => b.classList.remove('is-selected'));
-                btn.classList.add('is-selected');
-                selectedExperiencia = btn.dataset.val;
-            };
-        });
-
-        const selectedDisponibilidade = new Set();
-        document.querySelectorAll('#disponibilidade-buttons .check-box').forEach(btn => {
-            btn.onclick = () => {
-                btn.classList.toggle('is-selected');
-                if (selectedDisponibilidade.has(btn.dataset.val)) {
-                    selectedDisponibilidade.delete(btn.dataset.val);
-                } else {
-                    selectedDisponibilidade.add(btn.dataset.val);
-                }
-            };
-        });
-
-        function enviarCandidatura() {
-            const nome = document.getElementById('nome').value.trim();
-            const whatsapp = document.getElementById('whatsapp').value.trim();
-            const idade = document.getElementById('idade').value.trim();
-            const experienciaTexto = document.getElementById('experiencia').value.trim();
-            const inicio = document.getElementById('inicio').value.trim();
-            const erro = document.getElementById('form-error');
-
-            if (!nome || !whatsapp || !selectedVaga) {
-                erro.classList.remove('hidden');
-                return;
+        function abrirPopup() {
+            document.getElementById('popup-overlay').classList.remove('hidden');
+            document.getElementById('popup').classList.remove('hidden');
+            document.getElementById('popup-question').classList.remove('hidden');
+            document.getElementById('popup-nao').classList.add('hidden');
+        }
+        function fecharPopup() {
+            document.getElementById('popup-overlay').classList.add('hidden');
+            document.getElementById('popup').classList.add('hidden');
+        }
+        function responderMora(mora) {
+            if (mora) {
+                const msg = 'Olá! Moro perto da Avenida Bernardo Sayão (Setor Fama) e quero enviar meu currículo pra vaga de Cozinheira(o) / Auxiliar de Cozinha na Manzi Arena.';
+                window.open('https://wa.me/5562993431310?text=' + encodeURIComponent(msg), '_blank');
+                fecharPopup();
+            } else {
+                document.getElementById('popup-question').classList.add('hidden');
+                document.getElementById('popup-nao').classList.remove('hidden');
             }
-            erro.classList.add('hidden');
-
-            let msg = `Olá! Quero me candidatar à vaga de *${selectedVaga}* na Manzi Arena.\n\n`;
-            msg += `Nome: ${nome}\n`;
-            msg += `WhatsApp: ${whatsapp}\n`;
-            if (idade) msg += `Idade: ${idade}\n`;
-            if (selectedExperiencia) msg += `Já trabalhou na área: ${selectedExperiencia}\n`;
-            if (experienciaTexto) msg += `Experiência: ${experienciaTexto}\n`;
-            if (selectedDisponibilidade.size) msg += `Disponibilidade: ${[...selectedDisponibilidade].join(', ')}\n`;
-            if (inicio) msg += `Pode começar: ${inicio}\n`;
-
-            window.open(`https://wa.me/5562993431310?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 
