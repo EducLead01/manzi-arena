@@ -119,6 +119,31 @@
         <div class="rounded-2xl p-6 sm:p-7 border-2 border-manzi-gold/40 mb-8" style="background:#111111;">
             <p class="font-black text-sm uppercase tracking-wide mb-5">Resultado do repasse</p>
 
+            <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Resumo do dia</p>
+            <div class="space-y-1 text-sm mb-6">
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Clubinho</span>
+                    <span id="resumoClubinho" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Locação de Quadra</span>
+                    <span id="resumoLocacao" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Bebidas</span>
+                    <span id="resumoBebidas" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Comida</span>
+                    <span id="resumoComida" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5 pt-2 border-t border-white/10 mt-1">
+                    <span class="text-white/60 font-bold">Soma das categorias</span>
+                    <span id="resumoSoma" class="font-bold text-manzi-gold">R$ 0,00</span>
+                </div>
+            </div>
+
+            <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Divisão do repasse</p>
             <div class="space-y-3 text-sm">
                 <div class="flex justify-between py-2 border-b border-white/[0.06]">
                     <span class="text-white/50">Clubinho — Manzi Sports (50%)</span>
@@ -239,6 +264,12 @@
                 return sum + (isNaN(valor) ? 0 : valor);
             }, 0);
             document.getElementById('outTotalLocacao').textContent = fmt(totalLocacao);
+
+            document.getElementById('resumoClubinho').textContent = fmt(totalClubinho);
+            document.getElementById('resumoLocacao').textContent = fmt(totalLocacao);
+            document.getElementById('resumoBebidas').textContent = fmt(totalBebidas);
+            document.getElementById('resumoComida').textContent = fmt(totalComida);
+            document.getElementById('resumoSoma').textContent = fmt(totalClubinho + totalLocacao + totalBebidas + totalComida);
 
             const locacaoManzi = totalLocacao * 0.5;
             const locacaoJP = totalLocacao * 0.5;
