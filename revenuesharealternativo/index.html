@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo Alternativo — Simulador</title>
+    <title>Modelo Híbrido — Simulador</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,6 +28,8 @@
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; }
+        .preset-btn { transition: all 0.15s ease; }
+        .preset-btn.is-active { border-color: #E79E14; background: rgba(231,158,20,0.08); }
     </style>
 </head>
 <body class="min-h-screen">
@@ -37,8 +39,8 @@
         <!-- HERO -->
         <section class="text-center mb-10">
             <p class="text-manzi-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Proposta em discussão</p>
-            <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight">Modelo <span class="text-manzi-gold">Alternativo</span></h1>
-            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Simulador pra comparar os modelos de remuneração do parceiro: porcentagem, valor fixo e híbrido. Mexa nos números e veja o resultado lado a lado.</p>
+            <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight">Modelo <span class="text-manzi-gold">Híbrido</span></h1>
+            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Fixo garantido + bônus a cada R$ 500 de faturamento do domingo. Segurança pro parceiro e incentivo pra crescer o projeto.</p>
         </section>
 
         <!-- REFERÊNCIA -->
@@ -48,148 +50,124 @@
                 <div>
                     <p class="text-white/40 text-xs">Cervejas</p>
                     <p class="font-bold">R$ 1.033,00</p>
-                    <p class="text-white/30 text-xs">margem R$ 459,11</p>
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">Arena (locação/clubinho)</p>
                     <p class="font-bold">R$ 330,00</p>
-                    <p class="text-white/30 text-xs">entra integral</p>
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">Bebidas (não alcoólicas)</p>
                     <p class="font-bold">R$ 309,00</p>
-                    <p class="text-white/30 text-xs">margem R$ 137,33</p>
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">Gulosemas (bomboniere)</p>
                     <p class="font-bold">R$ 40,00</p>
-                    <p class="text-white/30 text-xs">margem R$ 17,78</p>
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4 text-sm pt-3 border-t border-white/10">
                 <div>
-                    <p class="text-white/40 text-xs">Lucro do dia (markup 80%)</p>
-                    <p class="font-bold text-manzi-gold text-lg">R$ 944,22</p>
+                    <p class="text-white/40 text-xs">Faturamento total do dia</p>
+                    <p class="font-bold text-manzi-gold text-lg">R$ 1.712,00</p>
                 </div>
                 <div>
-                    <p class="text-white/40 text-xs">JP a 40%</p>
+                    <p class="text-white/40 text-xs">JP a 40% do lucro (modelo antigo)</p>
                     <p class="font-bold text-lg">R$ 377,69</p>
-                    <p class="text-white/30 text-xs">equivalente</p>
+                    <p class="text-white/30 text-xs">referência de equivalência</p>
                 </div>
             </div>
         </div>
 
-        <!-- SIMULADOR: ENTRADAS -->
+        <!-- PRESETS -->
+        <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-6" style="background:#111111;">
+            <p class="font-black text-sm uppercase tracking-wide mb-1">Sugestões prontas</p>
+            <p class="text-xs text-white/30 mb-5">Três calibragens possíveis — clique pra aplicar no simulador. Todas ficam perto dos R$ 377 que os 40% davam no último domingo.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button type="button" onclick="aplicarPreset(150, 75, this)" class="preset-btn is-active text-left rounded-xl border border-white/10 p-4">
+                    <p class="text-manzi-gold text-xs font-bold uppercase tracking-widest mb-1">Equilibrado</p>
+                    <p class="font-black text-lg">R$ 150 + R$ 75<span class="text-white/40 text-xs font-semibold"> /faixa</span></p>
+                    <p class="text-white/30 text-xs mt-2">No domingo de referência: R$ 375 — praticamente igual aos 40%.</p>
+                </button>
+                <button type="button" onclick="aplicarPreset(200, 50, this)" class="preset-btn text-left rounded-xl border border-white/10 p-4">
+                    <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">Mais segurança</p>
+                    <p class="font-black text-lg">R$ 200 + R$ 50<span class="text-white/40 text-xs font-semibold"> /faixa</span></p>
+                    <p class="text-white/30 text-xs mt-2">Garantido maior pros dias fracos; referência: R$ 350.</p>
+                </button>
+                <button type="button" onclick="aplicarPreset(100, 100, this)" class="preset-btn text-left rounded-xl border border-white/10 p-4">
+                    <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">Mais incentivo</p>
+                    <p class="font-black text-lg">R$ 100 + R$ 100<span class="text-white/40 text-xs font-semibold"> /faixa</span></p>
+                    <p class="text-white/30 text-xs mt-2">Bônus forte pra quem quer lotar; referência: R$ 400.</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- SIMULADOR -->
         <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-6" style="background:#111111;">
             <p class="font-black text-sm uppercase tracking-wide mb-5">Simulador</p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Lucro do domingo</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="lucro" type="number" step="1" min="0" value="944" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
-                    </div>
-                </div>
-                <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Custo da equipe do dia</p>
-                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
-                        <span class="text-white/40 text-sm">R$</span>
-                        <input id="equipe" type="number" step="1" min="0" value="0" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
-                    </div>
-                </div>
-            </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Modelo Fixo — valor por domingo</p>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Faturamento do domingo</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="fixo" type="number" step="1" min="0" value="380" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="faturamento" type="number" step="1" min="0" value="1712" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Híbrido — fixo garantido</p>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Fixo garantido</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="garantido" type="number" step="1" min="0" value="250" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="garantido" type="number" step="1" min="0" value="150" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
-                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Híbrido — bônus acima de R$ <span id="lblMeta">300</span></p>
-                    <div class="flex gap-2">
-                        <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
-                            <input id="bonusPct" type="number" step="1" min="0" max="100" value="25" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
-                            <span class="text-white/40 text-xs">%</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
-                            <span class="text-white/40 text-xs">R$</span>
-                            <input id="meta" type="number" step="10" min="0" value="500" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
-                        </div>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Bônus por faixa de R$ 500</p>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="bonusFaixa" type="number" step="1" min="0" value="75" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- RESULTADO: 3 MODELOS -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-
-            <div class="rounded-2xl p-5 border border-white/[0.06]" style="background:#111111;">
-                <p class="text-white/40 text-xs font-bold uppercase tracking-widest mb-1">Modelo atual</p>
-                <h3 class="font-black text-lg uppercase mb-4">40 / 40 / 20</h3>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between"><span class="text-white/50">JP</span><span id="aJP" class="font-bold text-manzi-gold">R$ 0,00</span></div>
-                    <div class="flex justify-between"><span class="text-white/50">Manzi</span><span id="aManzi" class="font-bold">R$ 0,00</span></div>
-                    <div class="flex justify-between"><span class="text-white/50">Fundo (após equipe)</span><span id="aFundo" class="font-bold">R$ 0,00</span></div>
+        <!-- RESULTADO -->
+        <div class="rounded-2xl p-6 sm:p-7 border-2 border-manzi-gold/40 mb-6" style="background:#111111;">
+            <p class="font-black text-sm uppercase tracking-wide mb-5">Resultado</p>
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">Faixas completas de R$ 500</span>
+                    <span id="outFaixas" class="font-bold">0</span>
                 </div>
-                <p class="text-white/30 text-xs mt-4 leading-relaxed">JP cresce junto com o projeto. Equipe paga pelo fundo, sem sair dos sócios.</p>
-            </div>
-
-            <div class="rounded-2xl p-5 border border-white/[0.06]" style="background:#111111;">
-                <p class="text-white/40 text-xs font-bold uppercase tracking-widest mb-1">Alternativa</p>
-                <h3 class="font-black text-lg uppercase mb-4">Fixo</h3>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between"><span class="text-white/50">JP</span><span id="bJP" class="font-bold text-manzi-gold">R$ 0,00</span></div>
-                    <div class="flex justify-between"><span class="text-white/50">Manzi (após equipe)</span><span id="bManzi" class="font-bold">R$ 0,00</span></div>
-                    <div class="flex justify-between"><span class="text-white/50">Fundo</span><span class="font-bold text-white/30">—</span></div>
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">Fixo garantido</span>
+                    <span id="outGarantido" class="font-bold">R$ 0,00</span>
                 </div>
-                <p class="text-white/30 text-xs mt-4 leading-relaxed">Previsível pro JP, mas ele ganha o mesmo com 7 ou 30 participantes — perde o incentivo de crescer.</p>
-            </div>
-
-            <div class="rounded-2xl p-5 border-2 border-manzi-gold/40" style="background:#111111;">
-                <p class="text-manzi-gold text-xs font-bold uppercase tracking-widest mb-1">Recomendado</p>
-                <h3 class="font-black text-lg uppercase mb-4">Híbrido</h3>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between"><span class="text-white/50">JP</span><span id="cJP" class="font-bold text-manzi-gold">R$ 0,00</span></div>
-                    <div class="flex justify-between"><span class="text-white/50">Manzi (após equipe)</span><span id="cManzi" class="font-bold">R$ 0,00</span></div>
-                    <div class="flex justify-between"><span class="text-white/50">Detalhe</span><span id="cDetalhe" class="font-semibold text-white/40 text-xs text-right">—</span></div>
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">Bônus das faixas</span>
+                    <span id="outBonus" class="font-bold">R$ 0,00</span>
                 </div>
-                <p class="text-white/30 text-xs mt-4 leading-relaxed">Fixo garantido + bônus acima da meta: segurança pro JP e incentivo pra lotar o domingo.</p>
             </div>
-
+            <div class="mt-5 pt-5 border-t-2 border-white/10 flex justify-between items-center">
+                <span class="font-black uppercase text-xs tracking-widest text-white/50">Total JP no domingo</span>
+                <span id="outTotalJP" class="font-black text-2xl text-manzi-gold">R$ 0,00</span>
+            </div>
+            <p id="outEquivalencia" class="text-xs text-white/30 mt-2"></p>
         </div>
 
-        <!-- BREAK-EVEN -->
-        <div class="rounded-2xl p-5 border border-white/10 mb-6" style="background:#111111;">
-            <p id="breakEven" class="text-sm text-white/60 leading-relaxed"></p>
-        </div>
-
-        <!-- CENÁRIOS -->
+        <!-- ESCADA DE FAIXAS -->
         <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-8" style="background:#111111;">
-            <p class="font-black text-sm uppercase tracking-wide mb-1">Quanto o JP leva em cada cenário</p>
-            <p class="text-xs text-white/30 mb-5">Com os valores configurados acima, em três tipos de domingo.</p>
+            <p class="font-black text-sm uppercase tracking-wide mb-1">Escada de faixas</p>
+            <p class="text-xs text-white/30 mb-5">Quanto o JP leva em cada nível de faturamento, com os valores configurados acima. A linha destacada é onde o último domingo se encaixa.</p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
                     <thead>
                         <tr class="text-white/40 text-xs uppercase tracking-wider">
-                            <th class="text-left py-2 font-semibold">Cenário</th>
-                            <th class="text-right py-2 font-semibold text-white/70">Lucro total do dia</th>
-                            <th class="text-right py-2 font-semibold">JP — 40/40/20</th>
-                            <th class="text-right py-2 font-semibold">JP — Fixo</th>
-                            <th class="text-right py-2 font-semibold">JP — Híbrido</th>
+                            <th class="text-left py-2 font-semibold">Faturamento do dia</th>
+                            <th class="text-right py-2 font-semibold">Faixas</th>
+                            <th class="text-right py-2 font-semibold">Bônus</th>
+                            <th class="text-right py-2 font-semibold text-white/70">Total JP</th>
                         </tr>
                     </thead>
-                    <tbody id="cenarios"></tbody>
+                    <tbody id="escada"></tbody>
                 </table>
             </div>
         </div>
@@ -201,6 +179,9 @@
     </div>
 
     <script>
+        const FAIXA = 500;
+        const REF_FATURAMENTO = 1712;
+
         function num(id) {
             const v = parseFloat(document.getElementById(id).value);
             return isNaN(v) ? 0 : v;
@@ -208,72 +189,53 @@
         function fmt(v) {
             return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
+        function fmtInt(v) {
+            return 'R$ ' + v.toLocaleString('pt-BR');
+        }
 
-        function jpHibrido(lucro, garantido, meta, bonusPct) {
-            return garantido + Math.max(0, (lucro - meta) * (bonusPct / 100));
+        function aplicarPreset(garantido, bonus, btn) {
+            document.getElementById('garantido').value = garantido;
+            document.getElementById('bonusFaixa').value = bonus;
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            calcular();
         }
 
         function calcular() {
-            const lucro = num('lucro');
-            const equipe = num('equipe');
-            const fixo = num('fixo');
+            const faturamento = num('faturamento');
             const garantido = num('garantido');
-            const meta = num('meta');
-            const bonusPct = num('bonusPct');
+            const bonusFaixa = num('bonusFaixa');
 
-            document.getElementById('lblMeta').textContent = meta.toLocaleString('pt-BR');
+            const faixas = Math.floor(faturamento / FAIXA);
+            const bonus = faixas * bonusFaixa;
+            const totalJP = garantido + bonus;
 
-            const aJP = lucro * 0.4;
-            const aManzi = lucro * 0.4;
-            const aFundo = lucro * 0.2 - equipe;
-            document.getElementById('aJP').textContent = fmt(aJP);
-            document.getElementById('aManzi').textContent = fmt(aManzi);
-            const elAFundo = document.getElementById('aFundo');
-            elAFundo.textContent = (aFundo < 0 ? '− ' : '') + fmt(Math.abs(aFundo));
-            elAFundo.classList.toggle('text-red-400', aFundo < 0);
+            document.getElementById('outFaixas').textContent = faixas;
+            document.getElementById('outGarantido').textContent = fmt(garantido);
+            document.getElementById('outBonus').textContent = fmt(bonus) + ` (${faixas} × ${fmt(bonusFaixa)})`;
+            document.getElementById('outTotalJP').textContent = fmt(totalJP);
 
-            const bJP = fixo;
-            const bManzi = lucro - fixo - equipe;
-            document.getElementById('bJP').textContent = fmt(bJP);
-            const elBManzi = document.getElementById('bManzi');
-            elBManzi.textContent = (bManzi < 0 ? '− ' : '') + fmt(Math.abs(bManzi));
-            elBManzi.classList.toggle('text-red-400', bManzi < 0);
+            const pctEfetivo = faturamento > 0 ? (totalJP / faturamento) * 100 : 0;
+            document.getElementById('outEquivalencia').textContent =
+                `Equivale a ${pctEfetivo.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% do faturamento do dia. Referência do modelo antigo (40% do lucro no último domingo): R$ 377,69.`;
 
-            const cJP = jpHibrido(lucro, garantido, meta, bonusPct);
-            const cManzi = lucro - cJP - equipe;
-            document.getElementById('cJP').textContent = fmt(cJP);
-            const elCManzi = document.getElementById('cManzi');
-            elCManzi.textContent = (cManzi < 0 ? '− ' : '') + fmt(Math.abs(cManzi));
-            elCManzi.classList.toggle('text-red-400', cManzi < 0);
-            const bonus = cJP - garantido;
-            document.getElementById('cDetalhe').textContent = bonus > 0
-                ? `${fmt(garantido)} + ${fmt(bonus)} de bônus`
-                : `só o garantido (meta não batida)`;
-
-            const breakEvenLucro = fixo / 0.4;
-            document.getElementById('breakEven').innerHTML =
-                `<strong class="text-manzi-gold">Ponto de equilíbrio:</strong> com fixo de ${fmt(fixo)}, o JP ganha mais que os 40% sempre que o lucro do domingo ficar <strong>abaixo de ${fmt(breakEvenLucro)}</strong> — e a Manzi ganha mais quando passar disso. Ou seja: o fixo protege o JP nos dias fracos e limita ele nos dias bons.`;
-
-            const cenarios = [
-                { nome: 'Domingo fraco', lucro: Math.round(lucro * 0.6) },
-                { nome: 'Domingo igual ao último', lucro: lucro },
-                { nome: 'Domingo forte', lucro: Math.round(lucro * 1.75) },
-            ];
-            document.getElementById('cenarios').innerHTML = cenarios.map(c => {
-                const vA = c.lucro * 0.4;
-                const vB = fixo;
-                const vC = jpHibrido(c.lucro, garantido, meta, bonusPct);
-                const max = Math.max(vA, vB, vC);
-                const cell = v => `<td class="text-right py-2 ${Math.abs(v - max) < 0.01 ? 'text-manzi-gold font-bold' : 'text-white/70'}">${fmt(v)}</td>`;
-                return `<tr class="border-t border-white/[0.06]">
-                    <td class="py-2 text-white/60">${c.nome}</td>
-                    <td class="text-right py-2 text-white font-black">${fmt(c.lucro)}</td>
-                    ${cell(vA)}${cell(vB)}${cell(vC)}
-                </tr>`;
-            }).join('');
+            const linhas = [];
+            for (let i = 0; i <= 7; i++) {
+                const inicio = i * FAIXA;
+                const fim = inicio + FAIXA - 1;
+                const jp = garantido + i * bonusFaixa;
+                const ehReferencia = REF_FATURAMENTO >= inicio && REF_FATURAMENTO <= fim;
+                linhas.push(`<tr class="border-t border-white/[0.06] ${ehReferencia ? 'bg-manzi-gold/10' : ''}">
+                    <td class="py-2 ${ehReferencia ? 'text-manzi-gold font-semibold' : 'text-white/60'}">${fmtInt(inicio)} — ${fmtInt(fim)}${ehReferencia ? ' · último domingo' : ''}</td>
+                    <td class="text-right py-2 text-white/40">${i}</td>
+                    <td class="text-right py-2 text-white/70">${fmt(i * bonusFaixa)}</td>
+                    <td class="text-right py-2 text-white font-black">${fmt(jp)}</td>
+                </tr>`);
+            }
+            document.getElementById('escada').innerHTML = linhas.join('');
         }
 
-        ['lucro','equipe','fixo','garantido','meta','bonusPct'].forEach(id => {
+        ['faturamento','garantido','bonusFaixa'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         calcular();
