@@ -183,10 +183,10 @@
                     <thead>
                         <tr class="text-white/40 text-xs uppercase tracking-wider">
                             <th class="text-left py-2 font-semibold">Cenário</th>
-                            <th class="text-right py-2 font-semibold">Lucro</th>
-                            <th class="text-right py-2 font-semibold">40/40/20</th>
-                            <th class="text-right py-2 font-semibold">Fixo</th>
-                            <th class="text-right py-2 font-semibold">Híbrido</th>
+                            <th class="text-right py-2 font-semibold text-white/70">Lucro total do dia</th>
+                            <th class="text-right py-2 font-semibold">JP — 40/40/20</th>
+                            <th class="text-right py-2 font-semibold">JP — Fixo</th>
+                            <th class="text-right py-2 font-semibold">JP — Híbrido</th>
                         </tr>
                     </thead>
                     <tbody id="cenarios"></tbody>
@@ -267,7 +267,7 @@
                 const cell = v => `<td class="text-right py-2 ${Math.abs(v - max) < 0.01 ? 'text-manzi-gold font-bold' : 'text-white/70'}">${fmt(v)}</td>`;
                 return `<tr class="border-t border-white/[0.06]">
                     <td class="py-2 text-white/60">${c.nome}</td>
-                    <td class="text-right py-2 text-white/40">${fmt(c.lucro)}</td>
+                    <td class="text-right py-2 text-white font-black">${fmt(c.lucro)}</td>
                     ${cell(vA)}${cell(vB)}${cell(vC)}
                 </tr>`;
             }).join('');
