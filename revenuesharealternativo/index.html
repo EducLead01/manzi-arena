@@ -43,25 +43,37 @@
 
         <!-- REFERÊNCIA -->
         <div class="rounded-2xl p-6 border border-white/10 mb-6" style="background:#111111;">
-            <p class="text-xs font-bold uppercase tracking-widest text-manzi-gold mb-3">Referência — último domingo</p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+            <p class="text-xs font-bold uppercase tracking-widest text-manzi-gold mb-3">Referência — último domingo (sistema)</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm mb-4">
                 <div>
-                    <p class="text-white/40 text-xs">Clubinho</p>
-                    <p class="font-bold">R$ 105,00</p>
-                    <p class="text-white/30 text-xs">7 × R$ 15</p>
+                    <p class="text-white/40 text-xs">Cervejas</p>
+                    <p class="font-bold">R$ 1.033,00</p>
+                    <p class="text-white/30 text-xs">margem R$ 459,11</p>
                 </div>
                 <div>
-                    <p class="text-white/40 text-xs">Locação</p>
-                    <p class="font-bold">R$ 300,00</p>
-                    <p class="text-white/30 text-xs">5h × R$ 60</p>
+                    <p class="text-white/40 text-xs">Arena (locação/clubinho)</p>
+                    <p class="font-bold">R$ 330,00</p>
+                    <p class="text-white/30 text-xs">entra integral</p>
                 </div>
                 <div>
-                    <p class="text-white/40 text-xs">Lucro do dia</p>
-                    <p class="font-bold text-manzi-gold">R$ 405,00</p>
+                    <p class="text-white/40 text-xs">Bebidas (não alcoólicas)</p>
+                    <p class="font-bold">R$ 309,00</p>
+                    <p class="text-white/30 text-xs">margem R$ 137,33</p>
+                </div>
+                <div>
+                    <p class="text-white/40 text-xs">Gulosemas (bomboniere)</p>
+                    <p class="font-bold">R$ 40,00</p>
+                    <p class="text-white/30 text-xs">margem R$ 17,78</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm pt-3 border-t border-white/10">
+                <div>
+                    <p class="text-white/40 text-xs">Lucro do dia (markup 80%)</p>
+                    <p class="font-bold text-manzi-gold text-lg">R$ 944,22</p>
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">JP a 40%</p>
-                    <p class="font-bold">R$ 162,00</p>
+                    <p class="font-bold text-lg">R$ 377,69</p>
                     <p class="text-white/30 text-xs">equivalente</p>
                 </div>
             </div>
@@ -76,7 +88,7 @@
                     <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Lucro do domingo</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="lucro" type="number" step="1" min="0" value="405" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="lucro" type="number" step="1" min="0" value="944" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
@@ -93,14 +105,14 @@
                     <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Modelo Fixo — valor por domingo</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="fixo" type="number" step="1" min="0" value="160" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="fixo" type="number" step="1" min="0" value="380" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
                     <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Híbrido — fixo garantido</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="garantido" type="number" step="1" min="0" value="100" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="garantido" type="number" step="1" min="0" value="250" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                 </div>
                 <div>
@@ -112,7 +124,7 @@
                         </div>
                         <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-xl px-3 py-3 flex-1 focus-within:border-manzi-gold/50 transition-colors">
                             <span class="text-white/40 text-xs">R$</span>
-                            <input id="meta" type="number" step="10" min="0" value="300" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                            <input id="meta" type="number" step="10" min="0" value="500" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                         </div>
                     </div>
                 </div>
