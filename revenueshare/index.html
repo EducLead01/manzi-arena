@@ -230,7 +230,7 @@
 
                 <div>
                     <div class="flex items-center justify-between mb-1.5">
-                        <label class="block text-xs text-white/40 font-semibold">Markup médio (Bebidas e Comida)</label>
+                        <label class="block text-xs text-white/40 font-semibold">Markup médio (Bebidas, Comida e Bomboniere)</label>
                         <div class="flex items-center gap-1.5 bg-[#0C0C0C] border border-white/10 rounded-lg px-2.5 py-1.5">
                             <input id="markupMedio" type="number" step="1" min="0" value="80" class="bg-transparent w-12 text-xs text-white/90 focus:outline-none">
                             <span class="text-white/30 text-xs whitespace-nowrap">% sobre o custo</span>
@@ -257,6 +257,16 @@
                         <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
                     </div>
                     <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvComida" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemComida" class="text-white/50 font-semibold">R$ 0,00</span> — só a margem entra no lucro do dia</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-white/40 font-semibold mb-1.5">Bomboniere</label>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="totalBomboniere" type="number" step="0.01" min="0" placeholder="0,00" class="bg-transparent flex-1 text-sm text-white/90 placeholder-white/20 focus:outline-none">
+                        <span class="text-white/30 text-xs whitespace-nowrap">vendido</span>
+                    </div>
+                    <p class="text-xs text-white/30 mt-1.5">CMV estimado: <span id="outCmvBomboniere" class="text-white/50 font-semibold">R$ 0,00</span> · Margem: <span id="outMargemBomboniere" class="text-white/50 font-semibold">R$ 0,00</span> — só a margem entra no lucro do dia</p>
                 </div>
 
                 <div>
@@ -311,6 +321,10 @@
                 <div class="flex justify-between py-1.5">
                     <span class="text-white/50">Comida</span>
                     <span id="resumoComida" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Bomboniere</span>
+                    <span id="resumoBomboniere" class="font-semibold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-1.5 pt-2 border-t border-white/10 mt-1">
                     <span class="text-white/60 font-bold">Soma das categorias</span>
@@ -451,16 +465,21 @@
             const totalClubinho = valorClubinho * qtdParticipantes;
             const totalBebidas = num('totalBebidas');
             const totalComida = num('totalComida');
+            const totalBomboniere = num('totalBomboniere');
             const markupMedio = num('markupMedio');
             const fatorMarkup = 1 + (markupMedio / 100);
             const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
             const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
+            const cmvBomboniere = fatorMarkup > 0 ? totalBomboniere / fatorMarkup : 0;
             const margemBebidas = totalBebidas - cmvBebidas;
             const margemComida = totalComida - cmvComida;
+            const margemBomboniere = totalBomboniere - cmvBomboniere;
             document.getElementById('outCmvBebidas').textContent = fmt(cmvBebidas);
             document.getElementById('outCmvComida').textContent = fmt(cmvComida);
+            document.getElementById('outCmvBomboniere').textContent = fmt(cmvBomboniere);
             document.getElementById('outMargemBebidas').textContent = fmt(margemBebidas);
             document.getElementById('outMargemComida').textContent = fmt(margemComida);
+            document.getElementById('outMargemBomboniere').textContent = fmt(margemBomboniere);
 
             document.getElementById('outTotalClubinho').textContent = fmt(totalClubinho);
 
@@ -474,9 +493,10 @@
             document.getElementById('resumoLocacao').textContent = fmt(totalLocacao);
             document.getElementById('resumoBebidas').textContent = fmt(totalBebidas);
             document.getElementById('resumoComida').textContent = fmt(totalComida);
-            document.getElementById('resumoSoma').textContent = fmt(totalClubinho + totalLocacao + totalBebidas + totalComida);
+            document.getElementById('resumoBomboniere').textContent = fmt(totalBomboniere);
+            document.getElementById('resumoSoma').textContent = fmt(totalClubinho + totalLocacao + totalBebidas + totalComida + totalBomboniere);
 
-            const lucroDia = totalClubinho + totalLocacao + margemBebidas + margemComida;
+            const lucroDia = totalClubinho + totalLocacao + margemBebidas + margemComida + margemBomboniere;
             document.getElementById('outLucroDia').textContent = fmt(lucroDia);
 
             const pctJP = num('pctJPGlobal');
@@ -614,7 +634,7 @@
             }
         }
 
-        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','totalComida','custoEquipe','pctJPGlobal','pctManziGlobal','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix','sinaisHoje','sinaisAntes'].forEach(id => {
+        ['valorClubinho','qtdParticipantes','markupMedio','totalBebidas','totalComida','totalBomboniere','custoEquipe','pctJPGlobal','pctManziGlobal','aberturaCaixa','sisDebito','conDebito','sisCredito','conCredito','sisDinheiro','conDinheiro','sisPix','conPix','sinaisHoje','sinaisAntes'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         document.getElementById('valorHora').addEventListener('input', recalcularTodasTurmas);
@@ -644,16 +664,18 @@
             const totalClubinho = valorClubinho * qtdParticipantes;
             const totalBebidas = num('totalBebidas');
             const totalComida = num('totalComida');
+            const totalBomboniere = num('totalBomboniere');
             const markupMedio = num('markupMedio');
             const fatorMarkup = 1 + (markupMedio / 100);
             const cmvBebidas = fatorMarkup > 0 ? totalBebidas / fatorMarkup : 0;
             const cmvComida = fatorMarkup > 0 ? totalComida / fatorMarkup : 0;
+            const cmvBomboniere = fatorMarkup > 0 ? totalBomboniere / fatorMarkup : 0;
             const custoEquipe = num('custoEquipe');
             const pctJP = num('pctJPGlobal');
             const pctManzi = num('pctManziGlobal');
             const pctFundo = Math.max(0, 100 - pctJP - pctManzi);
             const totalLocacaoNum = turmas.reduce((sum, t) => sum + num(t.valorId), 0);
-            const lucroDia = totalClubinho + totalLocacaoNum + (totalBebidas - cmvBebidas) + (totalComida - cmvComida);
+            const lucroDia = totalClubinho + totalLocacaoNum + (totalBebidas - cmvBebidas) + (totalComida - cmvComida) + (totalBomboniere - cmvBomboniere);
             const parteFundo = lucroDia * (pctFundo / 100);
             const saldoFundo = parteFundo - custoEquipe;
             const outTotalLocacao = document.getElementById('outTotalLocacao').textContent;
@@ -682,6 +704,7 @@
             msg += `Locação de Quadra: ${outTotalLocacao}\n${turmasTexto}\n`;
             msg += `Bebidas: ${fmt(totalBebidas)} (CMV ${fmt(cmvBebidas)}, margem ${fmt(totalBebidas - cmvBebidas)})\n`;
             msg += `Comida: ${fmt(totalComida)} (CMV ${fmt(cmvComida)}, margem ${fmt(totalComida - cmvComida)})\n`;
+            msg += `Bomboniere: ${fmt(totalBomboniere)} (CMV ${fmt(cmvBomboniere)}, margem ${fmt(totalBomboniere - cmvBomboniere)})\n`;
             msg += `Lucro do dia: ${fmt(lucroDia)}\n\n`;
             msg += `*Divisão ${pctJP}/${pctManzi}/${pctFundo}*\n`;
             msg += `*Total JP (${pctJP}%):* ${outTotalJP}\n`;
