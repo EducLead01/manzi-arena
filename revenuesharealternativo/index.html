@@ -185,6 +185,45 @@
             </div>
         </div>
 
+        <!-- BÔNUS POR FAIXA DE FATURAMENTO -->
+        <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-8" style="background:#111111;">
+            <p class="font-black text-sm uppercase tracking-wide mb-1">Bônus por faixa de faturamento (mensal)</p>
+            <p class="text-xs text-white/30 mb-5">A cada R$ 10.000 de faturamento acumulado no mês, o JP ganha um bônus de R$ 500,00.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+                <div>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Faturamento acumulado no mês</p>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="mesFat" type="number" step="0.01" min="0" value="7527.16" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                    </div>
+                    <p class="text-xs text-white/30 mt-1">Padrão: 4 domingos iguais ao último (R$ 1.881,79 cada)</p>
+                </div>
+                <div>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Bônus do mês</p>
+                    <div class="flex items-center justify-between bg-[#0C0C0C] border border-manzi-gold/30 rounded-xl px-4 py-3">
+                        <span id="outBonusMes" class="font-black text-lg text-manzi-gold">R$ 0,00</span>
+                        <span id="outBonusFaixas" class="text-white/40 text-xs">0 faixas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-white/40 text-xs uppercase tracking-wider">
+                            <th class="text-left py-2 font-semibold">Faturamento no mês</th>
+                            <th class="text-right py-2 font-semibold">Bônus da faixa</th>
+                            <th class="text-right py-2 font-semibold text-white/70">Bônus acumulado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaBonus"></tbody>
+                </table>
+            </div>
+
+            <p class="text-xs text-white/30 mt-4 leading-relaxed"><strong class="text-manzi-gold">Observação de viabilidade:</strong> R$ 500 por R$ 10.000 equivalem a 5% do faturamento bruto — pesado se aplicado desde o primeiro real, porque a parte da Manzi ainda paga impostos, taxas de cartão e custos fixos. A sugestão é o bônus valer sobre o faturamento <strong class="text-white">acima da média atual (~R$ 7.500/mês)</strong>: assim cada faixa de bônus só existe quando o crescimento que a paga também existe.</p>
+        </div>
+
         <footer class="text-center">
             <p class="text-white/20 text-xs">© 2026 Manzi Sports — material interno</p>
         </footer>
@@ -267,6 +306,37 @@
             document.getElementById(id).addEventListener('input', calcular);
         });
         calcular();
+
+        const FAIXA_BONUS = 10000;
+        const VALOR_BONUS = 500;
+
+        function fmtInt(v) {
+            return 'R$ ' + v.toLocaleString('pt-BR');
+        }
+
+        function calcularBonus() {
+            const mesFat = num('mesFat');
+            const faixas = Math.floor(mesFat / FAIXA_BONUS);
+            const bonusMes = faixas * VALOR_BONUS;
+
+            document.getElementById('outBonusMes').textContent = fmt(bonusMes);
+            document.getElementById('outBonusFaixas').textContent = `${faixas} ${faixas === 1 ? 'faixa' : 'faixas'}`;
+
+            const linhas = [];
+            for (let i = 1; i <= 6; i++) {
+                const alvo = i * FAIXA_BONUS;
+                const atingida = mesFat >= alvo;
+                linhas.push(`<tr class="border-t border-white/[0.06] ${atingida ? 'bg-manzi-gold/10' : ''}">
+                    <td class="py-2 ${atingida ? 'text-manzi-gold font-semibold' : 'text-white/60'}">${fmtInt(alvo)}${atingida ? ' ✓' : ''}</td>
+                    <td class="text-right py-2 text-white/70">${fmt(VALOR_BONUS)}</td>
+                    <td class="text-right py-2 text-white font-black">${fmt(i * VALOR_BONUS)}</td>
+                </tr>`);
+            }
+            document.getElementById('tabelaBonus').innerHTML = linhas.join('');
+        }
+
+        document.getElementById('mesFat').addEventListener('input', calcularBonus);
+        calcularBonus();
     </script>
 
 </body>
