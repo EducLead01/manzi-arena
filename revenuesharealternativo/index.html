@@ -46,7 +46,7 @@
             <p class="font-black text-sm uppercase tracking-wide mb-4">Como funciona</p>
             <div class="space-y-4 text-sm text-white/60 leading-relaxed">
                 <p><strong class="text-white">1. Bar (bebidas, comida, bomboniere):</strong> de cada venda, primeiro sai o <strong class="text-manzi-gold">CMV</strong> — o custo da mercadoria, estimado pelo markup de 80%. Esse dinheiro não é lucro: volta pra Manzi só pra repor o estoque. O que sobra é a <strong class="text-manzi-gold">margem</strong> (o lucro real), dividida em <strong class="text-white">40% JP / 40% Manzi / 20% Fundo</strong>.</p>
-                <p><strong class="text-white">2. Fundo pagador da equipe:</strong> os 20% <strong class="text-white">não são da Manzi</strong> — vão pro fundo que paga os freelancers do dia. O que sobrar no fundo acumula pro crescimento do projeto; se faltar, compensa nas próximas semanas sem descontar dos sócios.</p>
+                <p><strong class="text-white">2. Fundo pagador da equipe:</strong> os 20% <strong class="text-white">não são da Manzi</strong> — vão pro fundo que paga os freelancers do dia. O fundo tem <strong class="text-manzi-gold">mínimo de R$ 150</strong> (a diária do freelancer): se os 20% não chegarem nisso, ele trava nos R$ 150 e o restante da margem divide meio a meio entre JP e Manzi. O que sobrar no fundo acumula pro crescimento do projeto.</p>
                 <p><strong class="text-white">3. Esporte (locação e clubinho):</strong> não tem mercadoria, então não tem CMV — divide direto <strong class="text-white">50% JP / 50% Manzi</strong>.</p>
                 <p class="text-white/40 text-xs">Na prática, cada R$ 1,80 vendido no bar tem R$ 1,00 de custo e R$ 0,80 de margem: R$ 0,32 pro JP, R$ 0,32 pra Manzi e R$ 0,16 pro fundo — mais o R$ 1,00 de volta pro estoque. Os 40% do JP equivalem a ~17,8% da venda bruta do bar.</p>
             </div>
@@ -69,19 +69,19 @@
             </div>
             <div class="grid grid-cols-3 gap-4 text-sm pt-3 border-t border-white/10">
                 <div>
-                    <p class="text-white/40 text-xs">JP recebeu</p>
-                    <p class="font-bold text-manzi-gold text-lg">R$ 460,21</p>
-                    <p class="text-white/30 text-xs">265,21 + 195,00</p>
+                    <p class="text-white/40 text-xs">JP recebe</p>
+                    <p class="font-bold text-manzi-gold text-lg">R$ 451,51</p>
+                    <p class="text-white/30 text-xs">256,51 + 195,00</p>
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">Manzi (lucro)</p>
-                    <p class="font-bold text-lg">R$ 460,21</p>
+                    <p class="font-bold text-lg">R$ 451,51</p>
                     <p class="text-white/30 text-xs">+ CMV R$ 828,77</p>
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">Fundo (equipe)</p>
-                    <p class="font-bold text-lg">R$ 132,60</p>
-                    <p class="text-white/30 text-xs">20% da margem do bar</p>
+                    <p class="font-bold text-lg">R$ 150,00</p>
+                    <p class="text-white/30 text-xs">mínimo aplicado (20% daria R$ 132,60)</p>
                 </div>
             </div>
         </div>
@@ -112,6 +112,14 @@
                         <span class="text-white/40 text-xs whitespace-nowrap">% sobre o custo</span>
                     </div>
                 </div>
+                <div>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Diária do freelancer (mínimo do fundo)</p>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="diaria" type="number" step="1" min="0" value="150" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                    </div>
+                    <p class="text-xs text-white/30 mt-1">Se não teve freelancer no dia, coloque 0</p>
+                </div>
             </div>
         </div>
 
@@ -134,17 +142,18 @@
                     <span id="outBarMargem" class="font-bold">R$ 0,00</span>
                 </div>
                 <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                    <span class="text-white/50">JP — 40% da margem</span>
-                    <span id="outBarJP" class="font-bold text-manzi-gold">R$ 0,00</span>
-                </div>
-                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                    <span class="text-white/50">Manzi — 40% da margem</span>
-                    <span id="outBarManzi" class="font-bold">R$ 0,00</span>
-                </div>
-                <div class="flex justify-between py-1.5">
-                    <span class="text-white/50">Fundo (equipe freelancer) — 20% da margem</span>
+                    <span class="text-white/50">Fundo (equipe freelancer) — <span id="lblFundo">20% da margem</span></span>
                     <span id="outBarFundo" class="font-bold text-white/70">R$ 0,00</span>
                 </div>
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">JP — <span id="lblBarJP">40% da margem</span></span>
+                    <span id="outBarJP" class="font-bold text-manzi-gold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Manzi — <span id="lblBarManzi">40% da margem</span></span>
+                    <span id="outBarManzi" class="font-bold">R$ 0,00</span>
+                </div>
+                <p id="outFundoNota" class="hidden text-xs text-manzi-gold"></p>
             </div>
 
             <p class="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">Esporte — 50/50</p>
@@ -199,9 +208,37 @@
 
             const cmv = fator > 0 ? bar / fator : 0;
             const margem = bar - cmv;
-            const barJP = margem * 0.4;
-            const barManzi = margem * 0.4;
-            const barFundo = margem * 0.2;
+            const diaria = num('diaria');
+
+            const fundoPct = margem * 0.2;
+            let barFundo = Math.max(diaria, fundoPct);
+            const minimoAplicado = diaria > fundoPct + 0.009;
+            let faltaDiaria = 0;
+            if (barFundo > margem) {
+                faltaDiaria = barFundo - margem;
+                barFundo = margem;
+            }
+            const restante = margem - barFundo;
+            const barJP = minimoAplicado ? restante / 2 : margem * 0.4;
+            const barManzi = minimoAplicado ? restante / 2 : margem * 0.4;
+
+            document.getElementById('lblFundo').textContent = minimoAplicado
+                ? `mínimo de ${fmt(diaria)} aplicado (20% seria ${fmt(fundoPct)})`
+                : '20% da margem';
+            document.getElementById('lblBarJP').textContent = minimoAplicado ? 'metade do restante' : '40% da margem';
+            document.getElementById('lblBarManzi').textContent = minimoAplicado ? 'metade do restante' : '40% da margem';
+
+            const fundoNota = document.getElementById('outFundoNota');
+            if (faltaDiaria > 0.009) {
+                fundoNota.textContent = `⚠ A margem do dia não cobriu a diária — faltam ${fmt(faltaDiaria)} pra completar o fundo.`;
+                fundoNota.className = 'text-xs text-red-400';
+            } else if (minimoAplicado) {
+                fundoNota.textContent = `Mínimo da diária aplicado: o fundo travou em ${fmt(diaria)} e o restante da margem foi dividido meio a meio entre JP e Manzi.`;
+                fundoNota.className = 'text-xs text-manzi-gold';
+            } else {
+                fundoNota.className = 'hidden text-xs';
+                fundoNota.textContent = '';
+            }
 
             const esporteJP = esporte * 0.5;
             const esporteManzi = esporte * 0.5;
@@ -226,7 +263,7 @@
                 `Os 20% do fundo não são da Manzi: pagam a equipe freelancer do dia, e a sobra acumula pro projeto. A Manzi ainda recupera ${fmt(cmv)} de CMV (reposição de estoque, fora do lucro). Os 40% do JP equivalem a ${pctBruto.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% da venda bruta do bar.`;
         }
 
-        ['bar','esporte','markup'].forEach(id => {
+        ['bar','esporte','markup','diaria'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcular);
         });
         calcular();
