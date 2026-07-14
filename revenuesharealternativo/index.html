@@ -188,7 +188,7 @@
         <!-- BÔNUS POR FAIXA DE FATURAMENTO -->
         <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-8" style="background:#111111;">
             <p class="font-black text-sm uppercase tracking-wide mb-1">Bônus por faixa — bar e restaurante (mês inteiro)</p>
-            <p class="text-xs text-white/30 mb-5">Faturamento acumulado do bar e restaurante, dia e noite, o mês todo. Média atual: R$ 55 mil. Primeira zona de bônus em R$ 65 mil, depois 75, 85 e assim por diante — R$ 500,00 por zona.</p>
+            <p class="text-xs text-white/30 mb-5">Faturamento acumulado do bar e restaurante, dia e noite, o mês todo. Média atual: R$ 55 mil. Primeira zona de bônus em R$ 65 mil, depois 75, 85 e assim por diante — R$ 500,00 por zona. Clique numa faixa da tabela pra simular o mês nela.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
                 <div>
@@ -379,13 +379,18 @@
             for (let i = 1; i <= 6; i++) {
                 const alvo = baseMeta + i * FAIXA_BONUS;
                 const atingida = mesFat >= alvo;
-                linhas.push(`<tr class="border-t border-white/[0.06] ${atingida ? 'bg-manzi-gold/10' : ''}">
+                linhas.push(`<tr onclick="selecionarFaixa(${alvo})" class="border-t border-white/[0.06] cursor-pointer transition-colors hover:bg-white/[0.04] ${atingida ? 'bg-manzi-gold/10' : ''}">
                     <td class="py-2 ${atingida ? 'text-manzi-gold font-semibold' : 'text-white/60'}">${fmtInt(alvo)}${atingida ? ' ✓' : ''}</td>
                     <td class="text-right py-2 text-white/70">${fmt(VALOR_BONUS)}</td>
                     <td class="text-right py-2 text-white font-black">${fmt(i * VALOR_BONUS)}</td>
                 </tr>`);
             }
             document.getElementById('tabelaBonus').innerHTML = linhas.join('');
+        }
+
+        function selecionarFaixa(valor) {
+            document.getElementById('mesFat').value = valor;
+            calcularBonus();
         }
 
         ['mesFat','baseMeta'].forEach(id => {
