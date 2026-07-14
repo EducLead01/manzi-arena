@@ -38,23 +38,24 @@
         <section class="text-center mb-10">
             <p class="text-manzi-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Modelo acordado</p>
             <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight">40% da <span class="text-manzi-gold">Margem</span></h1>
-            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Bar: 40% da margem pro JP (depois de repor o custo da mercadoria). Esporte: 50/50 direto.</p>
+            <p class="text-white/50 text-sm mt-4 max-w-lg mx-auto">Bar: margem dividida em 40% JP, 40% Manzi e 20% pro Fundo pagador da equipe freelancer. Esporte: 50/50 direto.</p>
         </section>
 
         <!-- COMO FUNCIONA -->
         <div class="rounded-2xl p-6 sm:p-7 border border-white/10 mb-6" style="background:#111111;">
             <p class="font-black text-sm uppercase tracking-wide mb-4">Como funciona</p>
             <div class="space-y-4 text-sm text-white/60 leading-relaxed">
-                <p><strong class="text-white">1. Bar (bebidas, comida, bomboniere):</strong> de cada venda, primeiro sai o <strong class="text-manzi-gold">CMV</strong> — o custo da mercadoria, estimado pelo markup de 80%. Esse dinheiro não é lucro: volta pra Manzi só pra repor o estoque. O que sobra é a <strong class="text-manzi-gold">margem</strong> (o lucro real), dividida em <strong class="text-white">40% JP / 60% Manzi</strong>.</p>
-                <p><strong class="text-white">2. Esporte (locação e clubinho):</strong> não tem mercadoria, então não tem CMV — divide direto <strong class="text-white">50% JP / 50% Manzi</strong>.</p>
-                <p class="text-white/40 text-xs">Na prática, cada R$ 1,80 vendido no bar tem R$ 1,00 de custo e R$ 0,80 de margem: o JP leva R$ 0,32 e a Manzi R$ 0,48 + o R$ 1,00 de volta pro estoque. Equivale a ~17,8% da venda bruta do bar.</p>
+                <p><strong class="text-white">1. Bar (bebidas, comida, bomboniere):</strong> de cada venda, primeiro sai o <strong class="text-manzi-gold">CMV</strong> — o custo da mercadoria, estimado pelo markup de 80%. Esse dinheiro não é lucro: volta pra Manzi só pra repor o estoque. O que sobra é a <strong class="text-manzi-gold">margem</strong> (o lucro real), dividida em <strong class="text-white">40% JP / 40% Manzi / 20% Fundo</strong>.</p>
+                <p><strong class="text-white">2. Fundo pagador da equipe:</strong> os 20% <strong class="text-white">não são da Manzi</strong> — vão pro fundo que paga os freelancers do dia. O que sobrar no fundo acumula pro crescimento do projeto; se faltar, compensa nas próximas semanas sem descontar dos sócios.</p>
+                <p><strong class="text-white">3. Esporte (locação e clubinho):</strong> não tem mercadoria, então não tem CMV — divide direto <strong class="text-white">50% JP / 50% Manzi</strong>.</p>
+                <p class="text-white/40 text-xs">Na prática, cada R$ 1,80 vendido no bar tem R$ 1,00 de custo e R$ 0,80 de margem: R$ 0,32 pro JP, R$ 0,32 pra Manzi e R$ 0,16 pro fundo — mais o R$ 1,00 de volta pro estoque. Os 40% do JP equivalem a ~17,8% da venda bruta do bar.</p>
             </div>
         </div>
 
         <!-- REFERÊNCIA -->
         <div class="rounded-2xl p-6 border border-white/10 mb-6" style="background:#111111;">
             <p class="text-xs font-bold uppercase tracking-widest text-manzi-gold mb-3">Referência — último domingo</p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+            <div class="grid grid-cols-2 gap-4 text-sm mb-4">
                 <div>
                     <p class="text-white/40 text-xs">Bar (vendido)</p>
                     <p class="font-bold">R$ 1.491,79</p>
@@ -65,6 +66,8 @@
                     <p class="font-bold">R$ 390,00</p>
                     <p class="text-white/30 text-xs">sem CMV</p>
                 </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 text-sm pt-3 border-t border-white/10">
                 <div>
                     <p class="text-white/40 text-xs">JP recebeu</p>
                     <p class="font-bold text-manzi-gold text-lg">R$ 460,21</p>
@@ -72,8 +75,13 @@
                 </div>
                 <div>
                     <p class="text-white/40 text-xs">Manzi (lucro)</p>
-                    <p class="font-bold text-lg">R$ 592,81</p>
+                    <p class="font-bold text-lg">R$ 460,21</p>
                     <p class="text-white/30 text-xs">+ CMV R$ 828,77</p>
+                </div>
+                <div>
+                    <p class="text-white/40 text-xs">Fundo (equipe)</p>
+                    <p class="font-bold text-lg">R$ 132,60</p>
+                    <p class="text-white/30 text-xs">20% da margem do bar</p>
                 </div>
             </div>
         </div>
@@ -125,9 +133,17 @@
                     <span class="text-white/50">(=) Margem</span>
                     <span id="outBarMargem" class="font-bold">R$ 0,00</span>
                 </div>
-                <div class="flex justify-between py-1.5">
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
                     <span class="text-white/50">JP — 40% da margem</span>
                     <span id="outBarJP" class="font-bold text-manzi-gold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                    <span class="text-white/50">Manzi — 40% da margem</span>
+                    <span id="outBarManzi" class="font-bold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-white/50">Fundo (equipe freelancer) — 20% da margem</span>
+                    <span id="outBarFundo" class="font-bold text-white/70">R$ 0,00</span>
                 </div>
             </div>
 
@@ -151,6 +167,10 @@
                 <div class="flex justify-between">
                     <span class="font-black uppercase text-xs tracking-widest text-white/50">Manzi Sports (lucro)</span>
                     <span id="outTotalManzi" class="font-black text-xl">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-black uppercase text-xs tracking-widest text-white/50">Fundo — equipe freelancer</span>
+                    <span id="outTotalFundo" class="font-black text-xl text-white/70">R$ 0,00</span>
                 </div>
                 <p id="outNota" class="text-xs text-white/30"></p>
             </div>
@@ -180,7 +200,8 @@
             const cmv = fator > 0 ? bar / fator : 0;
             const margem = bar - cmv;
             const barJP = margem * 0.4;
-            const barManzi = margem * 0.6;
+            const barManzi = margem * 0.4;
+            const barFundo = margem * 0.2;
 
             const esporteJP = esporte * 0.5;
             const esporteManzi = esporte * 0.5;
@@ -192,14 +213,17 @@
             document.getElementById('outBarCmv').textContent = '− ' + fmt(cmv);
             document.getElementById('outBarMargem').textContent = fmt(margem);
             document.getElementById('outBarJP').textContent = fmt(barJP);
+            document.getElementById('outBarManzi').textContent = fmt(barManzi);
+            document.getElementById('outBarFundo').textContent = fmt(barFundo);
             document.getElementById('outEsporte').textContent = fmt(esporte);
             document.getElementById('outEsporteJP').textContent = fmt(esporteJP);
             document.getElementById('outTotalJP').textContent = fmt(totalJP);
             document.getElementById('outTotalManzi').textContent = fmt(totalManzi);
+            document.getElementById('outTotalFundo').textContent = fmt(barFundo);
 
             const pctBruto = bar > 0 ? (barJP / bar) * 100 : 0;
             document.getElementById('outNota').textContent =
-                `A Manzi ainda recupera ${fmt(cmv)} de CMV (reposição de estoque, fora do lucro). Os 40% da margem equivalem a ${pctBruto.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% da venda bruta do bar.`;
+                `Os 20% do fundo não são da Manzi: pagam a equipe freelancer do dia, e a sobra acumula pro projeto. A Manzi ainda recupera ${fmt(cmv)} de CMV (reposição de estoque, fora do lucro). Os 40% do JP equivalem a ${pctBruto.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% da venda bruta do bar.`;
         }
 
         ['bar','esporte','markup'].forEach(id => {
