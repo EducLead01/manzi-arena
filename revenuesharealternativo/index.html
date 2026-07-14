@@ -188,14 +188,14 @@
         <!-- BÔNUS POR FAIXA DE FATURAMENTO -->
         <div class="rounded-2xl p-6 sm:p-7 border border-white/[0.06] mb-8" style="background:#111111;">
             <p class="font-black text-sm uppercase tracking-wide mb-1">Bônus por faixa — bar e restaurante (mês inteiro)</p>
-            <p class="text-xs text-white/30 mb-5">Faturamento acumulado do bar e restaurante, dia e noite, o mês todo. A cada R$ 10.000 acima da linha de corte, bônus de R$ 500,00.</p>
+            <p class="text-xs text-white/30 mb-5">Faturamento acumulado do bar e restaurante, dia e noite, o mês todo. Média atual: R$ 55 mil. Primeira zona de bônus em R$ 65 mil, depois 75, 85 e assim por diante — R$ 500,00 por zona.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
                 <div>
                     <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Faturamento do mês</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="mesFat" type="number" step="0.01" min="0" value="30000" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="mesFat" type="number" step="0.01" min="0" value="55000" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
                     <p class="text-xs text-white/30 mt-1">Bar + restaurante, dia e noite</p>
                 </div>
@@ -203,9 +203,9 @@
                     <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Linha de corte (bônus a partir de)</p>
                     <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
                         <span class="text-white/40 text-sm">R$</span>
-                        <input id="baseMeta" type="number" step="1000" min="0" value="20000" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <input id="baseMeta" type="number" step="1000" min="0" value="55000" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
                     </div>
-                    <p class="text-xs text-white/30 mt-1">Sugestão: média mensal atual da casa. Coloque 0 pra contar desde o primeiro real</p>
+                    <p class="text-xs text-white/30 mt-1">Média mensal atual da casa (R$ 55 mil) — primeira zona de bônus em R$ 65 mil</p>
                 </div>
                 <div>
                     <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Bônus do mês</p>
