@@ -216,6 +216,26 @@
                 </div>
             </div>
 
+            <!-- BLINDAGEM DE PESSOAL -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+                <div>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Custo de pessoal do mês</p>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <span class="text-white/40 text-sm">R$</span>
+                        <input id="custoPessoal" type="number" step="100" min="0" value="15000" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                    </div>
+                    <p class="text-xs text-white/30 mt-1">Folha fixa + freelancers + entregadores</p>
+                </div>
+                <div>
+                    <p class="text-white/25 text-[10px] uppercase tracking-wider mb-1">Teto de pessoal (trava do bônus)</p>
+                    <div class="flex items-center gap-2 bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 focus-within:border-manzi-gold/50 transition-colors">
+                        <input id="tetoPessoal" type="number" step="1" min="0" max="100" value="30" class="bg-transparent flex-1 text-sm text-white/90 focus:outline-none w-full">
+                        <span class="text-white/40 text-xs whitespace-nowrap">% do faturamento</span>
+                    </div>
+                    <p class="text-xs text-white/30 mt-1">Referência de mercado pra bar/restaurante: 25% a 30%</p>
+                </div>
+            </div>
+
             <!-- TERMÔMETRO DE VIABILIDADE -->
             <div class="rounded-xl border border-white/10 p-4 mb-5 space-y-1.5 text-sm" style="background:#0C0C0C;">
                 <p class="text-white/25 text-[10px] uppercase tracking-wider mb-2">Viabilidade</p>
@@ -230,6 +250,14 @@
                 <div id="rowPctIncremental" class="flex justify-between">
                     <span class="text-white/50">Bônus como % dessa margem nova</span>
                     <span id="outPctIncremental" class="font-semibold">0%</span>
+                </div>
+                <div class="flex justify-between pt-2 border-t border-white/[0.06]">
+                    <span class="text-white/50">Pessoal sobre o faturamento</span>
+                    <span id="outPctPessoal" class="font-semibold">0%</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-white/50">Folga até o teto</span>
+                    <span id="outFolgaPessoal" class="font-semibold">R$ 0,00</span>
                 </div>
                 <p id="outVeredito" class="text-xs pt-2"></p>
             </div>
@@ -247,7 +275,8 @@
                 </table>
             </div>
 
-            <p class="text-xs text-white/30 mt-4 leading-relaxed"><strong class="text-manzi-gold">Por que a linha de corte importa:</strong> num restaurante, depois de CMV, pessoal, aluguel, impostos e maquininha, o lucro líquido típico fica entre 5% e 15% do bruto — um bônus de 5% desde o primeiro real pode consumir o lucro inteiro. Acima da linha de corte, os custos fixos já estão pagos: cada R$ 10.000 novos geram ~R$ 4.400 de margem, e os R$ 500 viram uma fração pequena do ganho novo. O bônus se paga sozinho e premia exatamente o crescimento.</p>
+            <p class="text-xs text-white/30 mt-4 leading-relaxed"><strong class="text-manzi-gold">Por que a linha de corte importa:</strong> num restaurante, depois de CMV, pessoal, aluguel, impostos e maquininha, o lucro líquido típico fica entre 5% e 15% do bruto — um bônus de 5% desde o primeiro real pode consumir o lucro inteiro. Acima da linha de corte, os custos fixos já estão pagos: cada R$ 10.000 novos geram ~R$ 4.400 de margem, e os R$ 500 viram uma fração pequena do ganho novo.</p>
+            <p class="text-xs text-white/30 mt-3 leading-relaxed"><strong class="text-manzi-gold">Blindagem da folha:</strong> o bônus só é pago se o custo de pessoal do mês (folha fixa + freelancers + entregadores) ficar dentro do teto de % do faturamento. Isso impede o cenário em que a receita cresce mas a equipe incha junto e o lucro novo desaparece — pra ganhar o bônus, tem que crescer <strong class="text-white">com eficiência</strong>, não só contratando mais gente.</p>
         </div>
 
         <footer class="text-center">
@@ -345,10 +374,29 @@
             const baseMeta = num('baseMeta');
             const acimaBase = Math.max(0, mesFat - baseMeta);
             const faixas = Math.floor(acimaBase / FAIXA_BONUS);
-            const bonusMes = faixas * VALOR_BONUS;
+            const bonusZonas = faixas * VALOR_BONUS;
+
+            const custoPessoal = num('custoPessoal');
+            const tetoPessoal = num('tetoPessoal');
+            const pctPessoal = mesFat > 0 ? (custoPessoal / mesFat) * 100 : 0;
+            const folgaPessoal = mesFat * (tetoPessoal / 100) - custoPessoal;
+            const estourouTeto = tetoPessoal > 0 && pctPessoal > tetoPessoal + 0.049;
+            const bonusMes = estourouTeto ? 0 : bonusZonas;
 
             document.getElementById('outBonusMes').textContent = fmt(bonusMes);
-            document.getElementById('outBonusFaixas').textContent = `${faixas} ${faixas === 1 ? 'faixa' : 'faixas'}`;
+            document.getElementById('outBonusFaixas').textContent = estourouTeto && bonusZonas > 0
+                ? `${faixas} ${faixas === 1 ? 'faixa' : 'faixas'} · travado`
+                : `${faixas} ${faixas === 1 ? 'faixa' : 'faixas'}`;
+
+            const outPctPessoal = document.getElementById('outPctPessoal');
+            outPctPessoal.textContent = pctPessoal.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%' + ` (teto ${tetoPessoal}%)`;
+            outPctPessoal.classList.remove('text-green-400', 'text-red-400');
+            outPctPessoal.classList.add(estourouTeto ? 'text-red-400' : 'text-green-400');
+
+            const outFolga = document.getElementById('outFolgaPessoal');
+            outFolga.textContent = (folgaPessoal < 0 ? '− ' : '') + fmt(Math.abs(folgaPessoal));
+            outFolga.classList.remove('text-green-400', 'text-red-400');
+            outFolga.classList.add(folgaPessoal < 0 ? 'text-red-400' : 'text-green-400');
 
             const pctBruto = mesFat > 0 ? (bonusMes / mesFat) * 100 : 0;
             document.getElementById('outPctBruto').textContent = pctBruto.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%';
@@ -359,7 +407,10 @@
             document.getElementById('outPctIncremental').textContent = pctIncremental.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%';
 
             const veredito = document.getElementById('outVeredito');
-            if (bonusMes === 0) {
+            if (estourouTeto && bonusZonas > 0) {
+                veredito.textContent = `🔒 Bônus travado: pessoal em ${pctPessoal.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}% estourou o teto de ${tetoPessoal}%. As zonas atingidas valem ${fmt(bonusZonas)}, mas só liberam com o custo de pessoal de volta pra dentro do teto.`;
+                veredito.className = 'text-xs pt-2 text-red-400';
+            } else if (bonusMes === 0) {
                 veredito.textContent = baseMeta > 0
                     ? 'Nenhuma faixa atingida acima da linha de corte — sem bônus, sem custo.'
                     : 'Nenhuma faixa atingida — sem bônus, sem custo.';
@@ -368,7 +419,7 @@
                 veredito.textContent = '⚠ Sem linha de corte, o bônus consome ~5% do bruto — na faixa do lucro líquido típico de um restaurante. Defina a linha de corte na média mensal atual pra tornar sustentável.';
                 veredito.className = 'text-xs pt-2 text-red-400';
             } else if (pctIncremental <= 25) {
-                veredito.textContent = '✓ Sustentável: o bônus fica em ' + pctIncremental.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + '% da margem nova gerada acima da linha de corte — o crescimento paga o próprio bônus.';
+                veredito.textContent = '✓ Sustentável: o bônus fica em ' + pctIncremental.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + '% da margem nova gerada acima da linha de corte, e o pessoal está dentro do teto — o crescimento paga o próprio bônus.';
                 veredito.className = 'text-xs pt-2 text-green-400';
             } else {
                 veredito.textContent = 'Atenção: o bônus está consumindo ' + pctIncremental.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + '% da margem nova. Considere subir a linha de corte ou reduzir o valor por faixa.';
@@ -393,7 +444,7 @@
             calcularBonus();
         }
 
-        ['mesFat','baseMeta'].forEach(id => {
+        ['mesFat','baseMeta','custoPessoal','tetoPessoal'].forEach(id => {
             document.getElementById(id).addEventListener('input', calcularBonus);
         });
         calcularBonus();
