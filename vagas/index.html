@@ -112,9 +112,17 @@
 
                 <input id="form-nome" type="text" placeholder="Seu nome" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-3">
                 <input id="form-idade" type="text" placeholder="Idade" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-3">
-                <input id="form-experiencia" type="text" placeholder="Já tem experiência na área? (opcional)" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-2">
+                <input id="form-experiencia" type="text" placeholder="Já tem experiência na área? (opcional)" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-5">
 
-                <p id="form-erro" class="hidden text-xs text-red-400 mb-3">Escolha a vaga e preencha nome e idade pra continuar.</p>
+                <p class="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Está apto(a) a assinar carteira e trabalhar em regime CLT?</p>
+                <p class="text-white/30 text-xs mb-2">A vaga é exclusivamente CLT — não é possível contratar quem recebe benefício que impeça o registro (ex: seguro-desemprego).</p>
+                <div class="grid grid-cols-2 gap-3 mb-2" id="clt-buttons">
+                    <button type="button" class="clt-btn py-2.5 px-3 rounded-xl border border-white/10 text-white/70 text-sm font-bold text-center hover:border-manzi-gold/50 transition-all" data-val="Não">Não</button>
+                    <button type="button" class="clt-btn py-2.5 px-3 rounded-xl border border-white/10 text-white/70 text-sm font-bold text-center hover:border-manzi-gold/50 transition-all" data-val="Sim">Sim</button>
+                </div>
+                <p id="clt-aviso" class="hidden text-xs text-red-400 mb-3">Infelizmente essa vaga exige registro em carteira (CLT) — não é possível contratar quem não pode assinar.</p>
+
+                <p id="form-erro" class="hidden text-xs text-red-400 mb-3 mt-3">Escolha a vaga, responda sobre a carteira assinada e preencha nome e idade pra continuar.</p>
 
                 <button onclick="enviarFormulario()" class="w-full py-3 px-4 rounded-xl bg-manzi-gold text-manzi-black text-sm font-black hover:bg-yellow-400 transition-all">Enviar via WhatsApp</button>
             </div>
@@ -156,13 +164,32 @@
             };
         });
 
+        let cltSelecionado = null;
+        document.querySelectorAll('.clt-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.clt-btn').forEach(b => {
+                    b.classList.remove('bg-manzi-gold', 'text-manzi-black', 'border-manzi-gold');
+                    b.classList.add('text-white/70');
+                });
+                btn.classList.add('bg-manzi-gold', 'text-manzi-black', 'border-manzi-gold');
+                btn.classList.remove('text-white/70');
+                cltSelecionado = btn.dataset.val;
+                document.getElementById('clt-aviso').classList.toggle('hidden', cltSelecionado !== 'Não');
+            };
+        });
+
         function enviarFormulario() {
             const nome = document.getElementById('form-nome').value.trim();
             const idade = document.getElementById('form-idade').value.trim();
             const experiencia = document.getElementById('form-experiencia').value.trim();
             const erro = document.getElementById('form-erro');
 
-            if (!vagaSelecionada || !nome || !idade) {
+            if (cltSelecionado === 'Não') {
+                document.getElementById('clt-aviso').classList.remove('hidden');
+                return;
+            }
+
+            if (!vagaSelecionada || !cltSelecionado || !nome || !idade) {
                 erro.classList.remove('hidden');
                 return;
             }
@@ -171,6 +198,7 @@
             let msg = `Olá! Moro perto da Avenida Bernardo Sayão (Setor Fama) e quero enviar meu currículo pra vaga de *${vagaSelecionada}* na Manzi Arena.\n\n`;
             msg += `Nome: ${nome}\n`;
             msg += `Idade: ${idade}\n`;
+            msg += `Apto(a) a assinar carteira (CLT): ${cltSelecionado}\n`;
             if (experiencia) msg += `Experiência: ${experiencia}\n`;
 
             window.open('https://wa.me/5562993431310?text=' + encodeURIComponent(msg), '_blank');
