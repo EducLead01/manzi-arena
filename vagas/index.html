@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vagas — Cozinheira e Auxiliar de Cozinha | Manzi Arena</title>
+    <title>Vagas — Cozinheira, Auxiliar de Cozinha e Auxiliar de Atendimento | Manzi Arena</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,7 +35,11 @@
         <!-- HERO -->
         <section class="text-center mb-10 mt-4">
             <p class="text-manzi-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Trabalhe Conosco</p>
-            <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight leading-tight">Vaga de <span class="text-manzi-gold">Cozinheira(o)</span><br>e Auxiliar de Cozinha</h1>
+            <h1 class="font-black text-3xl sm:text-4xl uppercase tracking-tight leading-tight">Vaga de <span class="text-manzi-gold">Cozinheira(o)</span>,<br>Auxiliar de Cozinha<br>e Auxiliar de Atendimento</h1>
+            <p class="inline-flex items-center gap-2 text-white/60 text-sm font-semibold mt-4">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Horário diurno — vaga durante o dia
+            </p>
         </section>
 
         <!-- ENDEREÇO -->
@@ -95,6 +99,26 @@
                 <button onclick="fecharPopup()" class="w-full py-3 px-4 rounded-xl border border-white/10 text-white/70 text-sm font-bold hover:border-white/30 transition-all">Fechar</button>
             </div>
 
+            <div id="popup-form" class="hidden text-left">
+                <p class="font-black text-lg uppercase tracking-tight mb-1 text-center">Quase lá</p>
+                <p class="text-white/60 text-sm leading-relaxed mb-5 text-center">Responda rapidinho antes de enviar.</p>
+
+                <p class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2">Qual vaga te interessa?</p>
+                <div class="grid grid-cols-1 gap-2 mb-5" id="vaga-buttons">
+                    <button type="button" class="vaga-btn py-2.5 px-3 rounded-xl border border-white/10 text-white/70 text-sm font-bold text-center hover:border-manzi-gold/50 transition-all" data-val="Cozinheira(o)">Cozinheira(o)</button>
+                    <button type="button" class="vaga-btn py-2.5 px-3 rounded-xl border border-white/10 text-white/70 text-sm font-bold text-center hover:border-manzi-gold/50 transition-all" data-val="Auxiliar de Cozinha">Auxiliar de Cozinha</button>
+                    <button type="button" class="vaga-btn py-2.5 px-3 rounded-xl border border-white/10 text-white/70 text-sm font-bold text-center hover:border-manzi-gold/50 transition-all" data-val="Auxiliar de Atendimento">Auxiliar de Atendimento</button>
+                </div>
+
+                <input id="form-nome" type="text" placeholder="Seu nome" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-3">
+                <input id="form-idade" type="text" placeholder="Idade" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-3">
+                <input id="form-experiencia" type="text" placeholder="Já tem experiência na área? (opcional)" class="w-full bg-[#0C0C0C] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/90 placeholder-white/20 focus:outline-none focus:border-manzi-gold/50 transition-colors mb-2">
+
+                <p id="form-erro" class="hidden text-xs text-red-400 mb-3">Escolha a vaga e preencha nome e idade pra continuar.</p>
+
+                <button onclick="enviarFormulario()" class="w-full py-3 px-4 rounded-xl bg-manzi-gold text-manzi-black text-sm font-black hover:bg-yellow-400 transition-all">Enviar via WhatsApp</button>
+            </div>
+
         </div>
     </div>
 
@@ -104,20 +128,53 @@
             document.getElementById('popup').classList.remove('hidden');
             document.getElementById('popup-question').classList.remove('hidden');
             document.getElementById('popup-nao').classList.add('hidden');
+            document.getElementById('popup-form').classList.add('hidden');
         }
         function fecharPopup() {
             document.getElementById('popup-overlay').classList.add('hidden');
             document.getElementById('popup').classList.add('hidden');
         }
         function responderMora(mora) {
+            document.getElementById('popup-question').classList.add('hidden');
             if (mora) {
-                const msg = 'Olá! Moro perto da Avenida Bernardo Sayão (Setor Fama) e quero enviar meu currículo pra vaga de Cozinheira(o) / Auxiliar de Cozinha na Manzi Arena.';
-                window.open('https://wa.me/5562993431310?text=' + encodeURIComponent(msg), '_blank');
-                fecharPopup();
+                document.getElementById('popup-form').classList.remove('hidden');
             } else {
-                document.getElementById('popup-question').classList.add('hidden');
                 document.getElementById('popup-nao').classList.remove('hidden');
             }
+        }
+
+        let vagaSelecionada = null;
+        document.querySelectorAll('.vaga-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.vaga-btn').forEach(b => {
+                    b.classList.remove('bg-manzi-gold', 'text-manzi-black', 'border-manzi-gold');
+                    b.classList.add('text-white/70');
+                });
+                btn.classList.add('bg-manzi-gold', 'text-manzi-black', 'border-manzi-gold');
+                btn.classList.remove('text-white/70');
+                vagaSelecionada = btn.dataset.val;
+            };
+        });
+
+        function enviarFormulario() {
+            const nome = document.getElementById('form-nome').value.trim();
+            const idade = document.getElementById('form-idade').value.trim();
+            const experiencia = document.getElementById('form-experiencia').value.trim();
+            const erro = document.getElementById('form-erro');
+
+            if (!vagaSelecionada || !nome || !idade) {
+                erro.classList.remove('hidden');
+                return;
+            }
+            erro.classList.add('hidden');
+
+            let msg = `Olá! Moro perto da Avenida Bernardo Sayão (Setor Fama) e quero enviar meu currículo pra vaga de *${vagaSelecionada}* na Manzi Arena.\n\n`;
+            msg += `Nome: ${nome}\n`;
+            msg += `Idade: ${idade}\n`;
+            if (experiencia) msg += `Experiência: ${experiencia}\n`;
+
+            window.open('https://wa.me/5562993431310?text=' + encodeURIComponent(msg), '_blank');
+            fecharPopup();
         }
     </script>
 
